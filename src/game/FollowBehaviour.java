@@ -11,6 +11,7 @@ public class FollowBehaviour implements Behaviour {
 
 	private Actor target;
 
+
 	/**
 	 * Constructor.
 	 * 
