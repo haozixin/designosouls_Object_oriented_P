@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50e94000-50ab-40ec-aa17-83c027a0bfd2" name="Changes" comment="" />
+    <list default="true" id="50e94000-50ab-40ec-aa17-83c027a0bfd2" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +35,7 @@
     <property name="settings.editor.selected.configurable" value="android.project.structure" />
   </component>
   <component name="RunManager">
-    <configuration name="FIT2099_Project" type="Application" factoryName="Application">
+    <configuration name="FIT2099_Project" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="game.Application" />
       <module name="project" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -41,6 +43,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.FIT2099_Project" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -109,11 +116,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/game/Application.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/edu/monash/fit2099/engine/World.java</url>
           <line>73</line>
