@@ -1,4 +1,4 @@
-package game;
+package game.actions;
 
 import java.util.Random;
 
@@ -67,6 +67,7 @@ public class AttackAction extends Action {
 		return result;
 	}
 
+	// it will shows console as menu options
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target + " at " + direction;

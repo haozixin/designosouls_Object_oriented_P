@@ -14,6 +14,9 @@ import game.interfaces.Soul;
  * Class representing the Player.
  */
 public class Player extends Actor implements Soul {
+	private static final int MAX_HEALTH_POTION = 3;
+	private int healthPotion;
+
 
 	private final Menu menu = new Menu();
 
@@ -26,6 +29,7 @@ public class Player extends Actor implements Soul {
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
+		setHealthPotion(MAX_HEALTH_POTION);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
 	}
@@ -33,15 +37,45 @@ public class Player extends Actor implements Soul {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
-		if (lastAction.getNextAction() != null)
+		if (lastAction.getNextAction() != null){
 			return lastAction.getNextAction();
+		}
+
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
+	}
+
+	//
+	@Override
+	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+		return super.getAllowableActions(otherActor, direction, map);
 	}
 
 	@Override
 	public void transferSouls(Soul soulObject) {
 		//TODO: transfer Player's souls to another Soul's instance.
 	}
+
+	public void setHealthPotion(int healthPotion) {
+		this.healthPotion = healthPotion;
+	}
+
+	@Override
+	public char getDisplayChar() {
+		return super.getDisplayChar();
+	}
+
+	public int getHealthPotion() {
+		return healthPotion;
+	}
+
+	public int getMaxHitPoints() {
+		return maxHitPoints;
+	}
+
+	public int getHitPoints() {
+		return hitPoints;
+	}
+
 }
