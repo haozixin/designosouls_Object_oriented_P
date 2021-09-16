@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 import game.interfaces.Behaviour;
+import org.w3c.dom.ls.LSOutput;
 
 /**
  * A class that figures out a MoveAction that will move the actor one step 

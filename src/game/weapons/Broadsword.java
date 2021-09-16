@@ -1,8 +1,7 @@
-package game;
+package game.weapons;
 
-import edu.monash.fit2099.engine.WeaponItem;
 
-public class MeleeWeapon extends WeaponItem {
+public class Broadsword extends MeleeWeapon implements game.interfaces.Broadsword {
     /**
      * Constructor.
      *
@@ -12,9 +11,10 @@ public class MeleeWeapon extends WeaponItem {
      * @param verb        verb to use for this weapon, e.g. "hits", "zaps"
      * @param hitRate     the probability/chance to hit the target.
      */
-    public MeleeWeapon(String name, char displayChar, int damage, String verb, int hitRate) {
+    public Broadsword(String name, char displayChar, int damage, String verb, int hitRate) {
         super(name, displayChar, damage, verb, hitRate);
     }
 
-    //TODO: please figure out how to disable dropping item action.
+
+    //TODO: write weapon skills(interface) here
 }

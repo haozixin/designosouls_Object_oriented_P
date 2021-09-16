@@ -1,14 +1,16 @@
 package game;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actions;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Menu;
+import edu.monash.fit2099.engine.*;
+import game.actions.AttackAction;
+import game.actions.HealAction;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Soul;
+import game.weapons.Broadsword;
+import game.weapons.MeleeWeapon;
+import edu.monash.fit2099.engine.IntrinsicWeapon;
+
+import java.util.List;
 
 /**
  * Class representing the Player.
@@ -16,9 +18,10 @@ import game.interfaces.Soul;
 public class Player extends Actor implements Soul {
 	private static final int MAX_HEALTH_POTION = 3;
 	private int healthPotion;
+	private int soul;
 
 
-	private final Menu menu = new Menu();
+	private final Menu menu = new Menu2();
 
 	/**
 	 * Constructor.
@@ -32,24 +35,44 @@ public class Player extends Actor implements Soul {
 		setHealthPotion(MAX_HEALTH_POTION);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
+		addItemToInventory(new Broadsword("Broadsword",'S',30,"slash",20));
+		soul = 0;
+
+	}
+
+
+	@Override
+	public void addItemToInventory(Item item) {
+		super.addItemToInventory(item);
 	}
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+
+		System.out.println(displayStatus());
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null){
 			return lastAction.getNextAction();
 		}
 
-
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
+
 	}
 
-	//
+	/**
+	 * Returns a collection of the Actions that the otherActor can do to the current Actor.
+	 *
+	 * @param otherActor the Actor that might be performing attack
+	 * @param direction  String representing the direction of the other Actor
+	 * @param map        current GameMap
+	 * @return A collection of Actions.
+	 */
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
-		return super.getAllowableActions(otherActor, direction, map);
+		Actions actions = new Actions();
+
+		return actions;
 	}
 
 	@Override
@@ -78,4 +101,25 @@ public class Player extends Actor implements Soul {
 		return hitPoints;
 	}
 
+
+	public int getSoul() {
+		return soul;
+	}
+
+
+
+	private String displayStatus(){
+		String displayHitPoint="Unkindled:(" + getHitPoints() + "/" + getMaxHitPoints() + ')';
+
+		String displayWeapon = "Holding " + this.getWeapon().toString();
+		String displaySouls = getSoul()+" Souls";
+		return displayHitPoint+", "+displayWeapon+", "+displaySouls;
+	}
+
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+
+
+		return new IntrinsicWeapon(5, "punches");
+	}
 }

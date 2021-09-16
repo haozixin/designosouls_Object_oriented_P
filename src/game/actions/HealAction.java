@@ -11,17 +11,16 @@ import static game.enums.Status.*;
 
 public class HealAction extends Action {
     private Player target;
-    private float percentage;
+    private final int percentage= 40;
 
-    public HealAction(Player target, float percentage) {
+    public HealAction(Player target) {
         this.target = target;
-        this.percentage = percentage;
     }
 
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        int heal_points = (int) (target.getMaxHitPoints()*percentage);
+        int heal_points = (int) (target.getMaxHitPoints()*percentage*0.01);
         actor.heal(heal_points);
         return null;
     }
@@ -30,6 +29,11 @@ public class HealAction extends Action {
     // it will shows console as menu options
     @Override
     public String menuDescription(Actor player) {
-        return player + "drinks an Estus Flask";
+        return player + "drinks an Estus Flask("+target.getHealthPotion()+"/"+target.getMaxHitPoints()+")";
+    }
+
+    @Override
+    public String hotkey() {
+        return "a";
     }
 }
