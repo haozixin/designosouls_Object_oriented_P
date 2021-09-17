@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Weapon;
 import game.Player;
+import game.enums.Abilities;
 import jdk.swing.interop.SwingInterOpUtils;
 
 /**
@@ -14,6 +15,7 @@ public class Valley extends Ground {
 
 	public Valley() {
 		super('+');
+		addCapability(Abilities.VALLEY_DAMAGE);
 	}
 
 	/**
@@ -27,6 +29,7 @@ public class Valley extends Ground {
 		return actor instanceof Player ? true : false;
 
 	}
+
 
 
 }

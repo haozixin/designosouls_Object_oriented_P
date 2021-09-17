@@ -5,6 +5,7 @@ package game.enums;
  */
 public enum Abilities {
     REST, //for palyer
-    VALLEY_DAMAGE
+    VALLEY_DAMAGE,
+    CREATE_UNDEAD
 
 }

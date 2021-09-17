@@ -8,9 +8,7 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.World;
-import game.Terrains.Cemetery;
-import game.Terrains.Valley;
-import game.Terrains.Wall;
+import game.Terrains.*;
 
 /**
  * The main class for the Jurassic World game.
@@ -60,9 +58,11 @@ public class Application {
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new LordOfCinder("Yhorm the Giant", 'Y', 500));
 
-			// Place a Hollow in the the map
-			// FIXME: the Undead should be generated from the Cemetery
-			gameMap.at(32, 7).addActor(new Undead("Undead"));
+//			// Place a Hollow in the the map
+//			// FIXME: the Undead should be generated from the Cemetery
+//			gameMap.at(32, 7).addActor(new Undead("Undead"));
+
+
 			world.run();
 
 	}

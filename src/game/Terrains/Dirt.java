@@ -1,4 +1,4 @@
-package game;
+package game.Terrains;
 
 import edu.monash.fit2099.engine.Ground;
 
@@ -10,4 +10,5 @@ public class Dirt extends Ground {
 	public Dirt() {
 		super('.');
 	}
+
 }

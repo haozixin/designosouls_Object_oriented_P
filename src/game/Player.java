@@ -21,7 +21,7 @@ public class Player extends Actor implements Soul {
 	private int healthPotion;
 	private int soul;
 
-
+	//replace Menu() with Menu2()
 	private final Menu menu = new Menu2();
 
 	/**
