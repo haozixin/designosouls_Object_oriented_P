@@ -4,5 +4,7 @@ package game.enums;
  * Enum that represents an ability of Actor, Item, or Ground.
  */
 public enum Abilities {
-    REST
+    REST, //for palyer
+    VALLEY_DAMAGE
+
 }

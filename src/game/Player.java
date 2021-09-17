@@ -9,6 +9,7 @@ import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import game.weapons.MeleeWeapon;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
+import game.weapons.PlayerIntrinsicWeapon;
 
 import java.util.List;
 
@@ -28,14 +29,14 @@ public class Player extends Actor implements Soul {
 	 *
 	 * @param name        Name to call the player in the UI
 	 * @param displayChar Character to represent the player in the UI
-	 * @param hitPoints   Player's starting number of hitpoints
+	 * @param hitPoints   Player's starting number of hitPoints
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		setHealthPotion(MAX_HEALTH_POTION);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
-		addItemToInventory(new Broadsword("Broadsword",'S',30,"slash",20));
+		addItemToInventory(new Broadsword());
 		soul = 0;
 
 	}
@@ -118,8 +119,36 @@ public class Player extends Actor implements Soul {
 
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
+		return new PlayerIntrinsicWeapon(5, "punches","fist");
 
-
-		return new IntrinsicWeapon(5, "punches");
 	}
+
+	@Override
+	public boolean addSouls(int souls) {
+		boolean successful = false;
+		if(setSoul(getSoul()+souls)){
+			successful=true;
+		};
+		return successful;
+	}
+
+	@Override
+	public boolean subtractSouls(int souls) {
+		boolean successful = false;
+		if(setSoul(getSoul()-souls)){
+			successful=true;
+		};
+		return successful;
+	}
+
+	public boolean setSoul(int soul) {
+		boolean isValid=false;
+		if(soul>=0){
+			this.soul = soul;
+			isValid=true;
+		}
+		return isValid;
+	}
+
+
 }

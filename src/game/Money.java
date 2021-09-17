@@ -2,6 +2,7 @@ package game;
 
 import game.interfaces.Soul;
 
+//not useful for now
 public class Money implements Soul {
     /**
      * Transfer current instance's souls to another Soul instance.
