@@ -22,14 +22,15 @@ public class Vendor extends Ground {
         if(actor instanceof Player ? true : false) {
             Player player = (Player) actor;
             if (actor.hasCapability(Abilities.DEAL)){
-                if (player.getSoul()>1000){
+                if (player.getSoul()>=1000){
                     actions.add(new GiantAxeDealAction());
                     actions.add(new BSwordDealAction());
                 }
-                else if (player.getSoul()<1000 && player.getSoul()>500){
+                else if (player.getSoul()<1000 && player.getSoul()>=500){
                     actions.add(new BSwordDealAction());
                 }
                 else if (player.getSoul()<500){
+                    System.out.println("Vendor: 'You cannot do any trade with me now, since your souls is not enough'");
                 }
             }
         }

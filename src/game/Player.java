@@ -34,7 +34,7 @@ public class Player extends Actor implements Soul {
 		this.addCapability(Abilities.REST);
 		this.addCapability(Abilities.DEAL);
 		addItemToInventory(new Broadsword());
-		soul = 0;
+		soul = 5000;
 
 	}
 
@@ -42,6 +42,12 @@ public class Player extends Actor implements Soul {
 	@Override
 	public void addItemToInventory(Item item) {
 		super.addItemToInventory(item);
+	}
+
+	@Override
+	public void removeItemFromInventory(Item item) {
+
+		super.removeItemFromInventory(item);
 	}
 
 	@Override

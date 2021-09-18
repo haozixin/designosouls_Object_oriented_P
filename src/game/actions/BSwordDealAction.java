@@ -1,14 +1,12 @@
 package game.actions;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.GameMap;
-import game.interfaces.Weapon2;
+import edu.monash.fit2099.engine.*;
+import game.Player;
 import game.weapons.Broadsword;
 
 public class BSwordDealAction extends Action {
 
-    private Weapon2 broadsword;
+    private Broadsword broadsword;
 
     public BSwordDealAction() {
 
@@ -17,8 +15,11 @@ public class BSwordDealAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-
-        //actor get the weapon and subtract his souls
+        Player player = (Player) actor;
+        player.subtractSouls(broadsword.getPrice());
+        player.removeItemFromInventory((Item) (player.getWeapon()));
+        player.addItemToInventory(broadsword);
+        System.out.println("We(Vendor) have update your inventory successfully");
         return menuDescription(actor);
     }
 
