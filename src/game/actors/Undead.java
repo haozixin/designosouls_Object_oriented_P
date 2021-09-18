@@ -1,4 +1,4 @@
-package game;
+package game.actors;
 
 
 import edu.monash.fit2099.engine.Action;
@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.DoNothingAction;
 import edu.monash.fit2099.engine.GameMap;
 import game.actions.AttackAction;
+import game.behaviours.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
 

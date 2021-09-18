@@ -1,13 +1,8 @@
 package game.Terrains;
 
-import edu.monash.fit2099.demo.mars.Wall;
 import edu.monash.fit2099.engine.*;
-import game.Player;
-import game.actions.AttackAction;
-import game.actions.ResurgenceAction;
+import game.actors.Player;
 import game.enums.Abilities;
-import game.enums.Status;
-import jdk.swing.interop.SwingInterOpUtils;
 
 /**
  * The gorge or endless gap that is dangerous for the Player.

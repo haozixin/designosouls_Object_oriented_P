@@ -2,7 +2,7 @@ package game.weapons;
 
 import edu.monash.fit2099.engine.Weapon;
 
-public class GiantAxe extends MeleeWeapon implements Weapon{
+public class GiantAxe extends GameWeaponItem implements Weapon{
     private int price;
 
     public GiantAxe() {

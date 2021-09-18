@@ -3,11 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Menu;
-import game.Player;
-import game.enums.Status;
-
-import static game.enums.Status.*;
+import game.actors.Player;
 
 public class HealAction extends Action {
     private Player target;

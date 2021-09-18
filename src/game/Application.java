@@ -5,7 +5,8 @@ import java.util.List;
 
 import edu.monash.fit2099.engine.*;
 import game.Terrains.*;
-import game.weapons.GiantAxe;
+import game.actors.LordOfCinder;
+import game.actors.Player;
 
 /**
  * The main class for the Jurassic World game.

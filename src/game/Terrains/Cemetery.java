@@ -2,7 +2,7 @@ package game.Terrains;
 
 import edu.monash.fit2099.engine.*;
 import game.CemeteryHelper;
-import game.Undead;
+import game.actors.Undead;
 import game.enums.Abilities;
 
 import java.util.Random;

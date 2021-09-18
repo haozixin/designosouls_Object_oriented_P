@@ -1,7 +1,7 @@
 package game.Terrains;
 
 import edu.monash.fit2099.engine.*;
-import game.Player;
+import game.actors.Player;
 import game.actions.BSwordDealAction;
 import game.actions.GiantAxeDealAction;
 import game.enums.Abilities;

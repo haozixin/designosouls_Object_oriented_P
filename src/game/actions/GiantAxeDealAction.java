@@ -1,7 +1,7 @@
 package game.actions;
 
 import edu.monash.fit2099.engine.*;
-import game.Player;
+import game.actors.Player;
 import game.weapons.GiantAxe;
 
 public class GiantAxeDealAction extends Action {

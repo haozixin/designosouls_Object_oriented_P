@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Weapon;
 
 import java.util.Random;
 
-public class Broadsword extends MeleeWeapon implements Weapon {
+public class Broadsword extends GameWeaponItem implements Weapon {
     private int price;
     private int successRate;
 

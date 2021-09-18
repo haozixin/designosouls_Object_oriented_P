@@ -1,16 +1,35 @@
 package game;
 
+import edu.monash.fit2099.engine.Item;
+import game.actors.Player;
 import game.interfaces.Soul;
 
 //not useful for now
-public class Money implements Soul {
+public class TokenOfSouls extends PortableItem implements Soul {
+    int souls;
+
+    public TokenOfSouls(int souls) {
+        super("SoulsToken", '$');
+        //souls maybe null or some invalid value
+        this.souls = souls;
+
+    }
+
+    public void setSouls(int souls) {
+        this.souls = souls;
+    }
+
     /**
      * Transfer current instance's souls to another Soul instance.
+     *
      * @param soulObject a target souls.
      */
     @Override
     public void transferSouls(Soul soulObject) {
-
+        //the soulObject should be Play type object, then it will go to addSouls() that is implemented in Player class,
+        // otherwise the function will return false
+        //when player pick up the item(souls), it should transfer Souls instance to player's souls(attribute)
+        soulObject.addSouls(souls);
     }
 
     /**

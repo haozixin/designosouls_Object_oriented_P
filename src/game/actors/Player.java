@@ -1,6 +1,7 @@
-package game;
+package game.actors;
 
 import edu.monash.fit2099.engine.*;
+import game.TokenOfSouls;
 import game.actions.HealAction;
 import game.actions.ResurgenceAction;
 import game.enums.Abilities;
@@ -19,7 +20,7 @@ public class Player extends Actor implements Soul {
 	private int soul;
 
 	//replace Menu() with Menu2()
-	private final Menu menu = new Menu2();
+	private final Menu menu = new Menu();
 
 	/**
 	 * Constructor.
@@ -92,6 +93,7 @@ public class Player extends Actor implements Soul {
 	@Override
 	public void transferSouls(Soul soulObject) {
 		//TODO: transfer Player's souls to another Soul's instance.
+		TokenOfSouls tokenOfSouls = new TokenOfSouls(soul);
 	}
 
 	public void setHealthPotion(int healthPotion) {
@@ -139,7 +141,7 @@ public class Player extends Actor implements Soul {
 	@Override
 	public boolean addSouls(int souls) {
 		boolean successful = false;
-		if(setSoul(getSoul()+souls)){
+		if(setSoul(this.soul+souls)){
 			successful=true;
 		};
 		return successful;
@@ -148,7 +150,7 @@ public class Player extends Actor implements Soul {
 	@Override
 	public boolean subtractSouls(int souls) {
 		boolean successful = false;
-		if(setSoul(getSoul()-souls)){
+		if(setSoul(this.soul-souls)){
 			successful=true;
 		};
 		return successful;
@@ -172,5 +174,7 @@ public class Player extends Actor implements Soul {
 		hitPoints -= points;
 		hitPoints = Math.max(hitPoints, 0);
 	}
+
+
 
 }
