@@ -1,17 +1,13 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
-import game.actions.AttackAction;
 import game.actions.HealAction;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
-import game.weapons.MeleeWeapon;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
 import game.weapons.PlayerIntrinsicWeapon;
-
-import java.util.List;
 
 /**
  * Class representing the Player.
@@ -36,6 +32,7 @@ public class Player extends Actor implements Soul {
 		setHealthPotion(MAX_HEALTH_POTION);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
+		this.addCapability(Abilities.DEAL);
 		addItemToInventory(new Broadsword());
 		soul = 0;
 
@@ -49,8 +46,6 @@ public class Player extends Actor implements Soul {
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-
-
 
 		actions.add(getHealAction());
 		System.out.println(displayStatus());
@@ -75,6 +70,7 @@ public class Player extends Actor implements Soul {
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
+
 		//actions.add(getHealAction());
 		return actions;
 	}

@@ -11,12 +11,12 @@ import java.util.Map;
 /**
  * The class is to help Cemetery to generate Undead by getting the gameMap and locations of Terrains
  */
-public class Generator {
+public class CemeteryHelper {
     List<String> map;
     private static GameMap gameMap;
     private ArrayList<Integer[]> locations;
 
-    public Generator(List<String> map, GameMap gameMap) {
+    public CemeteryHelper(List<String> map, GameMap gameMap) {
         this.map = map;
         this.gameMap = gameMap;
         locations = new ArrayList<>();

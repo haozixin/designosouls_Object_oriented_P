@@ -1,15 +1,16 @@
 package game.Terrains;
 
 import edu.monash.fit2099.engine.*;
-import game.Generator;
+import game.CemeteryHelper;
 import game.Undead;
 import game.enums.Abilities;
+
+import java.util.Random;
 
 public class Cemetery extends Ground {
     public static final char CEMETERY_CHAR = 'c';
     private int successRate;
-    //private GameMap gameMap;
-    private Generator generator;
+    private CemeteryHelper cemeteryHelper;
 
 
     public Cemetery() {
@@ -18,15 +19,19 @@ public class Cemetery extends Ground {
         successRate=25;
     }
 
-    public Cemetery(Generator generator) {
+    public Cemetery(CemeteryHelper cemeteryHelper) {
         super(CEMETERY_CHAR);
         addCapability(Abilities.CREATE_UNDEAD);
         successRate=25;
-        this.generator = generator;
+        this.cemeteryHelper = cemeteryHelper;
     }
 
     private void createUndead(Location location){
-        generator.getGameMap().at(location.x()+1, location.y()+1).addActor(new Undead("Undead"));
+        Random r = new Random();
+        if (r.nextInt(100)<successRate){
+            cemeteryHelper.getGameMap().at(location.x(), location.y()).addActor(new Undead("Undead"));
+        }
+
     }
 
 
@@ -35,6 +40,11 @@ public class Cemetery extends Ground {
     public void tick(Location location) {
         createUndead(location);
 
+    }
+
+    @Override
+    public boolean canActorEnter(Actor actor) {
+        return false;
     }
 
 }

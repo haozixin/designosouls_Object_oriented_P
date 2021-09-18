@@ -1,11 +1,11 @@
 package game.Terrains;
 
 import edu.monash.fit2099.demo.mars.Wall;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Ground;
-import edu.monash.fit2099.engine.Weapon;
+import edu.monash.fit2099.engine.*;
 import game.Player;
+import game.actions.AttackAction;
 import game.enums.Abilities;
+import game.enums.Status;
 import jdk.swing.interop.SwingInterOpUtils;
 
 /**
@@ -30,8 +30,18 @@ public class Valley extends Ground {
 
 	}
 
+	@Override
+	public Actions allowableActions(Actor actor, Location location, String direction) {
 
+		Actions actions = new Actions();
 
-
-
+		// passive action
+		if(location.containsAnActor()){
+			//you the actor can come in, it must be "Player"
+			Player player = (Player)actor;
+			int hurtPoint = player.getHitPoints();
+			player.hurt(hurtPoint);
+		}
+		return actions;
+	}
 }

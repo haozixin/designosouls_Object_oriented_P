@@ -3,12 +3,9 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.FancyGroundFactory;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.World;
+import edu.monash.fit2099.engine.*;
 import game.Terrains.*;
+import game.weapons.GiantAxe;
 
 /**
  * The main class for the Jurassic World game.
@@ -66,7 +63,7 @@ public class Application {
 //			gameMap.at(32, 7).addActor(new Undead("Undead"));
 
 
-			Generator generator =new Generator(map,gameMap);
+			CemeteryHelper cemeteryHelper =new CemeteryHelper(map,gameMap);
 
 
 
