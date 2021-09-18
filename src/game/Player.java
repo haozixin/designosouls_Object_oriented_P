@@ -2,6 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.HealAction;
+import game.actions.ResurgenceAction;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Soul;
@@ -76,7 +77,6 @@ public class Player extends Actor implements Soul {
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
-
 		//actions.add(getHealAction());
 		return actions;
 	}

@@ -1,8 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50e94000-50ab-40ec-aa17-83c027a0bfd2" name="Changes" comment="Changes">
+    <list default="true" id="50e94000-50ab-40ec-aa17-83c027a0bfd2" name="Changes" comment="UML sequence diagram for Trade with Vendor Feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Application.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Application.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/ConwayGameMap.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/ConwayGameMap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/ConwayLocation.NextTurn.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/ConwayLocation.NextTurn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/ConwayLocation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/ConwayLocation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Floor.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Floor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/IBehaviour.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/IBehaviour.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Player.SleepAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Player.SleepAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Status.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Status.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/Tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/conwayslife/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Application.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Application.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Breathing.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Breathing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Bug.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Bug.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Crater.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Crater.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/DemoCapabilities.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/DemoCapabilities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Floor.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Floor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/KickAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/KickAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/LockedDoor.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/LockedDoor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/MartianItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/MartianItem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/SpitBehaviour.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/SpitBehaviour.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Stick.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Stick.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Wall.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/Wall.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/WindowSmashAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/WindowSmashAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/demo/mars/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Action.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Action.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Actions.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Actions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Actor.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Actor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/ActorLocations.ActorIterator.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/ActorLocations.ActorIterator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/ActorLocations.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/ActorLocations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Capabilities.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Capabilities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Capable.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Capable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Display.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Display.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/DoNothingAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/DoNothingAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/DropItemAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/DropItemAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Exit.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Exit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/FancyGroundFactory.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/FancyGroundFactory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/GameMap.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/GameMap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Ground.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Ground.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/GroundFactory.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/GroundFactory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/IntrinsicWeapon.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/IntrinsicWeapon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Item.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Item.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Location.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Location.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Menu.SortHotkeysFirst.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Menu.SortHotkeysFirst.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/MoveActorAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/MoveActorAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/NumberRange.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/NumberRange.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/PickUpItemAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/PickUpItemAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Printable.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Printable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Weapon.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/Weapon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/WeaponAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/WeaponAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/WeaponItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/WeaponItem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/World.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/World.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/addons/DesignOSoulsAddOn.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/addons/DesignOSoulsAddOn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/addons/MarsAddOn.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/addons/MarsAddOn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/addons/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/addons/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/addons/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/addons/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/edu/monash/fit2099/engine/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Application.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Application.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/AttackAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/AttackAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Dirt.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Dirt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Floor.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Floor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/FollowBehaviour.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/FollowBehaviour.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/GameWeaponItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/GameWeaponItem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/LordOfCinder.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/LordOfCinder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/MeleeWeapon.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/MeleeWeapon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Player.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/PortableItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/PortableItem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/ResetManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/ResetManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/SwapWeaponAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/SwapWeaponAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Undead.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Undead.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Valley.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Valley.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Wall.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Wall.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/WanderBehaviour.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/WanderBehaviour.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/enums/Abilities.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/enums/Abilities.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/enums/Status.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/enums/Status.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/enums/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/enums/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/enums/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/enums/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/interfaces/Behaviour.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/interfaces/Behaviour.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/interfaces/Resettable.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/interfaces/Resettable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/interfaces/Soul.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/interfaces/Soul.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/interfaces/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/interfaces/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/interfaces/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/interfaces/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-12.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-13.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-14.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-16.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-16.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-17.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-17.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-18.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-18.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-19.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-19.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-20.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-20.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-21.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-21.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-22.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-22.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-23.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-23.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Valley.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Terrains/Valley.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Undead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Undead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/actions/ResurgenceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/ResurgenceAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/interfaces/Weapon2.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,12 +137,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Zixin_branch" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1wymLsCAWthP6cIcrr1Tj7SEuAP" />
   <component name="ProjectViewState">
@@ -45,6 +184,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FIT2099_Project" />
         <item itemvalue="Application.FIT2099_Project" />
       </list>
     </recent_temporary>
@@ -90,7 +230,105 @@
       <option name="project" value="LOCAL" />
       <updated>1630478890724</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="rename">
+      <created>1630944963144</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1630944963144</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update WBA (make it more clear)">
+      <created>1630948774652</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1630948774652</updated>
+    </task>
+    <task id="LOCAL-00007" summary="WBA for A2">
+      <created>1631556144801</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1631556144801</updated>
+    </task>
+    <task id="LOCAL-00008" summary="accepted WBA">
+      <created>1631586291343</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1631586291343</updated>
+    </task>
+    <task id="LOCAL-00009" summary="working on requirements1">
+      <created>1631721439826</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1631721439826</updated>
+    </task>
+    <task id="LOCAL-00010" summary="working on requirements1">
+      <created>1631801671933</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1631801671933</updated>
+    </task>
+    <task id="LOCAL-00011" summary="working on requirement 5">
+      <created>1631840722190</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1631840722190</updated>
+    </task>
+    <task id="LOCAL-00012" summary="working on requirement 5">
+      <created>1631840780281</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1631840780281</updated>
+    </task>
+    <task id="LOCAL-00013" summary="working on requirement 5">
+      <created>1631871983958</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1631871983958</updated>
+    </task>
+    <task id="LOCAL-00014" summary="create Undead by Cemetery">
+      <created>1631942016202</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1631942016202</updated>
+    </task>
+    <task id="LOCAL-00015" summary="finish heal player by drinking Estus Flask">
+      <created>1631945518080</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1631945518080</updated>
+    </task>
+    <task id="LOCAL-00016" summary="almost finish Vendor requirements">
+      <created>1631961043372</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1631961043372</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update gitignore file">
+      <created>1631961123664</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1631961123664</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Vendor requirements are finished">
+      <created>1631974855007</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1631974855007</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,20 +349,31 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first iteration for UML class diagram" />
     <MESSAGE value="work Breakdown Agreement" />
-    <option name="LAST_COMMIT_MESSAGE" value="work Breakdown Agreement" />
+    <MESSAGE value="rename" />
+    <MESSAGE value="update WBA (make it more clear)" />
+    <MESSAGE value="WBA for A2" />
+    <MESSAGE value="accepted WBA" />
+    <MESSAGE value="working on requirements1" />
+    <MESSAGE value="working on requirement 5" />
+    <MESSAGE value="create Undead by Cemetery" />
+    <MESSAGE value="finish heal player by drinking Estus Flask" />
+    <MESSAGE value="almost finish Vendor requirements" />
+    <MESSAGE value="update gitignore file" />
+    <MESSAGE value="Vendor requirements are finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vendor requirements are finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/edu/monash/fit2099/engine/World.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="3" />
+          <line>64</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/edu/monash/fit2099/engine/World.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="4" />
+          <line>74</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

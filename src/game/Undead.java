@@ -65,4 +65,9 @@ public class Undead extends Actor {
 		return new DoNothingAction();
 	}
 
+
+	@Override
+	public String toString() {
+		return name+" ("+hitPoints+"/"+maxHitPoints+")"+" (no weapons)";
+	}
 }

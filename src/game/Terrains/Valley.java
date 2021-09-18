@@ -4,6 +4,7 @@ import edu.monash.fit2099.demo.mars.Wall;
 import edu.monash.fit2099.engine.*;
 import game.Player;
 import game.actions.AttackAction;
+import game.actions.ResurgenceAction;
 import game.enums.Abilities;
 import game.enums.Status;
 import jdk.swing.interop.SwingInterOpUtils;
@@ -41,6 +42,7 @@ public class Valley extends Ground {
 			Player player = (Player)actor;
 			int hurtPoint = player.getHitPoints();
 			player.hurt(hurtPoint);
+
 		}
 		return actions;
 	}
