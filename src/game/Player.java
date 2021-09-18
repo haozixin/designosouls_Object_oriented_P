@@ -167,5 +167,10 @@ public class Player extends Actor implements Soul {
 		healthPotion = getHealthPotion()-1;
 	}
 
+	@Override
+	public void hurt(int points) {
+		hitPoints -= points;
+		hitPoints = Math.max(hitPoints, 0);
+	}
 
 }

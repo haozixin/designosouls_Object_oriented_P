@@ -49,6 +49,7 @@ public class AttackAction extends Action {
 			return actor + " misses " + target + ".";
 		}
 		if (weapon instanceof Broadsword ? true : false){
+			// have a rate to double damage
 			((Broadsword) weapon).BsPassiveSkill();
 		}
 		int damage = weapon.damage();

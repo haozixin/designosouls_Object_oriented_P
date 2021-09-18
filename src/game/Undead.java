@@ -65,6 +65,11 @@ public class Undead extends Actor {
 		return new DoNothingAction();
 	}
 
+	@Override
+	public void hurt(int points) {
+		hitPoints -= points;
+		hitPoints = Math.max(hitPoints, 0);
+	}
 
 	@Override
 	public String toString() {

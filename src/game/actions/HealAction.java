@@ -21,6 +21,7 @@ public class HealAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+
         int heal_points = (int) (target.getMaxHitPoints()*percentage*0.01);
         actor.heal(heal_points);
         target.subtractHPotion();
