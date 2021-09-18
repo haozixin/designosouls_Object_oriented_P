@@ -17,7 +17,7 @@ import java.util.List;
  * Class representing the Player.
  */
 public class Player extends Actor implements Soul {
-	private static final int MAX_HEALTH_POTION = 3;
+	public static final int MAX_HEALTH_POTION = 3;
 	private int healthPotion;
 	private int soul;
 
@@ -50,6 +50,9 @@ public class Player extends Actor implements Soul {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
+
+
+		actions.add(getHealAction());
 		System.out.println(displayStatus());
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null){
@@ -72,8 +75,16 @@ public class Player extends Actor implements Soul {
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
-
+		//actions.add(getHealAction());
 		return actions;
+	}
+
+	public HealAction getHealAction(){
+		if (healthPotion>0){
+			return new HealAction(this);
+		}
+		//
+		return null;
 	}
 
 	@Override
@@ -148,6 +159,10 @@ public class Player extends Actor implements Soul {
 			isValid=true;
 		}
 		return isValid;
+	}
+
+	public void subtractHPotion(){
+		healthPotion = getHealthPotion()-1;
 	}
 
 
