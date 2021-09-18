@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Weapon;
+import game.weapons.Broadsword;
 
 /**
  * Special Action for attacking other Actors.
@@ -47,7 +48,9 @@ public class AttackAction extends Action {
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}
-
+		if (weapon instanceof Broadsword ? true : false){
+			((Broadsword) weapon).BsPassiveSkill();
+		}
 		int damage = weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);

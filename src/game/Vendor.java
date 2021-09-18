@@ -2,20 +2,14 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-public class Vendor extends Actor {
+public class Vendor extends Ground {
+
     /**
      * Constructor.
      *
-     * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
+     * @param displayChar character to display for this type of terrain
      */
-    public Vendor(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints);
-    }
-
-    @Override
-    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        return null;
+    public Vendor(char displayChar) {
+        super(displayChar);
     }
 }
