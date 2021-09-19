@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50e94000-50ab-40ec-aa17-83c027a0bfd2" name="Changes" comment="UML sequence diagram for Trade with Vendor Feature">
-      <change afterPath="$PROJECT_DIR$/src/game/actions/RestAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/behaviours/AttackBehaviour.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/CemeteryHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/CemeteryHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Bonfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Terrains/Bonfire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/actions/AttackAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/AttackAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/HealAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/HealAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actors/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/actors/LordOfCinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/LordOfCinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/actors/Undead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Undead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/behaviours/FollowBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/behaviours/FollowBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/enums/Abilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/enums/Abilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/enums/Status.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631986878896</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="finish Bonfire requirements">
+      <created>1632057787215</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1632057787215</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +269,8 @@
     <MESSAGE value="working on Souls stuff" />
     <MESSAGE value="optimize displaying player and enemies hitPoints (hitPoints cannot &lt; 0)" />
     <MESSAGE value="1 Almost finish my work (since it need other function to make it work). 2 restructure the architecture of classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="1 Almost finish my work (since it need other function to make it work). 2 restructure the architecture of classes" />
+    <MESSAGE value="finish Bonfire requirements" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish Bonfire requirements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

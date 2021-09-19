@@ -8,6 +8,10 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Weapon;
+import game.actors.LordOfCinder;
+import game.actors.Player;
+import game.actors.Skeleton;
+import game.actors.Undead;
 import game.interfaces.Behaviour;
 import game.weapons.Broadsword;
 
@@ -63,10 +67,32 @@ public class AttackAction extends Action implements Behaviour {
 				dropActions.add(item.getDropAction(actor));
 			for (Action drop : dropActions)
 				drop.execute(target, map);
-			// remove actor
-			//TODO: In A1 scenario, you must not remove a Player from the game yet. What to do, then?
 
-			map.removeActor(target);
+			if (actor instanceof Player ? true:false){
+				Player player = (Player)actor;
+				if (target instanceof Undead ? true:false){
+
+					player.addSouls(Undead.SOULS);
+					map.removeActor(target);
+				}
+				else if (target instanceof Skeleton ? true:false){
+					// skeleton
+					map.removeActor(target);
+
+				}
+				else if (target instanceof LordOfCinder ? true:false){
+
+					player.addSouls(LordOfCinder.getSOULS());
+					map.removeActor(target);
+				}
+			}else{
+				if (target instanceof Player ? true:false){
+					// soft-reset
+				}
+			}
+			// problem - when the actor or target both are not Player
+
+
 			result += System.lineSeparator() + target + " is killed.";
 		}
 

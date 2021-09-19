@@ -8,11 +8,18 @@ import edu.monash.fit2099.engine.*;
  * TODO: Could it be an abstract class? If so, why and how?
  */
 public class LordOfCinder extends Actor {
+    public static final int SOULS = 5000;
+
+
     /**
      * Constructor.
      */
     public LordOfCinder(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints );
+    }
+
+    public static int getSOULS() {
+        return SOULS;
     }
 
     /**

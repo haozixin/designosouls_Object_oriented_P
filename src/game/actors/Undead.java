@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * An undead minion.
  */
 public class Undead extends Actor {
-	int souls;
+	public static final int SOULS = 50;
 
 
 	// Will need to change this to a collection if Undeads gets additional Behaviours.
@@ -30,14 +30,11 @@ public class Undead extends Actor {
 	public Undead(String name) {
 		super(name, 'u', 50);
 		behaviours.add(new WanderBehaviour());
-		setSouls(50);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.FOLLOWED);
 	}
 
-	public void setSouls(int souls) {
-		this.souls = souls;
-	}
+
 
 	/**
 	 * At the moment, we only make it can be attacked by enemy that has HOSTILE capability
@@ -81,6 +78,12 @@ public class Undead extends Actor {
 		hitPoints -= points;
 		hitPoints = Math.max(hitPoints, 0);
 	}
+
+	public static int getSOULS() {
+		return SOULS;
+	}
+
+
 
 	@Override
 	public String toString() {
