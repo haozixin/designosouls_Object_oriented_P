@@ -7,4 +7,5 @@ package game.enums;
 public enum Status {
     HOSTILE_TO_ENEMY, // use this capability to be hostile towards something (e.g., to be attacked by enemy)
     HEAL_DISABLE // it is for heal Action
+
 }

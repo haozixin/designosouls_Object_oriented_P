@@ -7,6 +7,7 @@ public enum Abilities {
     REST, //for palyer
     VALLEY_DAMAGE,
     CREATE_UNDEAD,
-    DEAL
+    DEAL,
+    FOLLOWED
 
 }

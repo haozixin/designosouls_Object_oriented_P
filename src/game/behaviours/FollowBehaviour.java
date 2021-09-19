@@ -8,7 +8,7 @@ import org.w3c.dom.ls.LSOutput;
  * A class that figures out a MoveAction that will move the actor one step 
  * closer to a target Actor.
  */
-public class FollowBehaviour implements Behaviour {
+public class FollowBehaviour extends Actions implements Behaviour {
 
 	private Actor target;
 
@@ -21,6 +21,8 @@ public class FollowBehaviour implements Behaviour {
 	public FollowBehaviour(Actor subject) {
 		this.target = subject;
 	}
+
+
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
@@ -36,6 +38,7 @@ public class FollowBehaviour implements Behaviour {
 			if (destination.canActorEnter(actor)) {
 				int newDistance = distance(destination, there);
 				if (newDistance < currentDistance) {
+					System.out.println("------------------------------");
 					return new MoveActorAction(destination, exit.getName());
 				}
 			}

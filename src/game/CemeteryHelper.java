@@ -20,7 +20,6 @@ public class CemeteryHelper {
         this.map = map;
         this.gameMap = gameMap;
         locations = new ArrayList<>();
-
         findLocations();
         replaceCemetery();
     }

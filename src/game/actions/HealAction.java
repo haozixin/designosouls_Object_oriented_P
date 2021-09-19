@@ -28,7 +28,7 @@ public class HealAction extends Action {
     // it will shows console as menu options
     @Override
     public String menuDescription(Actor player) {
-        return player + "drinks an Estus Flask("+target.getHealthPotion()+"/"+Player.MAX_HEALTH_POTION+")";
+        return player + "drinks an Estus Flask("+target.getHealthPotion()+"/"+Player.getMaxHealthPotion()+")";
     }
 
 

@@ -2,8 +2,10 @@ package game.actors;
 
 import edu.monash.fit2099.engine.*;
 import game.TokenOfSouls;
+import game.actions.AttackAction;
 import game.actions.HealAction;
 import game.actions.ResurgenceAction;
+import game.behaviours.FollowBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Soul;
@@ -18,8 +20,9 @@ public class Player extends Actor implements Soul {
 	public static final int MAX_HEALTH_POTION = 3;
 	private int healthPotion;
 	private int soul;
+	private int hitPoints;
 
-	//replace Menu() with Menu2()
+
 	private final Menu menu = new Menu();
 
 	/**
@@ -40,6 +43,17 @@ public class Player extends Actor implements Soul {
 
 	}
 
+	public void setHitPoints(int hitPoints) {
+		this.hitPoints = hitPoints;
+	}
+
+	public static int getMaxHealthPotion() {
+		return MAX_HEALTH_POTION;
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
 
 	@Override
 	public void addItemToInventory(Item item) {
@@ -78,7 +92,14 @@ public class Player extends Actor implements Soul {
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
-		//actions.add(getHealAction());
+		//Undead attack the player
+		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+			actions.add(new AttackAction(this,direction));
+		}
+		else if (otherActor.hasCapability(Abilities.FOLLOWED)){
+			actions.add(new FollowBehaviour(this));
+		}
+
 		return actions;
 	}
 

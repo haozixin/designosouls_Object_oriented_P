@@ -8,12 +8,13 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Weapon;
+import game.interfaces.Behaviour;
 import game.weapons.Broadsword;
 
 /**
  * Special Action for attacking other Actors.
  */
-public class AttackAction extends Action {
+public class AttackAction extends Action implements Behaviour {
 
 	/**
 	 * The Actor that is to be attacked
@@ -64,6 +65,7 @@ public class AttackAction extends Action {
 				drop.execute(target, map);
 			// remove actor
 			//TODO: In A1 scenario, you must not remove a Player from the game yet. What to do, then?
+
 			map.removeActor(target);
 			result += System.lineSeparator() + target + " is killed.";
 		}
@@ -75,5 +77,10 @@ public class AttackAction extends Action {
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target + " at " + direction;
+	}
+
+	@Override
+	public Action getAction(Actor actor, GameMap map) {
+		return null;
 	}
 }
