@@ -80,7 +80,7 @@ public class AttackAction extends Action implements Behaviour {
 					// skeleton
 					Skeleton skeleton = (Skeleton) target;
 					if (skeleton.hasCapability(Abilities.RESURRECT)){
-						//if it has the ability, don't remove it right now
+
 						//on the ResurrectAction, it will show resurrect massage and remove skeleton's this ability
 						return result;
 					}else{

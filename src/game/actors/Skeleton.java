@@ -45,17 +45,16 @@ public class Skeleton extends Actor {
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
         weapon = initializeWeapon();
-        obtainResurrectAbility();
-
+        this.addCapability(Abilities.RESURRECT);
 
     }
 
-    private void obtainResurrectAbility(){
-        Random r =new Random();
-        if (r.nextInt(100)<Skeleton.resurrectRate){
-            this.addCapability(Abilities.RESURRECT);
-        }
-    }
+//    private void obtainResurrectAbility(){
+//        Random r =new Random();
+//        if (r.nextInt(100)<Skeleton.resurrectRate){
+//            this.addCapability(Abilities.RESURRECT);
+//        }
+//    }
 
 
     public GameWeaponItem initializeWeapon(){

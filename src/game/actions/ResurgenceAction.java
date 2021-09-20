@@ -4,10 +4,12 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
+import game.actors.Skeleton;
 import game.enums.Abilities;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class ResurgenceAction extends Action {
     Actor target;
@@ -18,9 +20,15 @@ public class ResurgenceAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        target.heal(1000);
-        target.removeCapability(Abilities.RESURRECT);
-        return menuDescription(actor);
+        Random r = new Random();
+        if (r.nextInt(100)< Skeleton.resurrectRate){
+            target.heal(1000);
+            target.removeCapability(Abilities.RESURRECT);
+            return menuDescription(actor);
+        }else{
+            map.removeActor(target);
+            return target + "is killed! its skill is not active";
+        }
     }
 
     @Override
