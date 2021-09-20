@@ -1,6 +1,7 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
+import game.PortableItem;
 import game.TokenOfSouls;
 import game.actions.AttackAction;
 import game.actions.HealAction;
@@ -21,6 +22,7 @@ public class Player extends Actor implements Soul {
 	private int healthPotion;
 	private int soul;
 	private int hitPoints;
+
 
 
 	private final Menu menu = new Menu();

@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.WeaponItem;
 
-public class GameWeaponItem extends WeaponItem {
+public abstract class GameWeaponItem extends WeaponItem {
     /**
      * Constructor.
      *
@@ -18,13 +18,5 @@ public class GameWeaponItem extends WeaponItem {
         super(name, displayChar, damage, verb, hitRate);
     }
 
-    /**
-     * In this game,
-     * @param actor an actor that will interact with this item
-     * @return null because
-     */
-    @Override
-    public DropItemAction getDropAction(Actor actor) {
-        return null;
-    }
+
 }

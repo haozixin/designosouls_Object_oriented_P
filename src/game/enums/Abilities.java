@@ -8,6 +8,7 @@ public enum Abilities {
     VALLEY_DAMAGE,
     CREATE_UNDEAD,
     DEAL,
-    FOLLOWED
+    FOLLOWED,
+    RESURRECT
 
 }

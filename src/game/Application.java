@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.*;
 import game.Terrains.*;
 import game.actors.LordOfCinder;
 import game.actors.Player;
+import game.actors.Skeleton;
 
 /**
  * The main class for the Jurassic World game.
@@ -22,6 +23,7 @@ public class Application {
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
 					new Cemetery(),new Vendor(),new Bonfire());
 
+			// width = 80, height = 26
 			List<String> map = Arrays.asList(
 					"..++++++..+++...........................++++......+++.................+++.......",
 					"........+++++..............................+++++++.................+++++........",
@@ -58,13 +60,21 @@ public class Application {
 
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new LordOfCinder("Yhorm the Giant", 'Y', 500));
+			//as requirement - manually place several Skeletons
+			gameMap.at(38,4).addActor(new Skeleton("Skeleton",38,4));
+			gameMap.at(28,17).addActor(new Skeleton("Skeleton",28,17));
+			gameMap.at(70,25).addActor(new Skeleton("Skeleton",70,25));
+			gameMap.at(55,15).addActor(new Skeleton("Skeleton",55,15));
+			gameMap.at(0,0).addActor(new Skeleton("Skeleton",0,0));
+			gameMap.at(68,3).addActor(new Skeleton("Skeleton",86,3));
 
-//			// Place a Hollow in the the map
-//			// FIXME: the Undead should be generated from the Cemetery
-//			gameMap.at(32, 7).addActor(new Undead("Undead"));
 
 
+
+			// it could help cemetery generate Undead automatically. the class is a kind of helper
 			CemeteryHelper cemeteryHelper =new CemeteryHelper(map,gameMap);
+
+
 
 
 

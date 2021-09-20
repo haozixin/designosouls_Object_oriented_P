@@ -30,8 +30,8 @@ public class Undead extends Actor {
 	public Undead(String name) {
 		super(name, 'u', 50);
 		behaviours.add(new WanderBehaviour());
-		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addCapability(Abilities.FOLLOWED);
+		this.addCapability(Status.HOSTILE_TO_PLAYER);
+
 	}
 
 

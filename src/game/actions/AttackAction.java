@@ -12,6 +12,7 @@ import game.actors.LordOfCinder;
 import game.actors.Player;
 import game.actors.Skeleton;
 import game.actors.Undead;
+import game.enums.Abilities;
 import game.interfaces.Behaviour;
 import game.weapons.Broadsword;
 
@@ -77,8 +78,14 @@ public class AttackAction extends Action implements Behaviour {
 				}
 				else if (target instanceof Skeleton ? true:false){
 					// skeleton
-					map.removeActor(target);
-
+					Skeleton skeleton = (Skeleton) target;
+					if (skeleton.hasCapability(Abilities.RESURRECT)){
+						//if it has the ability, don't remove it right now
+						//on the ResurrectAction, it will show resurrect massage and remove skeleton's this ability
+						return result;
+					}else{
+						map.removeActor(target);
+					}
 				}
 				else if (target instanceof LordOfCinder ? true:false){
 

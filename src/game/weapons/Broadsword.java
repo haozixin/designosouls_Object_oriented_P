@@ -2,10 +2,11 @@ package game.weapons;
 
 
 import edu.monash.fit2099.engine.Weapon;
+import game.interfaces.EnemyWeapon;
 
 import java.util.Random;
 
-public class Broadsword extends GameWeaponItem implements Weapon {
+public class Broadsword extends GameWeaponItem implements Weapon{
     private int price;
     private int successRate;
 

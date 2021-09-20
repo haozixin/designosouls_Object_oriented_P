@@ -4,24 +4,33 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
+import game.enums.Abilities;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class ResurgenceAction extends Action {
+    Actor target;
+
+    public ResurgenceAction(Actor target) {
+        this.target = target;
+    }
+
     @Override
     public String execute(Actor actor, GameMap map) {
-        //TODO:maybe requirements 6
-
+        target.heal(1000);
+        target.removeCapability(Abilities.RESURRECT);
         return menuDescription(actor);
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return "The skeleton has resurrected by using skill -> "+ target;
     }
 
-    private void showDeadMessage(){
+
+    // the function shoul move to other class
+/*    private void showDeadMessage(){
         List<String> message = Arrays.asList(
                 "++++......++++...........+++............++++.........++++................................................................................................",
                 ".++++....++++........+++.....+++........++++.........++++...................######........############............####..............######...............",
@@ -38,9 +47,6 @@ public class ResurgenceAction extends Action {
 
         for (int x=0; x<message.size();x++) {
             System.out.println(message.get(x));
-
         }
-
-
-    }
+    }*/
 }
