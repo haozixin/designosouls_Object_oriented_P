@@ -50,15 +50,16 @@ public class AttackAction extends Action implements Behaviour {
 	public String execute(Actor actor, GameMap map) {
 
 		Weapon weapon = actor.getWeapon();
+		int extraDamage =0;
 
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}
 		if (weapon instanceof Broadsword ? true : false){
 			// have a rate to double damage
-			((Broadsword) weapon).BsPassiveSkill();
+			extraDamage = ((Broadsword) weapon).passiveSkill();
 		}
-		int damage = weapon.damage();
+		int damage = weapon.damage()+extraDamage;
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 		if (!target.isConscious()) {

@@ -37,7 +37,7 @@ public class ResurgenceAction extends Action {
     }
 
 
-    // the function shoul move to other class
+    // the function should be moved to other class and used when actor die
 /*    private void showDeadMessage(){
         List<String> message = Arrays.asList(
                 "++++......++++...........+++............++++.........++++................................................................................................",

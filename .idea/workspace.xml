@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/actions/AttackAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/AttackAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/actions/ResurgenceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/ResurgenceAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actors/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Skeleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/weapons/Broadsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/weapons/Broadsword.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632112974135</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="optimize skeleton's skill">
+      <created>1632113974135</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1632113974135</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +293,8 @@
     <MESSAGE value="finish Bonfire requirements" />
     <MESSAGE value="get souls when player kill enemies" />
     <MESSAGE value="working on Skeleton skills" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on Skeleton skills" />
+    <MESSAGE value="optimize skeleton's skill" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimize skeleton's skill" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
