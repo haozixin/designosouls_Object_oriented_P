@@ -11,6 +11,7 @@ import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import game.weapons.GameWeaponItem;
 import game.weapons.GiantAxe;
+import game.weapons.MeleeWeapon;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -23,7 +24,7 @@ public class Skeleton extends Actor {
     private int initialX;
     private int initialY;
     //carry one random weapon
-    GameWeaponItem weapon;
+    MeleeWeapon weapon;
 
 
 
@@ -57,7 +58,7 @@ public class Skeleton extends Actor {
 //    }
 
 
-    public GameWeaponItem initializeWeapon(){
+    public MeleeWeapon initializeWeapon(){
         Random r = new Random();
         if(r.nextInt(2)<1){
             return new Broadsword();

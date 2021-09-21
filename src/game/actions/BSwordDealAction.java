@@ -4,6 +4,9 @@ import edu.monash.fit2099.engine.*;
 import game.actors.Player;
 import game.weapons.Broadsword;
 
+/**
+ *
+ */
 public class BSwordDealAction extends Action {
 
     private Broadsword broadsword;
@@ -25,7 +28,7 @@ public class BSwordDealAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor+" buys " + broadsword.toString()+"("+broadsword.getPrice() + " Souls)";
+        return actor+" buys " + broadsword +"("+broadsword.getPrice() + " Souls)";
     }
 
 }

@@ -6,7 +6,7 @@ import game.interfaces.EnemyWeapon;
 
 import java.util.Random;
 
-public class Broadsword extends GameWeaponItem implements Weapon {
+public class Broadsword extends MeleeWeapon implements Weapon {
     private int price;
     private int successRate;
 
@@ -32,4 +32,6 @@ public class Broadsword extends GameWeaponItem implements Weapon {
     public int getPrice() {
         return price;
     }
+
+
 }

@@ -25,7 +25,7 @@ public class GiantAxeDealAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor+" buys " + giantAxe.toString()+"("+giantAxe.getPrice() + " Souls)";
+        return actor+" buys " + giantAxe +"("+giantAxe.getPrice() + " Souls)";
     }
 
 

@@ -1,12 +1,10 @@
 package game;
 
 import edu.monash.fit2099.engine.GameMap;
-import game.Terrains.Cemetery;
+import game.terrains.Cemetery;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * The class is to help Cemetery to generate Undead by getting the gameMap and locations of Terrains

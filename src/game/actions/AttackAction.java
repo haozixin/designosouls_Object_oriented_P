@@ -46,6 +46,15 @@ public class AttackAction extends Action implements Behaviour {
 		this.direction = direction;
 	}
 
+	/**
+	 * Perform the Action.
+	 * consider all actor might use the same attack action, so I add a judgement process
+	 * which contains two cases when the target is going to die - 1,target is enemy / 2, target is player
+	 *
+	 * @param actor The actor performing the action.
+	 * @param map The map the actor is on.
+	 * @return a description of what happened that can be displayed to the user.
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 
@@ -93,12 +102,13 @@ public class AttackAction extends Action implements Behaviour {
 					player.addSouls(LordOfCinder.getSOULS());
 					map.removeActor(target);
 				}
-			}else{
+			}
+			else{
 				if (target instanceof Player ? true:false){
 					// soft-reset
 				}
 			}
-			// problem - when the actor or target both are not Player
+
 
 
 			result += System.lineSeparator() + target + " is killed.";
@@ -107,7 +117,11 @@ public class AttackAction extends Action implements Behaviour {
 		return result;
 	}
 
-	// it will shows console as menu options
+	/** it will show message on console as menu options
+	 *
+	 * @param actor The actor performing the action.
+	 * @return a String that will shows console as menu options
+	 */
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target + " at " + direction;

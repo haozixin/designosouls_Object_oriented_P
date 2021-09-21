@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
-import game.Terrains.*;
+import game.terrains.*;
 import game.actors.LordOfCinder;
 import game.actors.Player;
 import game.actors.Skeleton;
