@@ -5,12 +5,12 @@ import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
-import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Behaviour;
 import game.weapons.PlayerIntrinsicWeapon;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * An undead minion.
@@ -32,7 +32,7 @@ public class Undead extends Actor {
 		behaviours.add(new FollowBehaviour(target));
 		behaviours.add(new WanderBehaviour());
 		this.addCapability(Status.HOSTILE_TO_PLAYER);
-
+		this.addCapability(dieInstantly());
 	}
 
 
@@ -97,4 +97,16 @@ public class Undead extends Actor {
 
 	}
 
+	@Override
+	public void addCapability(Enum<?> capability) {
+		super.addCapability(dieInstantly());
+	}
+
+	private Enum<?> dieInstantly() {
+		Random r = new Random();
+		if (r.nextInt(100)<=10) {
+			hitPoints=0;
+		}
+		return null;
+	}
 }
