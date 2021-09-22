@@ -1,14 +1,13 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
-import game.PortableItem;
 import game.TokenOfSouls;
 import game.actions.AttackAction;
 import game.actions.HealAction;
-import game.actions.ResurgenceAction;
 import game.behaviours.FollowBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
+import game.interfaces.PlayerInterface;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
@@ -17,14 +16,12 @@ import game.weapons.PlayerIntrinsicWeapon;
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements Soul {
+public class Player extends Actor implements Soul, PlayerInterface {
+	// max health potion should belong to the whole player class,
+	// something like game setting - players could have how many health potion
 	public static final int MAX_HEALTH_POTION = 3;
 	private int healthPotion;
 	private int soul;
-	private int hitPoints;
-
-
-
 	private final Menu menu = new Menu();
 
 	/**
@@ -37,41 +34,25 @@ public class Player extends Actor implements Soul {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		setHealthPotion(MAX_HEALTH_POTION);
+		addCapabilities();
+		addItemToInventory(new Broadsword());
+		setSoul(1000);
+	}
+
+	// add all capabilities or status that the player could have
+	private void addCapabilities(){
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
 		this.addCapability(Abilities.DEAL);
-		addItemToInventory(new Broadsword());
-		soul = 5000;
-
 	}
 
-	public void setHitPoints(int hitPoints) {
-		this.hitPoints = hitPoints;
-	}
-
-	public static int getMaxHealthPotion() {
-		return MAX_HEALTH_POTION;
-	}
-
-	public Menu getMenu() {
-		return menu;
-	}
-
-	@Override
-	public void addItemToInventory(Item item) {
-		super.addItemToInventory(item);
-	}
-
-	@Override
-	public void removeItemFromInventory(Item item) {
-
-		super.removeItemFromInventory(item);
-	}
 
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
+		// player could chose the option(healAction) on every turn
 		actions.add(getHealAction());
+		//it will show the status of the player at the top of menu on each turn
 		System.out.println(displayStatus());
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null){
@@ -105,11 +86,11 @@ public class Player extends Actor implements Soul {
 		return actions;
 	}
 
-	public HealAction getHealAction(){
+	// get healAction if the player still has healthPotion(Estus)
+	public Action getHealAction(){
 		if (healthPotion>0){
 			return new HealAction(this);
 		}
-		//
 		return null;
 	}
 
@@ -123,9 +104,12 @@ public class Player extends Actor implements Soul {
 		this.healthPotion = healthPotion;
 	}
 
-	@Override
-	public char getDisplayChar() {
-		return super.getDisplayChar();
+	public void setHitPoints(int hitPoints) {
+		this.hitPoints = hitPoints;
+	}
+
+	public static int getMaxHealthPotion() {
+		return MAX_HEALTH_POTION;
 	}
 
 	public int getHealthPotion() {
@@ -140,16 +124,15 @@ public class Player extends Actor implements Soul {
 		return hitPoints;
 	}
 
-
 	public int getSoul() {
 		return soul;
 	}
 
 
 
+
 	private String displayStatus(){
 		String displayHitPoint="Unkindled:(" + getHitPoints() + "/" + getMaxHitPoints() + ')';
-
 		String displayWeapon = "Holding " + this.getWeapon().toString();
 		String displaySouls = getSoul()+" Souls";
 		return displayHitPoint+", "+displayWeapon+", "+displaySouls;
@@ -179,11 +162,15 @@ public class Player extends Actor implements Soul {
 		return successful;
 	}
 
-	public boolean setSoul(int soul) {
+	// if the parameter is valid, set soul with the number,
+	// otherwise, set it to 0 as default.
+	private boolean setSoul(int soul) {
 		boolean isValid=false;
 		if(soul>=0){
 			this.soul = soul;
 			isValid=true;
+		}else{
+			this.soul=0;
 		}
 		return isValid;
 	}

@@ -1,17 +1,29 @@
 package game.weapons;
 
-import edu.monash.fit2099.engine.Weapon;
-import game.interfaces.EnemyWeapon;
 
-public class GiantAxe extends MeleeWeapon implements Weapon {
-    private int price;
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.Weapon;
+import edu.monash.fit2099.engine.WeaponAction;
+
+
+public class GiantAxe extends MeleeWeapon implements Weapon{
+
 
     public GiantAxe() {
         super("GiantAxe", 'G', 50, "Split to", 80);
-        this.price = 1000;
+        setPrice(1000);
+        setSuccessRate(80);
     }
 
-    public int getPrice() {
-        return price;
+
+    //Weapon active skill - spin Attack
+    public void activeSkill(){
+        //
+    }
+
+
+    @Override
+    public WeaponAction getActiveSkill(Actor target, String direction) {
+        return null;
     }
 }

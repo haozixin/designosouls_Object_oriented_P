@@ -1,21 +1,22 @@
 package game.weapons;
 
-
+import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Weapon;
-import game.interfaces.EnemyWeapon;
+import edu.monash.fit2099.engine.WeaponAction;
+
 
 import java.util.Random;
 
-public class Broadsword extends MeleeWeapon implements Weapon {
-    private int price;
-    private int successRate;
+public class Broadsword extends MeleeWeapon implements Weapon{
+
 
     public Broadsword() {
         super("Broadsword", 'S', 30, "slash", 80);
-        this.price = 500;
-        successRate = 20;
+        setPrice(500);
+        setSuccessRate(80);
     }
 
+    //Critical Strike - Broadsword passive skill
     public int passiveSkill() {
 
         Random r = new Random();
@@ -29,9 +30,10 @@ public class Broadsword extends MeleeWeapon implements Weapon {
     }
 
 
-    public int getPrice() {
-        return price;
+
+
+    @Override
+    public WeaponAction getActiveSkill(Actor target, String direction) {
+        return null;
     }
-
-
 }
