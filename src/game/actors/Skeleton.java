@@ -144,4 +144,17 @@ public class Skeleton extends Actor {
             return name+"("+hitPoints+"/"+maxHitPoints+") with 1 life";
         }
     }
+
+    @Override
+    public void addCapability(Enum<?> capability) {
+        super.addCapability(revive());
+    }
+
+    private Enum<?> revive() {
+        Random r = new Random();
+        if (r.nextInt(100)<=50) {
+            hitPoints = maxHitPoints;
+        }
+        return null;
+    }
 }
