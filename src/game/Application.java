@@ -61,18 +61,18 @@ public class Application {
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new LordOfCinder("Yhorm the Giant", 'Y', 500));
 			//as requirement - manually place several Skeletons
-			gameMap.at(38,4).addActor(new Skeleton("Skeleton",38,4));
-			gameMap.at(28,17).addActor(new Skeleton("Skeleton",28,17));
-			gameMap.at(70,25).addActor(new Skeleton("Skeleton",70,25));
-			gameMap.at(55,15).addActor(new Skeleton("Skeleton",55,15));
-			gameMap.at(0,0).addActor(new Skeleton("Skeleton",0,0));
-			gameMap.at(68,3).addActor(new Skeleton("Skeleton",86,3));
+			gameMap.at(38,4).addActor(new Skeleton("Skeleton",38,4,player));
+			gameMap.at(28,17).addActor(new Skeleton("Skeleton",28,17,player));
+			gameMap.at(70,25).addActor(new Skeleton("Skeleton",70,25,player));
+			gameMap.at(55,15).addActor(new Skeleton("Skeleton",55,15,player));
+			gameMap.at(0,0).addActor(new Skeleton("Skeleton",0,0,player));
+			gameMap.at(68,3).addActor(new Skeleton("Skeleton",86,3,player));
 
 
 
 
 			// it could help cemetery generate Undead automatically. the class is a kind of helper
-			CemeteryHelper cemeteryHelper =new CemeteryHelper(map,gameMap);
+			CemeteryHelper cemeteryHelper =new CemeteryHelper(map,gameMap,player);
 
 
 

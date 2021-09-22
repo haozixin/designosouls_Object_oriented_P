@@ -3,6 +3,7 @@ package game.actors;
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.actions.ResurgenceAction;
+import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
@@ -34,7 +35,7 @@ public class Skeleton extends Actor {
      * Constructor. they could have different name
      * @param name        the name of the Actor
      */
-    public Skeleton(String name,int initialX, int initialY) {
+    public Skeleton(String name,int initialX, int initialY, Actor target) {
 
         //@param displayChar the character that will represent the Actor in the display
         //@param hitPoints   the Actor's starting hit points
@@ -42,6 +43,7 @@ public class Skeleton extends Actor {
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
+        behaviours.add(new FollowBehaviour(target));
         behaviours.add(new WanderBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
@@ -50,12 +52,6 @@ public class Skeleton extends Actor {
 
     }
 
-//    private void obtainResurrectAbility(){
-//        Random r =new Random();
-//        if (r.nextInt(100)<Skeleton.resurrectRate){
-//            this.addCapability(Abilities.RESURRECT);
-//        }
-//    }
 
 
     public MeleeWeapon initializeWeapon(){
@@ -66,8 +62,6 @@ public class Skeleton extends Actor {
             return new GiantAxe();
         }
     }
-
-
 
 
 

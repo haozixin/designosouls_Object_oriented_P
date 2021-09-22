@@ -27,8 +27,9 @@ public class Undead extends Actor {
 	 * All Undeads are represented by an 'u' and have 30 hit points.
 	 * @param name the name of this Undead
 	 */
-	public Undead(String name) {
+	public Undead(String name,Actor target) {
 		super(name, 'u', 50);
+		behaviours.add(new FollowBehaviour(target));
 		behaviours.add(new WanderBehaviour());
 		this.addCapability(Status.HOSTILE_TO_PLAYER);
 

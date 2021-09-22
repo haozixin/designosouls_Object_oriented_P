@@ -2,6 +2,7 @@ package game.terrains;
 
 import edu.monash.fit2099.engine.*;
 import game.CemeteryHelper;
+import game.actors.Player;
 import game.actors.Undead;
 import game.enums.Abilities;
 
@@ -28,8 +29,9 @@ public class Cemetery extends Ground {
 
     private void createUndead(Location location){
         Random r = new Random();
+        Actor player = cemeteryHelper.getPlayer();
         if (r.nextInt(100)<successRate){
-            cemeteryHelper.getGameMap().at(location.x(), location.y()).addActor(new Undead("Undead"));
+            cemeteryHelper.getGameMap().at(location.x(), location.y()).addActor(new Undead("Undead",player));
         }
 
     }
