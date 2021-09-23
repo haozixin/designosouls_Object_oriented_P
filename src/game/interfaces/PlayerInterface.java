@@ -11,4 +11,7 @@ public interface PlayerInterface {
     public int getHealthPotion();
     public int getHitPoints();
     public int getSoul();
+    public void setHealthPotion(int healthPotion);
+    public void setHitPoints(int hitPoints);
+    public void hurt(int points);
 }

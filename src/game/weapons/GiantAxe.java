@@ -4,6 +4,7 @@ package game.weapons;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Weapon;
 import edu.monash.fit2099.engine.WeaponAction;
+import game.actions.SpinAttackAction;
 
 
 public class GiantAxe extends MeleeWeapon implements Weapon{
@@ -16,14 +17,9 @@ public class GiantAxe extends MeleeWeapon implements Weapon{
     }
 
 
-    //Weapon active skill - spin Attack
-    public void activeSkill(){
-        //
-    }
-
 
     @Override
     public WeaponAction getActiveSkill(Actor target, String direction) {
-        return null;
+        return new SpinAttackAction(this);
     }
 }

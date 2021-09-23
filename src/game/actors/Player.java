@@ -11,6 +11,7 @@ import game.interfaces.PlayerInterface;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
+import game.weapons.MeleeWeapon;
 import game.weapons.PlayerIntrinsicWeapon;
 
 /**
@@ -23,6 +24,7 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	private int healthPotion;
 	private int soul;
 	private final Menu menu = new Menu();
+	MeleeWeapon weapon;
 
 	/**
 	 * Constructor.
@@ -35,8 +37,9 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		super(name, displayChar, hitPoints);
 		setHealthPotion(MAX_HEALTH_POTION);
 		addCapabilities();
-		addItemToInventory(new Broadsword());
-		setSoul(1000);
+		weapon = new Broadsword();
+		addItemToInventory(weapon);
+		setSoul(2000);
 	}
 
 	// add all capabilities or status that the player could have

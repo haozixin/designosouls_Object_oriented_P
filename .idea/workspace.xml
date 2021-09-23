@@ -2,29 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50e94000-50ab-40ec-aa17-83c027a0bfd2" name="Changes" comment="UML sequence diagram for Trade with Vendor Feature">
-      <change afterPath="$PROJECT_DIR$/src/game/utilities/Utility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/actions/SpinAttackAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/interfaces/CemeteryHelperInt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/WBA - for A2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/docs/WBA - for A2.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Dirt.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Dirt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Floor.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Floor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Valley.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Valley.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/game/Wall.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/game/Wall.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/CemeteryHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/CemeteryHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Bonfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Bonfire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Cemetery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Cemetery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Dirt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Dirt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Floor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Valley.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Valley.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Vendor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Vendor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Terrains/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Wall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/AttackAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/AttackAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/BSwordDealAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/BSwordDealAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/GiantAxeDealAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/GiantAxeDealAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actors/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Skeleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/weapons/Broadsword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/weapons/Broadsword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/actions/RestAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/RestAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/actions/ResurgenceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/ResurgenceAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/actors/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/interfaces/PlayerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/interfaces/PlayerInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/terrains/Cemetery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Cemetery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/terrains/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Floor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/terrains/Valley.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Valley.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/weapons/GiantAxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/weapons/GiantAxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/weapons/MeleeWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/weapons/MeleeWeapon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -288,7 +278,42 @@
       <option name="project" value="LOCAL" />
       <updated>1632188365252</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="update WBA and some optimization of the code about weapon">
+      <created>1632195895060</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1632195895060</updated>
+    </task>
+    <task id="LOCAL-00029" summary="help them list specific tasks of their parts">
+      <created>1632199340163</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1632199340163</updated>
+    </task>
+    <task id="LOCAL-00030" summary="finish followBehaviour">
+      <created>1632271428123</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1632271428123</updated>
+    </task>
+    <task id="LOCAL-00031" summary="newest final WBA">
+      <created>1632271585106</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1632271585106</updated>
+    </task>
+    <task id="LOCAL-00032" summary="optimization code">
+      <created>1632331509818</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1632331509818</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,8 +332,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first iteration for UML class diagram" />
-    <MESSAGE value="work Breakdown Agreement" />
     <MESSAGE value="rename" />
     <MESSAGE value="update WBA (make it more clear)" />
     <MESSAGE value="WBA for A2" />
@@ -329,7 +352,12 @@
     <MESSAGE value="optimize skeleton's skill" />
     <MESSAGE value="fix Broadsword passive skill" />
     <MESSAGE value="update WBA" />
-    <option name="LAST_COMMIT_MESSAGE" value="update WBA" />
+    <MESSAGE value="update WBA and some optimization of the code about weapon" />
+    <MESSAGE value="help them list specific tasks of their parts" />
+    <MESSAGE value="finish followBehaviour" />
+    <MESSAGE value="newest final WBA" />
+    <MESSAGE value="optimization code" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimization code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -338,11 +366,6 @@
           <url>file://$PROJECT_DIR$/src/edu/monash/fit2099/engine/World.java</url>
           <line>64</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/edu/monash/fit2099/engine/World.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

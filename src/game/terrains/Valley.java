@@ -3,6 +3,7 @@ package game.terrains;
 import edu.monash.fit2099.engine.*;
 import game.actors.Player;
 import game.enums.Abilities;
+import game.interfaces.PlayerInterface;
 
 /**
  * The gorge or endless gap that is dangerous for the Player.
@@ -31,13 +32,11 @@ public class Valley extends Ground {
 
 		Actions actions = new Actions();
 
-		// passive action
-		if(location.containsAnActor()){
-			//you the actor can come in, it must be "Player"
-			Player player = (Player)actor;
+		// passive action -- Player will receive a lot of damage if the location contains him/her
+		if(location.containsAnActor() && (actor instanceof Player ? true : false)){
+			PlayerInterface player = (Player)actor;
 			int hurtPoint = player.getHitPoints();
 			player.hurt(hurtPoint);
-
 		}
 		return actions;
 	}

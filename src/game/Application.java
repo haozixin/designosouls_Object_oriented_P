@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
+import game.interfaces.CemeteryHelperInt;
 import game.terrains.*;
 import game.actors.LordOfCinder;
 import game.actors.Player;
@@ -60,7 +61,7 @@ public class Application {
 
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new LordOfCinder("Yhorm the Giant", 'Y', 500));
-			//as requirement - manually place several Skeletons
+			//as the requirement said - manually place several Skeletons
 			gameMap.at(38,4).addActor(new Skeleton("Skeleton",38,4,player));
 			gameMap.at(28,17).addActor(new Skeleton("Skeleton",28,17,player));
 			gameMap.at(70,25).addActor(new Skeleton("Skeleton",70,25,player));
@@ -72,7 +73,9 @@ public class Application {
 
 
 			// it could help cemetery generate Undead automatically. the class is a kind of helper
-			CemeteryHelper cemeteryHelper =new CemeteryHelper(map,gameMap,player);
+			CemeteryHelperInt cemeteryHelper =new CemeteryHelper(map,gameMap,player);
+			cemeteryHelper.findLocations();
+			cemeteryHelper.replaceCemetery();
 
 
 
