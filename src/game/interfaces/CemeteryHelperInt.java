@@ -6,6 +6,10 @@ import edu.monash.fit2099.engine.GameMap;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Interface for CemeteryHelper
+ * Cemetery will use the interface to generate Undead Automatically
+ */
 public interface CemeteryHelperInt {
     List<String> getMap();
     ArrayList<Integer[]> getLocations();

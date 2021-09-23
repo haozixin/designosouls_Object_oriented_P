@@ -8,13 +8,15 @@ import game.actions.SpinAttackAction;
 
 
 public class GiantAxe extends MeleeWeapon implements Weapon{
+    private int successRate;
 
 
     public GiantAxe() {
         super("GiantAxe", 'G', 50, "Split to", 80);
         setPrice(1000);
-        setSuccessRate(80);
+
     }
+
 
 
 

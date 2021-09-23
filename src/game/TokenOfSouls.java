@@ -4,7 +4,10 @@ import edu.monash.fit2099.engine.Item;
 import game.actors.Player;
 import game.interfaces.Soul;
 
-//not useful for now
+/**
+ * The Token of Souls
+ * It will be used in soft-reset part
+ */
 public class TokenOfSouls extends PortableItem implements Soul {
     int souls;
 
@@ -12,7 +15,6 @@ public class TokenOfSouls extends PortableItem implements Soul {
         super("SoulsToken", '$');
         //souls maybe null or some invalid value
         this.souls = souls;
-
     }
 
     public void setSouls(int souls) {

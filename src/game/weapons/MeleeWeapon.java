@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.WeaponItem;
 
 public class MeleeWeapon extends WeaponItem implements Weapon {
     protected int price;
-    protected int successRate;
+
     /**
      * Constructor.
      *
@@ -29,27 +29,18 @@ public class MeleeWeapon extends WeaponItem implements Weapon {
 
     public boolean setPrice(int price) {
         boolean isValid = false;
-        if (successRate >= 0) {
+        if (price >= 0) {
             this.price = price;
             isValid = true;
         }
         return isValid;
     }
 
-    public boolean setSuccessRate(int successRate) {
-        boolean isValid = false;
-        if (successRate >= 0) {
-            this.successRate = successRate;
-            isValid = true;
-        }
-        return isValid;
-    }
+
     public int getPrice() {
         return price;
     }
 
-    public int getSuccessRate() {
-        return successRate;
-    }
+
 
 }

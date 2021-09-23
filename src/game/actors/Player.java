@@ -39,7 +39,7 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		addCapabilities();
 		weapon = new Broadsword();
 		addItemToInventory(weapon);
-		setSoul(2000);
+		setSoul(0);
 	}
 
 	// add all capabilities or status that the player could have
@@ -78,12 +78,9 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
 		Actions actions = new Actions();
-		//Undead attack the player
+		//enemy can attack the player if the player has the status
 		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 			actions.add(new AttackAction(this,direction));
-		}
-		else if (otherActor.hasCapability(Abilities.FOLLOWED)){
-			actions.add(new FollowBehaviour(this));
 		}
 
 		return actions;

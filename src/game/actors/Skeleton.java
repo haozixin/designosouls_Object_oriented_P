@@ -37,7 +37,7 @@ public class Skeleton extends Actor {
 
         //@param displayChar the character that will represent the Actor in the display
         //@param hitPoints   the Actor's starting hit points
-        super(name, 's', 10);
+        super(name, 's', 100);
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
@@ -51,10 +51,14 @@ public class Skeleton extends Actor {
     }
 
 
-
+    /**
+     * initialize weapon for Skeleton - get a random weapon
+     * For this game, only two weapon has to been considered
+     * @return return a Weapon Item
+     */
     public WeaponItem initializeWeapon(){
         Random r = new Random();
-        if(r.nextInt(2)<1){
+        if(r.nextInt(100)<50){
             return new Broadsword();
         }else{
             return new GiantAxe();
@@ -63,6 +67,14 @@ public class Skeleton extends Actor {
 
 
 
+    /**
+     * Returns a collection of the Actions that the otherActor can do to the current Actor.
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return A collection of Actions.
+     */
     @Override
     public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
         Actions actions = new Actions();
@@ -74,11 +86,23 @@ public class Skeleton extends Actor {
         return actions;
     }
 
+
+    /**
+     * Select and return an action to perform on the current turn.
+     *
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return the Action to be performed
+     */
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
-        // need to optimize
 
+        // if the skeleton is going to die and has the capability of RESURRECT, do ResurgenceAction this turn
+        // else: use for loop to get all actions in the behaviours arraylist,
+        // the sequence would be: can do attackAction?-->can do followBehaviour? --> can do wanderBehaviour?
         if (!this.isConscious() && this.hasCapability(Abilities.RESURRECT)){
            return new ResurgenceAction(this);
         }
@@ -89,15 +113,7 @@ public class Skeleton extends Actor {
                     return action;
             }
         }
-//        for(Behaviour behaviour : behaviours) {
-//            //actions.add(behaviour.getAction(this, map));
-//            Action action = behaviour.getAction(this, map);
-//            /*Action action = behaviour.getAction(this, map);
-//            if (action != null)
-//                return action;*/
-//            System.out.println("!!!!!!!!!!!!");
-//            return action;
-//        }
+
 
         return new DoNothingAction();
     }
@@ -133,13 +149,10 @@ public class Skeleton extends Actor {
 
     @Override
     public String toString() {
-
-
-
         if (this.hasCapability(Abilities.RESURRECT)){
-            return name+"("+hitPoints+"/"+maxHitPoints+") with (might)2 lives";
+            return name+"("+hitPoints+"/"+maxHitPoints+") with (might)2 lives - holding:"+weapon;
         }else{
-            return name+"("+hitPoints+"/"+maxHitPoints+") with 1 life";
+            return name+"("+hitPoints+"/"+maxHitPoints+") with 1 life - holding:"+weapon;
         }
     }
 
