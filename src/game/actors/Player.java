@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.*;
 import game.TokenOfSouls;
 import game.actions.AttackAction;
 import game.actions.HealAction;
-import game.behaviours.FollowBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.PlayerInterface;
@@ -15,15 +14,32 @@ import game.weapons.MeleeWeapon;
 import game.weapons.PlayerIntrinsicWeapon;
 
 /**
- * Class representing the Player.
+ * Class representing the Player on the gameMap.
  */
 public class Player extends Actor implements Soul, PlayerInterface {
-	// max health potion should belong to the whole player class,
-	// something like game setting - players could have how many health potion
+	/**
+	 * max health potion that belongs to the whole player class
+	 * something like game setting - players could have how many health potion
+	 */
 	public static final int MAX_HEALTH_POTION = 3;
+
+	/**
+	 * Estus Flask
+	 */
 	private int healthPotion;
+	/**
+	 * souls(money) the player has
+	 */
 	private int soul;
+
+	/**
+	 * Menu to show options on player's turn
+	 */
 	private final Menu menu = new Menu();
+
+	/**
+	 * weapon that the player holds
+	 */
 	MeleeWeapon weapon;
 
 	/**
@@ -42,14 +58,24 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		setSoul(0);
 	}
 
-	// add all capabilities or status that the player could have
+	/**
+	 * add all capabilities or status that the player could have
+ 	 */
 	private void addCapabilities(){
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Abilities.REST);
 		this.addCapability(Abilities.DEAL);
 	}
 
-
+	/**
+	 * Select and return an action to perform on the current turn.
+	 *
+	 * @param actions    collection of possible Actions for this Actor
+	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+	 * @param map        the map containing the Actor
+	 * @param display    the I/O object to which messages may be written
+	 * @return the Action to be performed
+	 */
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
@@ -86,7 +112,9 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		return actions;
 	}
 
-	// get healAction if the player still has healthPotion(Estus)
+	/**
+	 * get healAction if the player still has enough healthPotion(Estus) - i.e. healthPotion > 0
+ 	 */
 	public Action getHealAction(){
 		if (healthPotion>0){
 			return new HealAction(this);
@@ -94,8 +122,14 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		return null;
 	}
 
+
+	/**
+	 * Transfer current instance's souls to another Soul instance.
+	 * @param soulObject a target souls.
+	 */
 	@Override
 	public void transferSouls(Soul soulObject) {
+		//soft-reset part
 		//TODO: transfer Player's souls to another Soul's instance.
 		TokenOfSouls tokenOfSouls = new TokenOfSouls(soul);
 	}
@@ -129,8 +163,10 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	}
 
 
-
-
+	/**
+	 * Display the player's status
+	 * @return a String contains the information(status) about HitPoint, Weapon, and Souls.
+	 */
 	private String displayStatus(){
 		String displayHitPoint="Unkindled:(" + getHitPoints() + "/" + getMaxHitPoints() + ')';
 		String displayWeapon = "Holding " + this.getWeapon().toString();
@@ -138,12 +174,22 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		return displayHitPoint+", "+displayWeapon+", "+displaySouls;
 	}
 
+	/**
+	 * Creates and returns an intrinsic weapon.
+	 *
+	 * @return a freshly-instantiated IntrinsicWeapon
+	 */
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new PlayerIntrinsicWeapon(5, "punches","fist");
-
 	}
 
+	/**
+	 * Increase souls to current instance's souls(player's souls).
+	 *
+	 * @param souls number of souls to be incremented.
+	 * @return transaction status. True if addition successful, otherwise False.
+	 */
 	@Override
 	public boolean addSouls(int souls) {
 		boolean successful = false;
@@ -153,6 +199,11 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		return successful;
 	}
 
+	/**
+	 * Allow other classes to deduct the number of this instance's souls(player's souls)
+	 * @param souls number souls to be deducted
+	 * @return transaction status. True if subtraction successful, otherwise False.
+	 */
 	@Override
 	public boolean subtractSouls(int souls) {
 		boolean successful = false;
@@ -162,8 +213,14 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		return successful;
 	}
 
-	// if the parameter is valid, set soul with the number,
-	// otherwise, set it to 0 as default.
+	/**
+	 * Setter for souls attribute
+	 *
+	 * if the parameter is valid, set soul with the number.
+	 * Otherwise, set it to 0 as default.
+	 * @param soul the value(int) of souls that should be set
+	 * @return boolean value to judge if the parameter is valid
+	 */
 	private boolean setSoul(int soul) {
 		boolean isValid=false;
 		if(soul>=0){
@@ -175,10 +232,20 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		return isValid;
 	}
 
+	/**
+	 * subtract the number of Estus Flask
+	 */
 	public void subtractHPotion(){
 		healthPotion = getHealthPotion()-1;
 	}
 
+	/**
+	 * Do some damage to the player. But the hitPoints goes down to 0 at most
+	 *
+	 * If the player's hitpoints go down to zero, it will be knocked out.
+	 *
+	 * @param points number of hitpoints to deduct.
+	 */
 	@Override
 	public void hurt(int points) {
 		hitPoints -= points;

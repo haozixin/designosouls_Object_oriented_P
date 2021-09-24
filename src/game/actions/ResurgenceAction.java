@@ -2,41 +2,73 @@ package game.actions;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
+import game.actors.Enemy;
 import game.actors.Skeleton;
 import game.enums.Abilities;
+import game.interfaces.SkeletonInterface;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 
-/** All actors who have the ability of RESURRECT can use the action, it might has a chance(success rate) to resurrect.
- * When the actor is going to die (i.e. hitPoint = 0), the Action will be invoked on his turn. The actor will be removed from map if his RESURRECT skill is not successful,
+/**
+ * When the Skeleton is going to die (i.e. hitPoint = 0), it can use its skill, the Action will be invoked on his turn.
+ * The Skeleton will be removed from map if his RESURRECT skill is not successful,
  * otherwise he will be healed and remove RESURRECT ability, and keep fighting.
 */
 public class ResurgenceAction extends Action {
-    Actor target;
+    /**
+     *target of the action -- enemies(only Skeleton for now)
+     */
+    SkeletonInterface target;
 
-    public ResurgenceAction(Actor target) {
-        this.target = target;
+    public ResurgenceAction(SkeletonInterface target) {
+        if (setTarget(target)){
+        }
+        else{
+            System.out.println("Resurgence skill can only be used by Skeleton");;
+        }
     }
 
+    /**
+     * setter
+     * @param target target of the action
+     * @return boolean value - judge if the parameter is valid
+     */
+    public boolean setTarget(SkeletonInterface target) {
+        boolean isValid = false;
+        if(target instanceof Skeleton ? true:false){
+            this.target = target;
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    /**
+     * Execute the Action.
+     * It will heal the skeleton to Maximum health point and remove the ability(because the requirement is the skeleton can only use it once)
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a description of what happened that can be displayed to the player.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         Random r = new Random();
-        if (r.nextInt(100)< Skeleton.resurrectRate){
+        if (r.nextInt(100)< Skeleton.RESURRECT_RATE){
             //healing the actor with a huge health point, which is bigger than maximum hitPoint.
             target.heal(1000);
             target.removeCapability(Abilities.RESURRECT);
             return menuDescription(actor);
         }else{
-            map.removeActor(target);
+            map.removeActor((Skeleton)target);
             return target + "is killed! its skill is not active";
         }
     }
-
+    /**
+     * it will shows message on console
+     * @param actor The actor performing the action.
+     * @return a String that will shows console as menu options
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "The skeleton has resurrected by using skill -> "+ target;

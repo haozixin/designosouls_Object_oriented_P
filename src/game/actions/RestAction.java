@@ -10,7 +10,18 @@ import game.interfaces.PlayerInterface;
  * RestAction - player take the action to reset health/hit points and refill Estus Flask to maximum charges
  */
 public class RestAction extends Action {
+    /**
+     *target of the RestAction -- player
+     */
     PlayerInterface target;
+
+    /**
+     * Execute the Action.
+     * It will Restore hitPoints and reduces the number of Estus
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a description of what happened that can be displayed to the user.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         if (actor instanceof Player ? true:false){
@@ -21,10 +32,16 @@ public class RestAction extends Action {
             target.setHitPoints(target.getMaxHitPoints());
             return menuDescription(actor);
         }else{
+            // other actors will not trigger the action
             return null;
         }
     }
 
+    /**
+     * it will shows message on console
+     * @param actor The actor performing the action.
+     * @return a String that will shows console as menu options
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "Rest at FireLink Shrine Bonfire";

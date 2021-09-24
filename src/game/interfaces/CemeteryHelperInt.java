@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Interface for CemeteryHelper
- * Cemetery will use the interface to generate Undead Automatically
+ * Cemetery will use the methods that from this interface to generate Undead Automatically
  */
 public interface CemeteryHelperInt {
     List<String> getMap();

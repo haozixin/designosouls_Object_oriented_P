@@ -1,5 +1,6 @@
 package game.actors;
 
+import edu.monash.fit2099.demo.mars.Breathing;
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.actions.ResurgenceAction;
@@ -8,6 +9,7 @@ import game.behaviours.WanderBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Behaviour;
+import game.interfaces.SkeletonInterface;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import game.weapons.GiantAxe;
@@ -15,18 +17,34 @@ import game.weapons.GiantAxe;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Skeleton extends Actor {
+
+
+public class Skeleton extends Enemy implements SkeletonInterface {
+
+    /**
+     * SOULS - how many souls the skeleton could yield when it's killed / how many souls the player could get
+     * from the skeleton after killing it
+     */
     public static final int SOULS = 250;
-    public static final int resurrectRate=50;
+
+    /**
+     * The success rate of this ability(RESURRECT itself)
+     */
+    public static final int RESURRECT_RATE =50;
     private ArrayList<Behaviour> behaviours = new ArrayList<>();
-    //skeleton needs to know its initial location
+
+    /**
+     * initial location - x
+     * as required, skeleton needs to know its initial location
+     */
     private int initialX;
+
+    /**
+     * initial location - y
+     */
     private int initialY;
     //carry one random weapon
     WeaponItem weapon;
-
-
-
 
 
     /**
@@ -46,6 +64,7 @@ public class Skeleton extends Actor {
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
         weapon = initializeWeapon();
+        // add resurgence ability
         this.addCapability(Abilities.RESURRECT);
 
     }
@@ -100,7 +119,7 @@ public class Skeleton extends Actor {
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
 
-        // if the skeleton is going to die and has the capability of RESURRECT, do ResurgenceAction this turn
+        // if: the skeleton is going to die and has the capability of RESURRECT, do ResurgenceAction in skeleton's turn
         // else: use for loop to get all actions in the behaviours arraylist,
         // the sequence would be: can do attackAction?-->can do followBehaviour? --> can do wanderBehaviour?
         if (!this.isConscious() && this.hasCapability(Abilities.RESURRECT)){
@@ -118,6 +137,13 @@ public class Skeleton extends Actor {
         return new DoNothingAction();
     }
 
+    /**
+     * Do some damage to the skeleton. But the hitPoints only can go down to 0 at most.
+     *
+     * If the player's hitpoints go down to zero, it will be knocked out.
+     *
+     * @param points number of hitpoints to deduct.
+     */
     @Override
     public void hurt(int points) {
         hitPoints -= points;
@@ -147,25 +173,55 @@ public class Skeleton extends Actor {
         return initialY;
     }
 
+    /**
+     * override toString to show some basic information for each skeleton, such as hitPoints, weapon that the skeleton holds and so on
+     * @return
+     */
     @Override
     public String toString() {
         if (this.hasCapability(Abilities.RESURRECT)){
-            return name+"("+hitPoints+"/"+maxHitPoints+") with (might)2 lives - holding:"+weapon;
+            return name+"("+hitPoints+"/"+maxHitPoints+") with (might)2 lives /holding:"+weapon;
         }else{
-            return name+"("+hitPoints+"/"+maxHitPoints+") with 1 life - holding:"+weapon;
+            return name+"("+hitPoints+"/"+maxHitPoints+") with 1 life /holding:"+weapon;
         }
     }
 
+    // please figure out the code has given, and find a better place(interface) to implement it otherwise it would cause too many problems
+//    @Override
+//    public void addCapability(Enum<?> capability) {
+//        super.addCapability(revive());
+//    }
+
+//    private Enum<?> revive() {
+//        Random r = new Random();
+//        if (r.nextInt(100)<=50) {
+//            hitPoints = maxHitPoints;
+//        }
+//        return null;
+//    }
+
+    /**
+     * Add points to the current Actor's hitpoint total.
+     *
+     * This cannot take the hitpoints over the Actor's maximum. If there is an
+     * overflow, hitpoints are silently capped at the maximum.
+     *
+     * Does not check for consciousness: unconscious Actors can still be healed
+     * if the game client allows.
+     *
+     * @param points number of hitpoints to add.
+     */
     @Override
-    public void addCapability(Enum<?> capability) {
-        super.addCapability(revive());
+    public void heal(int points) {
+        super.heal(points);
     }
 
-    private Enum<?> revive() {
-        Random r = new Random();
-        if (r.nextInt(100)<=50) {
-            hitPoints = maxHitPoints;
-        }
-        return null;
+    /** Remove a capability from this Actor.
+     *
+     * @param capability the Capability to remove
+     */
+    @Override
+    public void removeCapability(Enum<?> capability) {
+        super.removeCapability(capability);
     }
 }

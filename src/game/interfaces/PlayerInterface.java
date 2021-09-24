@@ -6,13 +6,58 @@ package game.interfaces;
  * The interface can protect Player Class
  */
 public interface PlayerInterface {
-    public int getMaxHitPoints();
-    public void subtractHPotion();
-    public int getHealthPotion();
-    public int getHitPoints();
-    public int getSoul();
-    public void setHealthPotion(int healthPotion);
-    public void setHitPoints(int hitPoints);
-    public void hurt(int points);
-    public boolean addSouls(int souls);
+    /**
+     * Get the player's Maximum hitPoints
+     * @return player's Maximum hitPoints
+     */
+    int getMaxHitPoints();
+
+    /**
+     * Subtract the number of Estus Flask
+     */
+    void subtractHPotion();
+
+    /**
+     * get the number of Estus Flask that the player holds now
+     * @return the number of Estus Flask
+     */
+    int getHealthPotion();
+
+    /**
+     * get player's hit points
+     * @return the player's hit points
+     */
+    int getHitPoints();
+
+    /**
+     * get player's souls number
+     * @return number of souls
+     */
+    int getSoul();
+
+    /**
+     * set plyaer's healthPotion (Estus Flask)
+     * @param healthPotion the number of Estus Flask
+     */
+    void setHealthPotion(int healthPotion);
+
+    /**
+     * set player's hitPoints
+     * @param hitPoints hitPoints
+     */
+    void setHitPoints(int hitPoints);
+
+    /**
+     * Do some damage to the player.
+     *
+     * @param points number of hitpoints to deduct.
+     */
+    void hurt(int points);
+
+    /**
+     * add player's souls number
+     * @param souls number of souls
+     * @return boolean value to judge if it's successful
+     */
+    boolean addSouls(int souls);
 }

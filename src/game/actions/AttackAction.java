@@ -24,6 +24,7 @@ public class AttackAction extends Action implements Behaviour {
 
 	/**
 	 * The Actor that is to be attacked
+	 * it might be enemy or player
 	 */
 	protected Actor target;
 
@@ -48,7 +49,7 @@ public class AttackAction extends Action implements Behaviour {
 	}
 
 	/**
-	 * Perform the Action.
+	 * Execute the Action.
 	 * consider all actor might use the same attack action, so I add a judgement process
 	 * which contains two cases when the target is going to die - 1,target is enemy / 2, target is player
 	 *
@@ -134,8 +135,8 @@ public class AttackAction extends Action implements Behaviour {
 		return null;
 	}
 
-	/** it will show message on console as menu options
-	 *
+	/**
+	 * it will shows message on console
 	 * @param actor The actor performing the action.
 	 * @return a String that will shows console as menu options
 	 */
@@ -143,6 +144,7 @@ public class AttackAction extends Action implements Behaviour {
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target + " at " + direction;
 	}
+
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
