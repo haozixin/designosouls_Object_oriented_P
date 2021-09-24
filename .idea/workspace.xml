@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50e94000-50ab-40ec-aa17-83c027a0bfd2" name="Changes" comment="UML sequence diagram for Trade with Vendor Feature">
-      <change afterPath="$PROJECT_DIR$/src/game/actors/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/interfaces/SkeletonInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/AttackAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/AttackAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/HealAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/HealAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/RestAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/RestAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/ResurgenceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/ResurgenceAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/SpinAttackAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/SpinAttackAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actions/WeaponDealAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actions/TradeWeaponAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/actors/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/actors/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/actors/Skeleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Skeleton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/actors/Undead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/actors/Undead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/behaviours/AttackBehaviour.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/enums/Abilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/enums/Abilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/enums/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/interfaces/CemeteryHelperInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/interfaces/CemeteryHelperInt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/interfaces/PlayerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/interfaces/PlayerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/terrains/Bonfire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Bonfire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/terrains/Vendor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/terrains/Vendor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632414325672</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="finish part of Javadoc">
+      <created>1632458601157</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1632458601157</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +351,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update WBA (make it more clear)" />
     <MESSAGE value="WBA for A2" />
     <MESSAGE value="accepted WBA" />
     <MESSAGE value="working on requirements1" />
@@ -384,7 +375,8 @@
     <MESSAGE value="newest final WBA" />
     <MESSAGE value="optimization code" />
     <MESSAGE value="update WBA - add &quot;update supporting design documentation which is relative with our own responsible requirements&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="update WBA - add &quot;update supporting design documentation which is relative with our own responsible requirements&quot;" />
+    <MESSAGE value="finish part of Javadoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish part of Javadoc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

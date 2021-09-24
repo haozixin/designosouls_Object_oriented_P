@@ -23,7 +23,7 @@ public class Undead extends Enemy {
 	public static final int SOULS = 50;
 
 
-	private ArrayList<Behaviour> behaviours = new ArrayList<>();
+
 
 	/** 
 	 * Constructor.
@@ -84,18 +84,6 @@ public class Undead extends Enemy {
 	}
 
 
-	/**
-	 * Do some damage to the skeleton. But the hitPoints only can go down to 0 at most.
-	 *
-	 * If the player's hitpoints go down to zero, it will be knocked out.
-	 *
-	 * @param points number of hitpoints to deduct.
-	 */
-	@Override
-	public void hurt(int points) {
-		hitPoints -= points;
-		hitPoints = Math.max(hitPoints, 0);
-	}
 
 	public static int getSOULS() {
 		return SOULS;
