@@ -1,8 +1,6 @@
 package game.terrains;
 
 import edu.monash.fit2099.engine.*;
-import game.CemeteryHelper;
-import game.actors.Player;
 import game.actors.Undead;
 import game.enums.Abilities;
 import game.interfaces.CemeteryHelperInt;
@@ -14,8 +12,20 @@ import java.util.Random;
  * If you want to change its initial place Just need to change the map ArrayList on Application class
  */
 public class Cemetery extends Ground {
+    /**
+     * char 'c' represents Cemetery
+     */
     public static final char CEMETERY_CHAR = 'c';
+
+    /**
+     * As required:
+     * Each cemetery has a 25% success rate to spawn/create Undead (Hollow soldier)(@see Enemies) at every turn
+     */
     private int successRate;
+
+    /**
+     * Helper -- help cemetery implements the requirement of creating Undead
+     */
     private CemeteryHelperInt cemeteryHelper;
 
     /**
@@ -69,6 +79,11 @@ public class Cemetery extends Ground {
         return false;
     }
 
+    /**
+     * setter -- set successRate attribute
+     * @param successRate success rate to spawn/create Undead at each turn
+     * @return boolean value - if setting is successful
+     */
     private boolean setSuccessRate(int successRate) {
         boolean isSuccessful = false;
         if (successRate>0){
@@ -78,6 +93,11 @@ public class Cemetery extends Ground {
         return isSuccessful;
     }
 
+    /**
+     * setter - set CemeteryHelper
+     * @param cemeteryHelper another class that can let cemetery know player, gameMap and necessary information
+     * @return boolean value - if setting is successful
+     */
     private boolean setCemeteryHelper(CemeteryHelperInt cemeteryHelper) {
         boolean isSuccessful = false;
         if (successRate>0){

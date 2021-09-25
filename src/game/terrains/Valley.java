@@ -27,6 +27,13 @@ public class Valley extends Ground {
 
 	}
 
+	/**
+	 * Returns an Action list. (allowable actions that actors can do with the kind of ground)
+	 * @param actor the Actor acting
+	 * @param location the current Location
+	 * @param direction the direction of the Ground from the Actor
+	 * @return actions to be executed
+	 */
 	@Override
 	public Actions allowableActions(Actor actor, Location location, String direction) {
 

@@ -18,7 +18,7 @@ public class Vendor extends Ground {
 
 
     /**
-     *
+     * Returns an Action list. (allowable actions that actors can do with the kind of ground)
      *
      * @param actor the Actor acting
      * @param location the current Location

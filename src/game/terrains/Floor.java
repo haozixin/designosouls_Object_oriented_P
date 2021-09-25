@@ -13,7 +13,9 @@ public class Floor extends Ground {
 		super('_');
 	}
 
-	// only player could pass this kind of ground so that only player can enter Bonfire
+	/**
+	 * only player could enter floor so that only player can enter Bonfire
+ 	 */
 	@Override
 	public boolean canActorEnter(Actor actor) {
 		if(actor instanceof Player ? true:false){

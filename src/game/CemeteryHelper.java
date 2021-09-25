@@ -14,9 +14,21 @@ import java.util.List;
  *
  */
 public class CemeteryHelper implements CemeteryHelperInt {
+    /**
+     *  String list to store the Map that gets from Application class
+     */
     List<String> map;
+    /**
+     * gameMap
+     */
     private static GameMap gameMap;
+    /**
+     * Cemetery locations
+     */
     private ArrayList<Integer[]> locations;
+    /**
+     * the player on the gameMap
+     */
     Actor player;
 
     /**
@@ -58,10 +70,9 @@ public class CemeteryHelper implements CemeteryHelperInt {
     }
 
     /**
-     *  replace those 'c' with the one created by this class
-     *  since we cannot change code that is on engine, and each cemetery must get gameMap to know the location of creating Undead
+     *  replace those 'c' with the those created by this class
+     *  since we cannot change code that is on engine folder, but each cemetery must get gameMap to know the location of creating Undead
      */
-
     public void replaceCemetery() {
         Integer[] point;
 
@@ -75,10 +86,18 @@ public class CemeteryHelper implements CemeteryHelperInt {
     }
 
 
+    /**
+     * getter - get the gameMap
+     * @return gameMap
+     */
     public GameMap getGameMap() {
         return gameMap;
     }
 
+    /**
+     * getter - get the player on the gameMap
+     * @return the player
+     */
     public Actor getPlayer() {
         return player;
     }
