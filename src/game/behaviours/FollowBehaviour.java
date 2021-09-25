@@ -1,6 +1,8 @@
 package game.behaviours;
 
 import edu.monash.fit2099.engine.*;
+import game.actors.Enemy;
+import game.actors.Player;
 import game.interfaces.Behaviour;
 import org.w3c.dom.ls.LSOutput;
 

@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.actions.ResurgenceAction;
 import game.behaviours.FollowBehaviour;
+import game.behaviours.ResurrectBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
@@ -59,6 +60,7 @@ public class Skeleton extends Enemy implements SkeletonInterface {
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
+        behaviours.add(new ResurrectBehaviour());
         behaviours.add(new FollowBehaviour(target));
         behaviours.add(new WanderBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
@@ -122,16 +124,16 @@ public class Skeleton extends Enemy implements SkeletonInterface {
         // if: the skeleton is going to die and has the capability of RESURRECT, do ResurgenceAction in skeleton's turn
         // else: use for loop to get all actions in the behaviours arraylist,
         // the sequence would be: can do attackAction?-->can do followBehaviour? --> can do wanderBehaviour?
-        if (!this.isConscious() && this.hasCapability(Abilities.RESURRECT)){
-           return new ResurgenceAction(this);
+//        if (!this.isConscious() && this.hasCapability(Abilities.RESURRECT)){
+//           return new ResurgenceAction(this);
+//        }
+//        else{
+        for(Behaviour behaviour : behaviours) {
+            Action action = behaviour.getAction(this, map);
+            if (action != null)
+                return action;
         }
-        else{
-            for(Behaviour behaviour : behaviours) {
-                Action action = behaviour.getAction(this, map);
-                if (action != null)
-                    return action;
-            }
-        }
+//        }
 
 
         return new DoNothingAction();
