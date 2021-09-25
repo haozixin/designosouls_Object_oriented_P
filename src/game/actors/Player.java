@@ -55,7 +55,7 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		addCapabilities();
 		weapon = new Broadsword();
 		addItemToInventory(weapon);
-		setSoul(0);
+		setSoul(1000);
 	}
 
 	/**
