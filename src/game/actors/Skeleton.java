@@ -32,7 +32,6 @@ public class Skeleton extends Enemy implements SkeletonInterface {
      * The success rate of this ability(RESURRECT itself)
      */
     public static final int RESURRECT_RATE =50;
-    private ArrayList<Behaviour> behaviours = new ArrayList<>();
 
     /**
      * initial location - x

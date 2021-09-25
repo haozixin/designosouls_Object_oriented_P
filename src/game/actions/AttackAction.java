@@ -20,7 +20,7 @@ import game.weapons.Broadsword;
 /**
  * Special Action for attacking other Actors.
  */
-public class AttackAction extends Action implements Behaviour {
+public class AttackAction extends Action{
 
 	/**
 	 * The Actor that is to be attacked
@@ -145,11 +145,6 @@ public class AttackAction extends Action implements Behaviour {
 		return actor + " attacks " + target + " at " + direction;
 	}
 
-
-	@Override
-	public Action getAction(Actor actor, GameMap map) {
-		return null;
-	}
 
 
 }

@@ -40,7 +40,7 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	/**
 	 * weapon that the player holds
 	 */
-	MeleeWeapon weapon;
+	private MeleeWeapon weapon;
 
 	/**
 	 * Constructor.
