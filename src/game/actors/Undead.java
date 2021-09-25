@@ -106,19 +106,16 @@ public class Undead extends Enemy {
 
 	}
 
-	//Bryan's part
-	// it causes a serious problem. please Mimic the implementation of other features
-//	@Override
-//	public void addCapability(Enum<?> capability) {
-//		super.addCapability(dieInstantly());
-//	}
+	@Override
+	public void addCapability(Enum<?> capability) {
+		super.addCapability(dieInstantly());
+	}
 
-
-//	private Enum<?> dieInstantly() {
-//		Random r = new Random();
-//		if (r.nextInt(100)<=10) {
-//			hitPoints=0;
-//		}
-//		return null;
-//	}
+	private Enum<?> dieInstantly() {
+		Random r = new Random();
+		if (r.nextInt(100)<=10) {
+			hitPoints=0;
+		}
+		return null;
+	}
 }
