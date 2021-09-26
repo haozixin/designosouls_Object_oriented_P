@@ -17,6 +17,12 @@ public class WindSlashAction extends Action {
     }
 
 
+    /**
+     * When storm ruler activates wind slash the damage is doubled
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
     	weapon.doSlash();

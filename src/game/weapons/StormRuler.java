@@ -12,6 +12,9 @@ public class StormRuler extends MeleeWeapon implements Weapon {
     private int chargeCounter = 0;
     private boolean charged = false;
 
+    /**
+     * Constructor for Storm Ruler
+     */
     public StormRuler() {
         super("Storm Ruler", '7', 70, "wind slash", 60);
         this.price = 2000;
@@ -48,19 +51,32 @@ public class StormRuler extends MeleeWeapon implements Weapon {
         return dullDamage;
     }
 
+    /**
+     * Increment charge by 1
+     */
     public void chargeStormRuler() {
         chargeCounter++;
     }
 
+    /**
+     * Boolean method to tell whether storm ruler is fully charged or not
+     * @return true if chargeCounter is more than 3.
+     */
     public boolean canSlash() {
         return chargeCounter >= 3;
     }
 
+    /**
+     * After doing wind slash, counter reverts back to 0
+     */
     public void doSlash() {
         chargeCounter = 0;
     }
 
 
+    /**
+     * When fully charged, storm ruler damage is doubled and hit rate become 100%
+     */
     public void fullChargeStormRuler() {
         if (charged == true) {
             hitRate = 100;

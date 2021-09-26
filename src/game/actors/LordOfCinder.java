@@ -29,6 +29,10 @@ public class LordOfCinder extends Actor {
         this.addItemToInventory(new CindersOfLord());
     }
 
+    /**
+     * get Lord of Cinder's weapon
+     * @return YhormGreatMachete
+     */
     public MeleeWeapon getWeapon() {
         return new YhormGreatMachete();
     }
@@ -79,6 +83,10 @@ public class LordOfCinder extends Actor {
         return actions;
     }
 
+    /**
+     * a boolean method where it tells whether Lord of Cinder is stunned or not
+     * @param stunned
+     */
     public void setStunned(boolean stunned) {
         this.stunned = stunned;
     }
