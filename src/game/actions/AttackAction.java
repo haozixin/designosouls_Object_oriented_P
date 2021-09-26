@@ -14,8 +14,9 @@ import game.actors.Skeleton;
 import game.actors.Undead;
 import game.enums.Abilities;
 import game.interfaces.Behaviour;
-import game.interfaces.PlayerInterface;
 import game.weapons.Broadsword;
+import game.weapons.StormRuler;
+import game.weapons.YhormGreatMachete;
 
 /**
  * Special Action for attacking other Actors.
@@ -24,7 +25,6 @@ public class AttackAction extends Action implements Behaviour {
 
 	/**
 	 * The Actor that is to be attacked
-	 * it might be enemy or player
 	 */
 	protected Actor target;
 
@@ -40,7 +40,7 @@ public class AttackAction extends Action implements Behaviour {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param target the Actor to attack
 	 */
 	public AttackAction(Actor target, String direction) {
@@ -49,7 +49,7 @@ public class AttackAction extends Action implements Behaviour {
 	}
 
 	/**
-	 * Execute the Action.
+	 * Perform the Action.
 	 * consider all actor might use the same attack action, so I add a judgement process
 	 * which contains two cases when the target is going to die - 1,target is enemy / 2, target is player
 	 *
@@ -61,15 +61,22 @@ public class AttackAction extends Action implements Behaviour {
 	public String execute(Actor actor, GameMap map) {
 
 		Weapon weapon = actor.getWeapon();
+		int extraDamage =0;
 
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}
-
-
-		int damage = weapon.damage();
+		if (weapon instanceof Broadsword){
+			// have a rate to double damage
+			extraDamage = ((Broadsword) weapon).passiveSkill();
+			//damage is half if player use storm ruler and enemy is not Lord of Cinder
+		} else if(weapon instanceof StormRuler && !(target instanceof LordOfCinder)){
+			extraDamage -= weapon.damage()/2;
+		}
+		int damage = weapon.damage()+extraDamage;
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
+
 		if (!target.isConscious()) {
 			Actions dropActions = new Actions();
 			// drop all items
@@ -78,8 +85,38 @@ public class AttackAction extends Action implements Behaviour {
 			for (Action drop : dropActions)
 				drop.execute(target, map);
 
-			String result1 = distinguishTarget(actor, map, result);
-			if (result1 != null) return result1;
+			if (actor instanceof Player){
+				Player player = (Player)actor;
+				if (target instanceof Undead){
+
+					player.addSouls(Undead.SOULS);
+					map.removeActor(target);
+				}
+				else if (target instanceof Skeleton){
+					// skeleton
+					Skeleton skeleton = (Skeleton) target;
+					if (skeleton.hasCapability(Abilities.RESURRECT) && rand.nextInt(100) < 50){
+						//on the ResurrectAction, it will show resurrect massage and remove skeleton's this ability
+						skeleton.removeCapability(Abilities.RESURRECT);
+						skeleton.heal(100);
+						return result;
+					}else{
+						player.addSouls(Skeleton.SOULS);
+						map.removeActor(target);
+					}
+				}
+				else if (target instanceof LordOfCinder){
+
+					player.addSouls(LordOfCinder.getSOULS());
+					map.removeActor(target);
+				}
+			}
+			else{
+				if (target instanceof Player ? true:false){
+					// soft-reset
+				}
+			}
+
 
 
 			result += System.lineSeparator() + target + " is killed.";
@@ -88,55 +125,8 @@ public class AttackAction extends Action implements Behaviour {
 		return result;
 	}
 
-	/**
-	 * A class to distinguish Targets, because different targets need to do different following operations
-	 * @param actor the actor who is going to perform the attack
-	 * @param map The map the actor is on.
-	 * @param result output massage that is created on executed()
-	 * @return
-	 */
-	private String distinguishTarget(Actor actor, GameMap map, String result) {
-
-		// if the actor who is going to perform the attack is Player
-		if (actor instanceof Player ? true:false){
-			PlayerInterface player = (Player) actor;
-
-			// what will happen if Undead is going to die
-			if (target instanceof Undead ? true:false){
-
-				player.addSouls(Undead.SOULS);
-				map.removeActor(target);
-			}
-			// what will happen if Skeleton is going to die
-			else if (target instanceof Skeleton ? true:false){
-				// skeleton
-				Skeleton skeleton = (Skeleton) target;
-				if (skeleton.hasCapability(Abilities.RESURRECT)){
-
-					//on the ResurrectAction, it will show resurrect massage and remove skeleton's this ability
-					return result;
-				}else{
-					map.removeActor(target);
-				}
-			}
-			// what will happen if LordOfCinder is going to die
-			else if (target instanceof LordOfCinder ? true:false){
-
-				player.addSouls(LordOfCinder.getSOULS());
-				map.removeActor(target);
-			}
-		}
-		// if other enemies kill the player, it will execute soft-rest functionality
-		else{
-			if (target instanceof Player ? true:false){
-				// soft-reset
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * it will shows message on console
+	/** it will show message on console as menu options
+	 *
 	 * @param actor The actor performing the action.
 	 * @return a String that will shows console as menu options
 	 */
@@ -145,11 +135,8 @@ public class AttackAction extends Action implements Behaviour {
 		return actor + " attacks " + target + " at " + direction;
 	}
 
-
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		return null;
 	}
-
-
 }

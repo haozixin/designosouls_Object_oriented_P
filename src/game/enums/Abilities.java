@@ -9,6 +9,7 @@ public enum Abilities {
     CREATE_UNDEAD, // for cemetery
     DEAL, // for vendor and Player
     FOLLOWED, // for player
-    RESURRECT //for skeleton's skill
+    RESURRECT, //for skeleton's skill
+    EMBER_FORM //for Lord of Cinder
 
 }

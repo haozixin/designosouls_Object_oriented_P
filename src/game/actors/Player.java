@@ -40,7 +40,7 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	/**
 	 * weapon that the player holds
 	 */
-	MeleeWeapon weapon;
+	private MeleeWeapon weapon;
 
 	/**
 	 * Constructor.
@@ -55,7 +55,7 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		addCapabilities();
 		weapon = new Broadsword();
 		addItemToInventory(weapon);
-		setSoul(0);
+		setSoul(1000);
 	}
 
 	/**
@@ -252,6 +252,18 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		hitPoints = Math.max(hitPoints, 0);
 	}
 
+	@Override
+	public void removeItemFromInventory(Item item) {
+		super.removeItemFromInventory(item);
+	}
 
+	@Override
+	public Weapon getWeapon() {
+		return super.getWeapon();
+	}
 
+	@Override
+	public void addItemToInventory(Item item) {
+		super.addItemToInventory(item);
+	}
 }
