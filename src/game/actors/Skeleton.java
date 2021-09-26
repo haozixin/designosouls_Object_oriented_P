@@ -14,6 +14,7 @@ import game.interfaces.SkeletonInterface;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import game.weapons.GiantAxe;
+import game.weapons.MeleeWeapon;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -44,7 +45,7 @@ public class Skeleton extends Enemy implements SkeletonInterface {
      */
     private int initialY;
     //carry one random weapon
-    WeaponItem weapon;
+    MeleeWeapon weapon;
 
 
     /**
@@ -74,7 +75,7 @@ public class Skeleton extends Enemy implements SkeletonInterface {
      * For this game, only two weapon has to been considered
      * @return return a Weapon Item
      */
-    public WeaponItem initializeWeapon(){
+    public MeleeWeapon initializeWeapon(){
         Random r = new Random();
         if(r.nextInt(100)<50){
             return new Broadsword();
