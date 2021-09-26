@@ -55,13 +55,11 @@ public class Skeleton extends Enemy implements SkeletonInterface {
 
         //@param displayChar the character that will represent the Actor in the display
         //@param hitPoints   the Actor's starting hit points
-        super(name, 's', 100);
+        super(name, 's', 100, target);
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
-        behaviours.add(new ResurrectBehaviour());
-        behaviours.add(new FollowBehaviour(target));
-        behaviours.add(new WanderBehaviour());
+        behaviours.add(0, new ResurrectBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
         weapon = initializeWeapon();
@@ -107,36 +105,6 @@ public class Skeleton extends Enemy implements SkeletonInterface {
     }
 
 
-    /**
-     * Select and return an action to perform on the current turn.
-     *
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return the Action to be performed
-     */
-    @Override
-    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-
-
-        // if: the skeleton is going to die and has the capability of RESURRECT, do ResurgenceAction in skeleton's turn
-        // else: use for loop to get all actions in the behaviours arraylist,
-        // the sequence would be: can do attackAction?-->can do followBehaviour? --> can do wanderBehaviour?
-//        if (!this.isConscious() && this.hasCapability(Abilities.RESURRECT)){
-//           return new ResurgenceAction(this);
-//        }
-//        else{
-        for(Behaviour behaviour : behaviours) {
-            Action action = behaviour.getAction(this, map);
-            if (action != null)
-                return action;
-        }
-//        }
-
-
-        return new DoNothingAction();
-    }
 
 
     public static int getSOULS() {
@@ -175,19 +143,6 @@ public class Skeleton extends Enemy implements SkeletonInterface {
         }
     }
 
-    // please figure out the code has given, and find a better place(interface) to implement it otherwise it would cause too many problems
-//    @Override
-//    public void addCapability(Enum<?> capability) {
-//        super.addCapability(revive());
-//    }
-
-//    private Enum<?> revive() {
-//        Random r = new Random();
-//        if (r.nextInt(100)<=50) {
-//            hitPoints = maxHitPoints;
-//        }
-//        return null;
-//    }
 
     /**
      * Add points to the current Actor's hitpoint total.

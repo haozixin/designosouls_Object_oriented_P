@@ -31,9 +31,7 @@ public class Undead extends Enemy {
 	 * @param name the name of this Undead
 	 */
 	public Undead(String name,Actor target) {
-		super(name, 'u', 50);
-		behaviours.add(new FollowBehaviour(target));
-		behaviours.add(new WanderBehaviour());
+		super(name, 'u', 50, target);
 		this.addCapability(Status.HOSTILE_TO_PLAYER);
 
 		// Bryan's part:
@@ -62,28 +60,6 @@ public class Undead extends Enemy {
 		return actions;
 	}
 
-	/**
-	 * Select and return an action to perform on the current turn.
-	 *
-	 * @param actions    collection of possible Actions for this Actor
-	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-	 * @param map        the map containing the Actor
-	 * @param display    the I/O object to which messages may be written
-	 * @return the Action to be performed
-	 */
-	@Override
-	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-		// loop through all behaviours
-
-		for(Behaviour behaviour : behaviours) {
-			Action action = behaviour.getAction(this, map);
-			if (action != null)
-				return action;
-		}
-		return new DoNothingAction();
-	}
-
-
 
 	public static int getSOULS() {
 		return SOULS;
@@ -106,11 +82,12 @@ public class Undead extends Enemy {
 
 	}
 
+	//Bryan's part
 	@Override
 	public void addCapability(Enum<?> capability) {
 		super.addCapability(dieInstantly());
 	}
-
+	//Bryan's part
 	private Enum<?> dieInstantly() {
 		Random r = new Random();
 		if (r.nextInt(100)<=10) {

@@ -28,7 +28,7 @@ public class FollowBehaviour extends Actions implements Behaviour {
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		if(!map.contains(target) || !map.contains(actor))
+		if(!map.contains(target) || !map.contains(actor) || (target instanceof Player ? false:true))
 			return null;
 		
 		Location here = map.locationOf(actor);
