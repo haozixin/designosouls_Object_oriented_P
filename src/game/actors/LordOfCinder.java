@@ -1,6 +1,12 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
+import game.actions.AttackAction;
+import game.actions.BurnAction;
+import game.enums.Abilities;
+import game.items.CindersOfLord;
+import game.weapons.MeleeWeapon;
+import game.weapons.YhormGreatMachete;
 
 /**
  * The boss of Design o' Souls
@@ -9,15 +15,36 @@ import edu.monash.fit2099.engine.*;
  */
 public class LordOfCinder extends Actor {
     public static final int SOULS = 5000;
-
+    MeleeWeapon weapon;
+    private int threshold = 250;
+    private boolean stunned = false;
 
     /**
      * Constructor.
      */
     public LordOfCinder(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints );
+        this.addCapability(Abilities.EMBER_FORM);
+        weapon = getWeapon();
+        this.addItemToInventory(new CindersOfLord());
     }
 
+    public MeleeWeapon getWeapon() {
+        return new YhormGreatMachete();
+    }
+
+    @Override
+    public void hurt(int points) {
+        super.hurt(points);
+        if (hitPoints<=threshold) {
+            ((YhormGreatMachete)weapon).emberForm();
+        }
+    }
+
+    /**
+     *
+     * @return SOULS
+     */
     public static int getSOULS() {
         return SOULS;
     }
@@ -31,6 +58,28 @@ public class LordOfCinder extends Actor {
      */
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        if(this.stunned) {
+            this.stunned = false;
+            return new DoNothingAction();
+        }
+        if (this.isConscious() && this.hasCapability(Abilities.EMBER_FORM)) {
+
+        }
         return new DoNothingAction();
+    }
+
+    @Override
+    public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+        Actions actions = new Actions();
+        Location otherLoc = map.locationOf(otherActor);
+        Location yhormLoc = map.locationOf(this);
+        if(Math.abs(otherLoc.x()-yhormLoc.x()) < 2 && Math.abs(otherLoc.y()-yhormLoc.y()) < 2) {
+            actions.add(new BurnAction(otherActor));
+        }
+        return actions;
+    }
+
+    public void setStunned(boolean stunned) {
+        this.stunned = stunned;
     }
 }
