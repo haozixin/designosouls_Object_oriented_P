@@ -12,14 +12,14 @@ import java.util.List;
 
 
 public class GiantAxe extends MeleeWeapon implements Weapon {
-    private int price;
+
 
     /**
      * Constructor to make Giant Axe
      */
     public GiantAxe() {
         super("GiantAxe", 'G', 50, "Split to", 80);
-        this.price = 1000;
+        setPrice(1000);
     }
 
     /**

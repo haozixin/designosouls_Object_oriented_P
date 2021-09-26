@@ -61,19 +61,13 @@ public class AttackAction extends Action implements Behaviour {
 	public String execute(Actor actor, GameMap map) {
 
 		Weapon weapon = actor.getWeapon();
-		int extraDamage =0;
+
 
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}
-		if (weapon instanceof Broadsword){
-			// have a rate to double damage
-			extraDamage = ((Broadsword) weapon).passiveSkill();
-			//damage is half if player use storm ruler and enemy is not Lord of Cinder
-		} else if(weapon instanceof StormRuler && !(target instanceof LordOfCinder)){
-			extraDamage -= weapon.damage()/2;
-		}
-		int damage = weapon.damage()+extraDamage;
+
+		int damage = weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 
