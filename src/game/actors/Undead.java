@@ -106,11 +106,12 @@ public class Undead extends Enemy {
 
 	}
 
+	//Bryan's part
 	@Override
 	public void addCapability(Enum<?> capability) {
 		super.addCapability(dieInstantly());
 	}
-
+	//Bryan's part
 	private Enum<?> dieInstantly() {
 		Random r = new Random();
 		if (r.nextInt(100)<=10) {

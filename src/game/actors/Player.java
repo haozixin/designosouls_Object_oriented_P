@@ -252,6 +252,18 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		hitPoints = Math.max(hitPoints, 0);
 	}
 
+	@Override
+	public void removeItemFromInventory(Item item) {
+		super.removeItemFromInventory(item);
+	}
 
+	@Override
+	public Weapon getWeapon() {
+		return super.getWeapon();
+	}
 
+	@Override
+	public void addItemToInventory(Item item) {
+		super.addItemToInventory(item);
+	}
 }

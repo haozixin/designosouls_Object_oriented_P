@@ -1,5 +1,8 @@
 package game.interfaces;
 
+import edu.monash.fit2099.engine.Item;
+import edu.monash.fit2099.engine.Weapon;
+
 /**
  * the interface is used by other classes(actors/actions) which need to interact with Player or get attributes of player.
  * Such as the HealAction.
@@ -60,4 +63,12 @@ public interface PlayerInterface {
      * @return boolean value to judge if it's successful
      */
     boolean addSouls(int souls);
+
+    boolean subtractSouls(int souls);
+
+    void removeItemFromInventory(Item item);
+
+    Weapon getWeapon();
+
+    void addItemToInventory(Item item);
 }
