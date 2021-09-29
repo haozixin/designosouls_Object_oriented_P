@@ -120,19 +120,11 @@ public class Skeleton extends Enemy implements SkeletonInterface {
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
 
-        // if: the skeleton is going to die and has the capability of RESURRECT, do ResurgenceAction in skeleton's turn
-        // else: use for loop to get all actions in the behaviours arraylist,
-        // the sequence would be: can do attackAction?-->can do followBehaviour? --> can do wanderBehaviour?
-//        if (!this.isConscious() && this.hasCapability(Abilities.RESURRECT)){
-//           return new ResurgenceAction(this);
-//        }
-//        else{
         for(Behaviour behaviour : behaviours) {
             Action action = behaviour.getAction(this, map);
             if (action != null)
                 return action;
         }
-//        }
 
 
         return new DoNothingAction();
@@ -175,19 +167,7 @@ public class Skeleton extends Enemy implements SkeletonInterface {
         }
     }
 
-    // please figure out the code has given, and find a better place(interface) to implement it otherwise it would cause too many problems
-//    @Override
-//    public void addCapability(Enum<?> capability) {
-//        super.addCapability(revive());
-//    }
 
-//    private Enum<?> revive() {
-//        Random r = new Random();
-//        if (r.nextInt(100)<=50) {
-//            hitPoints = maxHitPoints;
-//        }
-//        return null;
-//    }
 
     /**
      * Add points to the current Actor's hitpoint total.
@@ -213,4 +193,6 @@ public class Skeleton extends Enemy implements SkeletonInterface {
     public void removeCapability(Enum<?> capability) {
         super.removeCapability(capability);
     }
+
+
 }

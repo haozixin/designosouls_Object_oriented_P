@@ -3,10 +3,12 @@ package game.actors;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
+import game.weapons.EnemyIntrinsicWeapon;
 import game.weapons.PlayerIntrinsicWeapon;
 
 import java.util.ArrayList;
@@ -32,12 +34,10 @@ public class Undead extends Enemy {
 	 */
 	public Undead(String name,Actor target) {
 		super(name, 'u', 50);
+		behaviours.add(new AttackBehaviour(target));
 		behaviours.add(new FollowBehaviour(target));
 		behaviours.add(new WanderBehaviour());
 		this.addCapability(Status.HOSTILE_TO_PLAYER);
-
-		// Bryan's part:
-		//this.addCapability(dieInstantly());
 	}
 
 
@@ -102,23 +102,8 @@ public class Undead extends Enemy {
 
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
-		return new PlayerIntrinsicWeapon(20, "punches","fist");
-
+		return new EnemyIntrinsicWeapon(20, "punches","fist");
 	}
 
-	//Bryan's part
-	// it causes a serious problem. please Mimic the implementation of other features
-//	@Override
-//	public void addCapability(Enum<?> capability) {
-//		super.addCapability(dieInstantly());
-//	}
 
-
-//	private Enum<?> dieInstantly() {
-//		Random r = new Random();
-//		if (r.nextInt(100)<=10) {
-//			hitPoints=0;
-//		}
-//		return null;
-//	}
 }

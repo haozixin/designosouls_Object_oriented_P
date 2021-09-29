@@ -77,5 +77,8 @@ public class HealAction extends Action {
         return player + "drinks an Estus Flask("+target.getHealthPotion()+"/"+Player.getMaxHealthPotion()+")";
     }
 
-
+    @Override
+    public String hotkey() {
+        return "a";
+    }
 }
