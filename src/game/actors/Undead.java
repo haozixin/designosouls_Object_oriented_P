@@ -3,7 +3,6 @@ package game.actors;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
-import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.enums.Status;
@@ -11,8 +10,6 @@ import game.interfaces.Behaviour;
 import game.weapons.EnemyIntrinsicWeapon;
 import game.weapons.PlayerIntrinsicWeapon;
 
-import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * An undead minion.
@@ -33,10 +30,7 @@ public class Undead extends Enemy {
 	 * @param name the name of this Undead
 	 */
 	public Undead(String name,Actor target) {
-		super(name, 'u', 50);
-		behaviours.add(new AttackBehaviour(target));
-		behaviours.add(new FollowBehaviour(target));
-		behaviours.add(new WanderBehaviour());
+		super(name, 'u', 50, target);
 		this.addCapability(Status.HOSTILE_TO_PLAYER);
 	}
 
@@ -61,28 +55,6 @@ public class Undead extends Enemy {
 		}
 		return actions;
 	}
-
-	/**
-	 * Select and return an action to perform on the current turn.
-	 *
-	 * @param actions    collection of possible Actions for this Actor
-	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-	 * @param map        the map containing the Actor
-	 * @param display    the I/O object to which messages may be written
-	 * @return the Action to be performed
-	 */
-	@Override
-	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-		// loop through all behaviours
-
-		for(Behaviour behaviour : behaviours) {
-			Action action = behaviour.getAction(this, map);
-			if (action != null)
-				return action;
-		}
-		return new DoNothingAction();
-	}
-
 
 
 	public static int getSOULS() {

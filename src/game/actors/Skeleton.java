@@ -1,13 +1,9 @@
 package game.actors;
 
-import edu.monash.fit2099.demo.mars.Breathing;
+
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
-import game.actions.ResurgenceAction;
-import game.behaviours.AttackBehaviour;
-import game.behaviours.FollowBehaviour;
 import game.behaviours.ResurrectBehaviour;
-import game.behaviours.WanderBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Behaviour;
@@ -15,7 +11,7 @@ import game.interfaces.SkeletonInterface;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import game.weapons.GiantAxe;
-
+import game.weapons.MeleeWeapon;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -45,7 +41,7 @@ public class Skeleton extends Enemy implements SkeletonInterface {
      */
     private int initialY;
     //carry one random weapon
-    WeaponItem weapon;
+    MeleeWeapon weapon;
 
 
     /**
@@ -56,14 +52,11 @@ public class Skeleton extends Enemy implements SkeletonInterface {
 
         //@param displayChar the character that will represent the Actor in the display
         //@param hitPoints   the Actor's starting hit points
-        super(name, 's', 100);
+        super(name, 's', 100, target);
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
-        behaviours.add(new AttackBehaviour(target));
-        behaviours.add(new ResurrectBehaviour());
-        behaviours.add(new FollowBehaviour(target));
-        behaviours.add(new WanderBehaviour());
+        behaviours.add(0, new ResurrectBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
         weapon = initializeWeapon();
@@ -78,7 +71,7 @@ public class Skeleton extends Enemy implements SkeletonInterface {
      * For this game, only two weapon has to been considered
      * @return return a Weapon Item
      */
-    public WeaponItem initializeWeapon(){
+    public MeleeWeapon initializeWeapon(){
         Random r = new Random();
         if(r.nextInt(100)<50){
             return new Broadsword();
@@ -107,31 +100,6 @@ public class Skeleton extends Enemy implements SkeletonInterface {
         }
         return actions;
     }
-
-
-    /**
-     * Select and return an action to perform on the current turn.
-     *
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return the Action to be performed
-     */
-    @Override
-    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-
-
-        for(Behaviour behaviour : behaviours) {
-            Action action = behaviour.getAction(this, map);
-            if (action != null)
-                return action;
-        }
-
-
-        return new DoNothingAction();
-    }
-
 
     public static int getSOULS() {
         return SOULS;

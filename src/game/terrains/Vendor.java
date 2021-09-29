@@ -28,7 +28,8 @@ public class Vendor extends Ground {
     @Override
     public Actions allowableActions(Actor actor, Location location, String direction) {
         Actions actions = new Actions();
-        //if the actor is the player, it will check if he has the ability to trade with vendor
+        //as required, only player can trade with it
+        //so, check if the actor is the player and he has the ability to trade with vendor
         //if yes, then it will check if the actor has enough money(souls) to buy something
 
         if (actor.hasCapability(Abilities.DEAL)){
