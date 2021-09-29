@@ -4,6 +4,7 @@ import edu.monash.fit2099.demo.mars.Breathing;
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.actions.ResurgenceAction;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.ResurrectBehaviour;
 import game.behaviours.WanderBehaviour;
@@ -59,6 +60,7 @@ public class Skeleton extends Enemy implements SkeletonInterface {
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
+        behaviours.add(new AttackBehaviour(target));
         behaviours.add(new ResurrectBehaviour());
         behaviours.add(new FollowBehaviour(target));
         behaviours.add(new WanderBehaviour());
