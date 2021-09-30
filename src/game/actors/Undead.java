@@ -29,8 +29,8 @@ public class Undead extends Enemy {
 	 * All Undeads are represented by an 'u' and have 30 hit points.
 	 * @param name the name of this Undead
 	 */
-	public Undead(String name,Actor target) {
-		super(name, 'u', 50, target);
+	public Undead(String name) {
+		super(name, 'u', 50);
 		this.addCapability(Status.HOSTILE_TO_PLAYER);
 	}
 

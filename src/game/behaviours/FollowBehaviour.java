@@ -1,10 +1,8 @@
 package game.behaviours;
 
 import edu.monash.fit2099.engine.*;
-import game.actors.Enemy;
 import game.actors.Player;
 import game.interfaces.Behaviour;
-import org.w3c.dom.ls.LSOutput;
 
 /**
  * A class that figures out a MoveAction that will move the actor one step 
@@ -13,24 +11,44 @@ import org.w3c.dom.ls.LSOutput;
 public class FollowBehaviour extends Actions implements Behaviour {
 
 	private Actor target;
+	private boolean hasFoundTarget;
 
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param subject the Actor to follow
 	 */
 	public FollowBehaviour(Actor subject) {
 		this.target = subject;
 	}
 
+	public FollowBehaviour() {
+		this.hasFoundTarget = false;
+	}
 
+	private boolean setHasFoundTarget (Actor actor, GameMap map) {
+		if(!this.hasFoundTarget){
+			Location here = map.locationOf(actor);
+			for (Exit exit : here.getExits()) {
+				Location destination = exit.getDestination();
+				if (destination.getActor() instanceof Player ? true:false) {
+					target = destination.getActor();
+					this.hasFoundTarget =true;
+				}
+			}
+		}
+		return hasFoundTarget;
+	}
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		if(!map.contains(target) || !map.contains(actor) || (target instanceof Player ? false:true))
+		if (!setHasFoundTarget(actor,map)){
 			return null;
-		
+		}
+		if(!map.contains(target) || !map.contains(actor))
+			return null;
+
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
 

@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
-import game.interfaces.CemeteryHelperInt;
 import game.terrains.*;
 import game.actors.LordOfCinder;
 import game.actors.Player;
@@ -22,7 +21,7 @@ public class Application {
 
 
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
-					new Cemetery(),new Vendor(),new Bonfire());
+					new Cemetery(),new Vendor(),new Bonfire(),new FogDoor());
 
 			FancyGroundFactory groundFactory2 = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
 				new Cemetery(),new Vendor(),new Bonfire());
@@ -43,7 +42,7 @@ public class Application {
 					"...........++.....................#__FB___#.......................+.............",
 					".........+++......................#_______#........................++...........",
 					"............+++...................####_####..........................+..........",
-					"..............+......................................................++.........",
+					"..............+.......................=..............................++.........",
 					"..............++.................................................++++++.........",
 					"............+++...................................................++++..........",
 					"+..................................................................++...........",
@@ -94,20 +93,14 @@ public class Application {
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new LordOfCinder("Yhorm the Giant", 'Y', 500));
 			//as the requirement said - manually place several Skeletons
-			gameMap.at(38,4).addActor(new Skeleton("Skeleton",38,4,player));
-			gameMap.at(28,17).addActor(new Skeleton("Skeleton",28,17,player));
-			gameMap.at(70,25).addActor(new Skeleton("Skeleton",70,25,player));
-			gameMap.at(55,15).addActor(new Skeleton("Skeleton",55,15,player));
-			gameMap.at(0,0).addActor(new Skeleton("Skeleton",0,0,player));
-			gameMap.at(68,3).addActor(new Skeleton("Skeleton",86,3,player));
+			gameMap.at(38,4).addActor(new Skeleton("Skeleton",38,4));
+			gameMap.at(28,17).addActor(new Skeleton("Skeleton",28,17));
+			gameMap.at(70,25).addActor(new Skeleton("Skeleton",70,25));
+			gameMap.at(55,15).addActor(new Skeleton("Skeleton",55,15));
+			gameMap.at(0,0).addActor(new Skeleton("Skeleton",0,0));
+			gameMap.at(68,3).addActor(new Skeleton("Skeleton",86,3));
 
 
-
-
-			// it could help cemetery generate Undead automatically. the class is a kind of helper
-			CemeteryHelperInt cemeteryHelper =new CemeteryHelper(profaneCapital,gameMap,player);
-			cemeteryHelper.findLocations();
-			cemeteryHelper.replaceCemetery();
 
 
 

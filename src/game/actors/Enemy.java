@@ -18,11 +18,13 @@ public abstract class Enemy extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Enemy(String name, char displayChar, int hitPoints,Actor target) {
+    public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         behaviours = new ArrayList<>();
-        behaviours.add(new AttackBehaviour(target));
-        behaviours.add(new FollowBehaviour(target));
+
+
+        behaviours.add(new FollowBehaviour());
+        behaviours.add(new AttackBehaviour());
         behaviours.add(new WanderBehaviour());
     }
 
