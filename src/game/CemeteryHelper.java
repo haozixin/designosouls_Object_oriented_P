@@ -17,11 +17,11 @@ public class CemeteryHelper implements CemeteryHelperInt {
     /**
      *  String list to store the Map that gets from Application class
      */
-    List<String> map;
+    private List<String> map;
     /**
      * gameMap
      */
-    private static GameMap gameMap;
+    private GameMap gameMap;
     /**
      * Cemetery locations
      */
@@ -29,7 +29,7 @@ public class CemeteryHelper implements CemeteryHelperInt {
     /**
      * the player on the gameMap
      */
-    Actor player;
+    private Actor player;
 
     /**
      * Constructor

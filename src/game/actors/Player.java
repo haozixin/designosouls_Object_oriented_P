@@ -7,6 +7,7 @@ import game.actions.HealAction;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.PlayerInterface;
+import game.interfaces.Resettable;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
@@ -16,7 +17,7 @@ import game.weapons.PlayerIntrinsicWeapon;
 /**
  * Class representing the Player on the gameMap.
  */
-public class Player extends Actor implements Soul, PlayerInterface {
+public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 	/**
 	 * max health potion that belongs to the whole player class
 	 * something like game setting - players could have how many health potion
@@ -56,6 +57,7 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		weapon = new Broadsword();
 		addItemToInventory(weapon);
 		setSoul(1000);
+		registerInstance();
 	}
 
 	/**
@@ -266,4 +268,25 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	public void addItemToInventory(Item item) {
 		super.addItemToInventory(item);
 	}
+// resettable interface functions
+	/**
+	 * Allows any classes that use this interface to reset abilities, attributes, and items.
+	 * TODO: Use this method in a reset manager to run the soft-reset.
+	 */
+	@Override
+	public void resetInstance() {
+
+	}
+
+	/**
+	 * A useful method to clean up the list of instances in the ResetManager class
+	 * @return the existence of the instance in the game.
+	 * for example, true to keep it permanent, or false if instance needs to be removed from the reset list.
+	 */
+	@Override
+	public boolean isExist() {
+		return false;
+	}
+
+
 }

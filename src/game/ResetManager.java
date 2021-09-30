@@ -52,11 +52,10 @@ public class ResetManager {
 
     /**
      * Add the Resettable instance to the list
-     * FIXME: it does nothing, you need to implement it :)
      * @param resettable the interface instance
      */
     public void appendResetInstance(Resettable resettable){
-
+        resettableList.add(resettable);
     }
 
     /**

@@ -65,14 +65,14 @@ public class Cemetery extends Ground {
         }
     }
 
-    /**
-     * ground will execute the function at each turn/round
-     * @param location The location of the Ground
-     */
-    @Override
-    public void tick(Location location) {
-        createUndead(location);
-    }
+//    /**
+//     * ground will execute the function at each turn/round
+//     * @param location The location of the Ground
+//     */
+//    @Override
+//    public void tick(Location location) {
+//        createUndead(location);
+//    }
 
     @Override
     public boolean canActorEnter(Actor actor) {
