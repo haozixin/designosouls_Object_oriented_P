@@ -4,7 +4,9 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import game.actors.Player;
+import game.interfaces.BonfireInterface;
 import game.interfaces.PlayerInterface;
+import game.terrains.Bonfire;
 
 /**
  * RestAction - player take the action to reset health/hit points and refill Estus Flask to maximum charges
@@ -14,6 +16,15 @@ public class RestAction extends Action {
      *target of the RestAction -- player
      */
     PlayerInterface target;
+    BonfireInterface bonfire;
+
+    /**
+     * Constructor
+     * @param bonfire rest location
+     */
+    public RestAction(Bonfire bonfire) {
+        this.bonfire = bonfire;
+    }
 
     /**
      * Execute the Action.
@@ -44,6 +55,6 @@ public class RestAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return "Rest at FireLink Shrine Bonfire";
+        return actor+"Rest at "+ bonfire.getName() +"'s Bonfire";
     }
 }
