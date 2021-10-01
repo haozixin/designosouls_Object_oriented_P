@@ -10,29 +10,43 @@ import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.BonfireInterface;
 
+import static game.Application.FIRELINK_SHRINE_BONFIRE;
+
 /**
  * A class that represents Bonfire.
  */
 public class Bonfire extends Ground implements BonfireInterface {
     private String name;
+    /**
+     * temp name
+     */
+    static String tempName;
 
+
+    /**
+     * Each instance created in FancyGroundFactory will used default constructor finally
+     * So, in order to pass in parameters, we have to build another constructor to same a temp parameter value.
+     */
     public Bonfire() {
         super('B');
-    }
+        name = tempName;
+        initializeStatus();
 
-    public Bonfire(String name) {
-        super('B');
-        this.name = name;
     }
 
     /**
-     * Constructor
+     * Constructor - with parameter
+     * @param name
      */
-    public Bonfire(Status status,String name) {
+    public Bonfire(String name){
         super('B');
-        addCapability(status);
-        this.name = name;
-        System.out.println("-----------------------"+this.name);
+        tempName = name;
+    }
+
+    private void initializeStatus(){
+        if (name == FIRELINK_SHRINE_BONFIRE){
+            this.addCapability(Status.LIGHTED);
+        }
     }
 
     /**
@@ -45,7 +59,8 @@ public class Bonfire extends Ground implements BonfireInterface {
     @Override
     public Actions allowableActions(Actor actor, Location location, String direction) {
         Actions actions = new Actions();
-        if(this.hasCapability(Status.LIGHTED)){
+
+        if(!this.hasCapability(Status.LIGHTED)){
             actions.add(new ActivateBonfireAction(this));
         }else{
             if (actor.hasCapability(Abilities.REST)){
@@ -57,8 +72,7 @@ public class Bonfire extends Ground implements BonfireInterface {
     }
 
     public String getName() {
-
-        System.out.println("------------------------------------------------"+name);
         return name;
     }
+
 }

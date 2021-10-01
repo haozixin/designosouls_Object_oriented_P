@@ -3,6 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
+import game.enums.Status;
 import game.interfaces.BonfireInterface;
 
 public class ActivateBonfireAction extends Action {
@@ -10,11 +11,13 @@ public class ActivateBonfireAction extends Action {
 
     public ActivateBonfireAction(BonfireInterface bonfire) {
         this.bonfire = bonfire;
+
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-
+        bonfire.addCapability(Status.LIGHTED);
+        System.out.println(actor + " has lighted the Bonfire");
         return menuDescription(actor);
     }
 

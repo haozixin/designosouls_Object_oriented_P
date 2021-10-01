@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
-import game.enums.Status;
 import game.terrains.*;
 import game.actors.LordOfCinder;
 import game.actors.Player;
@@ -16,13 +15,16 @@ import game.actors.Skeleton;
  */
 public class Application {
 
+	public static final String FIRELINK_SHRINE_BONFIRE = "Firelink Shrine's Bonfire";
+	public static final String ANOR_LONDO_BONFIRE = "Anor Londo's Bonfire";
+
 	public static void main(String[] args) {
 
 			World world = new World(new Display());
 
 
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
-					new Cemetery(),new Vendor(),new Bonfire(Status.LIGHTED,"Firelink Shrine's Bonfire"));
+					new Cemetery(),new Vendor(),new Bonfire(FIRELINK_SHRINE_BONFIRE));
 
 //"Firelink Shrine's Bonfire"
 			// width = 80, height = 26
@@ -59,7 +61,7 @@ public class Application {
 
 
 			FancyGroundFactory groundFactory2 = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
-					new Cemetery(),new Vendor(),new Bonfire("Anor Londo’s Bonfire"));
+					new Cemetery(),new Vendor(),new Bonfire(ANOR_LONDO_BONFIRE));
 //"Anor Londo"
 			List<String> anorLondo = Arrays.asList(
 					"..++++++..+++..........................__.........###..........................",
