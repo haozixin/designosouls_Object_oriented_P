@@ -4,23 +4,33 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Location;
+import game.BonfiresManager;
 import game.actions.ActivateBonfireAction;
 import game.actions.RestAction;
+import game.actions.TeleportAction;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.BonfireInterface;
 
-import static game.Application.FIRELINK_SHRINE_BONFIRE;
+import static game.Application.FIRELINK_SHRINE;
 
 /**
  * A class that represents Bonfire.
  */
 public class Bonfire extends Ground implements BonfireInterface {
+    private static int tempNumber=0;
+    private int id;
+
     private String name;
     /**
-     * temp name
+     * temp name - get the value from a constructor and pass it to default
+     * constructor
      */
     static String tempName;
+
+    private Location location;
+
+
 
 
     /**
@@ -29,9 +39,15 @@ public class Bonfire extends Ground implements BonfireInterface {
      */
     public Bonfire() {
         super('B');
-        name = tempName;
+        setId();
+        setName(tempName);
         initializeStatus();
+        BonfiresManager.getInstance().collectLocation(this);
+    }
 
+    private void setId(){
+        tempNumber += 1;
+        id = tempNumber;
     }
 
     /**
@@ -40,14 +56,28 @@ public class Bonfire extends Ground implements BonfireInterface {
      */
     public Bonfire(String name){
         super('B');
-        tempName = name;
+        setTempName(name);
     }
 
+    /**
+     * initialize Bonfire's status
+     * Bonfire that doesn't have LIGHTED cannot be interacted directly
+     */
     private void initializeStatus(){
-        if (name == FIRELINK_SHRINE_BONFIRE){
+        if (name == FIRELINK_SHRINE){
             this.addCapability(Status.LIGHTED);
         }
     }
+
+    @Override
+    public void tick(Location location) {
+        super.tick(location);
+        if (this.location==null){
+            setLocation(location);
+        }
+    }
+
+//用getlocation 代替现在的方法，bonfireManager 存储bonfire
 
     /**
      * Returns an Action list. (allowable actions that actors can do with the kind of ground)
@@ -64,15 +94,41 @@ public class Bonfire extends Ground implements BonfireInterface {
             actions.add(new ActivateBonfireAction(this));
         }else{
             if (actor.hasCapability(Abilities.REST)){
-                actions.add(new RestAction(this));
+                actions.add(new RestAction(this.getName()));
+                addTeleportAction(actions);
             }
         }
 
         return actions;
     }
 
-    public String getName() {
-        return name;
+    private void addTeleportAction(Actions actions) {
+        for(Bonfire bonfire:BonfiresManager.getInstance().getBonfires()){
+            if (bonfire!=this){
+                actions.add(new TeleportAction(bonfire.getLocation(), bonfire.getName()));
+            }
+        }
     }
 
+
+
+    public String getName() {
+        return name+"'s Bonfire"+id;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public static void setTempName(String tempName) {
+        Bonfire.tempName = tempName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

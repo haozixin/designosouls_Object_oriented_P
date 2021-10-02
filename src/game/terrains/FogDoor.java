@@ -1,21 +1,21 @@
 package game.terrains;
 
 import edu.monash.fit2099.engine.*;
-import game.actions.UsePortalAction;
+import game.actions.TeleportAction;
 import game.actors.Player;
-import game.interfaces.PlayerInterface;
 
 public class FogDoor extends Ground {
     Location targetLocation;
-
+    String targetLocationName;
 
     /**
      * Constructor.
      *
      */
-    public FogDoor(Location targetLocation) {
+    public FogDoor(Location targetLocation, String targetLocationName) {
         super('=');
         this.targetLocation = targetLocation;
+        this.targetLocationName = targetLocationName;
     }
 
     /**
@@ -30,12 +30,11 @@ public class FogDoor extends Ground {
 
     @Override
     public Actions allowableActions(Actor actor, Location location, String direction) {
-
         Actions actions = new Actions();
 
         // passive action -- Player will receive a lot of damage if the location contains him/her
         if(location.containsAnActor() && (actor instanceof Player ? true : false)){
-            actions.add( new UsePortalAction(targetLocation));
+            actions.add( new TeleportAction(targetLocation,targetLocationName));
 
         }
         return actions;

@@ -5,18 +5,19 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
-public class UsePortalAction extends Action {
+public class TeleportAction extends Action {
 
     Location targetLocation;
+    String targetLocationName;
 
 
-    public UsePortalAction(Location targetLocation) {
+    public TeleportAction(Location targetLocation, String targetLocationName) {
         this.targetLocation = targetLocation;
+        this.targetLocationName = targetLocationName;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-
         map.moveActor(actor,targetLocation);
         return menuDescription(actor);
     }
@@ -29,7 +30,7 @@ public class UsePortalAction extends Action {
      */
     @Override
     public String menuDescription(Actor player) {
-        return "Pass " + player + " to the Anor Londo game map!";
+        return player + " moves to "+targetLocationName;
     }
 
 }

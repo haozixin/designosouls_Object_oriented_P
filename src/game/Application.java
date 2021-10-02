@@ -15,8 +15,8 @@ import game.actors.Skeleton;
  */
 public class Application {
 
-	public static final String FIRELINK_SHRINE_BONFIRE = "Firelink Shrine's Bonfire";
-	public static final String ANOR_LONDO_BONFIRE = "Anor Londo's Bonfire";
+	public static final String FIRELINK_SHRINE = "Firelink Shrine";
+	public static final String ANOR_LONDO = "Anor Londo";
 
 	public static void main(String[] args) {
 
@@ -24,7 +24,7 @@ public class Application {
 
 
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
-					new Cemetery(),new Vendor(),new Bonfire(FIRELINK_SHRINE_BONFIRE));
+					new Cemetery(),new Vendor(),new Bonfire(FIRELINK_SHRINE));
 
 //"Firelink Shrine's Bonfire"
 			// width = 80, height = 26
@@ -61,7 +61,7 @@ public class Application {
 
 
 			FancyGroundFactory groundFactory2 = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Valley(),
-					new Cemetery(),new Vendor(),new Bonfire(ANOR_LONDO_BONFIRE));
+					new Cemetery(),new Vendor(),new Bonfire(ANOR_LONDO));
 //"Anor Londo"
 			List<String> anorLondo = Arrays.asList(
 					"..++++++..+++..........................__.........###..........................",
@@ -74,11 +74,11 @@ public class Application {
 					".....................................___.....................++++..............",
 					".....................................___.....................+++++++...........",
 					"..................................###___###...................+++..............",
-					"...............................####_______####............c......+++...........",
-					"...........++.....................___F_____.......................+............",
-					".........+++...................####_______####.....................++..........",
-					"............+++...................####_####..........................+.........",
-					"..............+......................#.#.............................++........",
+					"...............................####_______####............c......+++###########",
+					"...........++..................______F________....................__...........",
+					".........+++...................####_______####....................__.......B...",
+					"............+++...................####_####......................++++..........",
+					"..............+......................#.#............................+++###___##",
 					"..............++.....................#.#.......................................",
 					"............+++................................................................",
 					"+................................+.............................................",
@@ -98,6 +98,7 @@ public class Application {
 			world.addPlayer(player, gameMap.at(38, 12));
 
 
+
 			// Place Yhorm the Giant/boss in the map
 			gameMap.at(6, 25).addActor(new LordOfCinder("Yhorm the Giant", 'Y', 500));
 			//as the requirement said - manually place several Skeletons
@@ -108,10 +109,10 @@ public class Application {
 			gameMap.at(0,0).addActor(new Skeleton("Skeleton",0,0));
 			gameMap.at(68,3).addActor(new Skeleton("Skeleton",86,3));
 
-			Location PortalLocation1 = gameMap.at(38,25);
-			Location PortalLocation2 = gameMap2.at(38,0);
-			PortalLocation1.setGround(new FogDoor(PortalLocation2));
-			PortalLocation2.setGround(new FogDoor(PortalLocation1));
+			Location PortalInMap1 = gameMap.at(38,25);
+			Location PortalInMap2 = gameMap2.at(38,0);
+			PortalInMap1.setGround(new FogDoor(PortalInMap2,ANOR_LONDO));
+			PortalInMap2.setGround(new FogDoor(PortalInMap1,FIRELINK_SHRINE));
 
 
 

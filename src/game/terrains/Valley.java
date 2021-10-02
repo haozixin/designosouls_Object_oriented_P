@@ -42,7 +42,8 @@ public class Valley extends Ground {
 		// passive action -- Player will receive a lot of damage if the location contains him/her
 		if(location.containsAnActor() && (actor instanceof Player ? true : false)){
 			PlayerInterface player = (Player)actor;
-
+			int hurtPoint = player.getHitPoints();
+			player.hurt(hurtPoint);
 		}
 		return actions;
 	}

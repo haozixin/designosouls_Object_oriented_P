@@ -47,7 +47,9 @@ public class ResetManager {
      * FIXME: it does nothing, you need to implement it :)
      */
     public void run(){
-
+        for(Resettable instance:resettableList){
+            instance.resetInstance();
+        }
     }
 
     /**
@@ -65,4 +67,6 @@ public class ResetManager {
     private void cleanUp(){
 
     }
+
+
 }

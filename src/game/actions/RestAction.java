@@ -16,14 +16,13 @@ public class RestAction extends Action {
      *target of the RestAction -- player
      */
     PlayerInterface target;
-    BonfireInterface bonfire;
+    //BonfireInterface bonfire;
+    String bonfireName;
 
-    /**
-     * Constructor
-     * @param bonfire rest location
-     */
-    public RestAction(Bonfire bonfire) {
-        this.bonfire = bonfire;
+
+    public RestAction(String bonfireName) {
+        //this.bonfire = bonfire;
+        this.bonfireName=bonfireName;
     }
 
     /**
@@ -55,6 +54,6 @@ public class RestAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor+"Rest at "+ bonfire.getName() +"'s Bonfire";
+        return actor+"Rest at "+ bonfireName;
     }
 }

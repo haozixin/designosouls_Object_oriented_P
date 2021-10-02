@@ -76,4 +76,6 @@ public class FollowBehaviour extends Actions implements Behaviour {
 	private int distance(Location a, Location b) {
 		return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
 	}
+
+
 }
