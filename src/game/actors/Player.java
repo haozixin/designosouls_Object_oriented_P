@@ -1,22 +1,24 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
-import game.BonfiresManager;
 import game.ResetManager;
 import game.TokenOfSouls;
 import game.actions.AttackAction;
 import game.actions.HealAction;
-import game.actions.RestAction;
+import game.behaviours.SoftResetBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
+import game.interfaces.Behaviour;
 import game.interfaces.PlayerInterface;
 import game.interfaces.Resettable;
 import game.interfaces.Soul;
-import game.terrains.Bonfire;
+import game.utilities.Utility;
 import game.weapons.Broadsword;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
 import game.weapons.MeleeWeapon;
 import game.weapons.PlayerIntrinsicWeapon;
+
+import java.util.ArrayList;
 
 /**
  * Class representing the Player on the gameMap.
@@ -46,6 +48,8 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 	 * weapon that the player holds
 	 */
 	private MeleeWeapon weapon;
+
+
 
 	/**
 	 * Constructor.
@@ -84,17 +88,13 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 	 */
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+
+
+
 		// if the player is dead(hit points=0), the player will be reset.
 		if(!this.isConscious()){
-			ResetManager.getInstance().run();
-			System.out.println("+++++++++++++++++++");
-			for(Bonfire bonfire:BonfiresManager.getInstance().getBonfires()){
-				if (bonfire.getLocation().map()==map){
-					System.out.println("===================================");
-					map.moveActor(this,bonfire.getLocation());
-				}
-			}
-			//map.moveActor(this, Bonfi);
+			SoftResetBehaviour softResetBehaviour = new SoftResetBehaviour();
+			return softResetBehaviour.getAction(this,map);
 		}
 		// player could chose the option(healAction) on every turn
 		actions.add(getHealAction());
@@ -291,16 +291,12 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 	 */
 	@Override
 	public void resetInstance() {
+		Utility.showDeadMessage();
 		this.setHealthPotion(Player.getMaxHealthPotion());
 		this.setHitPoints(this.getMaxHitPoints());
 		setSoul(0);
 	}
 
-	/**
-	 * A useful method to clean up the list of instances in the ResetManager class
-	 * @return the existence of the instance in the game.
-	 * for example, true to keep it permanent, or false if instance needs to be removed from the reset list.
-	 */
 	@Override
 	public boolean isExist() {
 		return false;

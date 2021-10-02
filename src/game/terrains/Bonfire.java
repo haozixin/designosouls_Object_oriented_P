@@ -18,7 +18,7 @@ import static game.Application.FIRELINK_SHRINE;
  * A class that represents Bonfire.
  */
 public class Bonfire extends Ground implements BonfireInterface {
-    private static int tempNumber=0;
+    private static int tempNumber = 0;
     private int id;
 
     private String name;
@@ -29,8 +29,6 @@ public class Bonfire extends Ground implements BonfireInterface {
     static String tempName;
 
     private Location location;
-
-
 
 
     /**
@@ -45,16 +43,17 @@ public class Bonfire extends Ground implements BonfireInterface {
         BonfiresManager.getInstance().collectLocation(this);
     }
 
-    private void setId(){
+    private void setId() {
         tempNumber += 1;
         id = tempNumber;
     }
 
     /**
      * Constructor - with parameter
+     *
      * @param name
      */
-    public Bonfire(String name){
+    public Bonfire(String name) {
         super('B');
         setTempName(name);
     }
@@ -63,8 +62,8 @@ public class Bonfire extends Ground implements BonfireInterface {
      * initialize Bonfire's status
      * Bonfire that doesn't have LIGHTED cannot be interacted directly
      */
-    private void initializeStatus(){
-        if (name == FIRELINK_SHRINE){
+    private void initializeStatus() {
+        if (name == FIRELINK_SHRINE) {
             this.addCapability(Status.LIGHTED);
         }
     }
@@ -72,17 +71,17 @@ public class Bonfire extends Ground implements BonfireInterface {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if (this.location==null){
+        if (this.location == null) {
             setLocation(location);
         }
     }
 
-//用getlocation 代替现在的方法，bonfireManager 存储bonfire
 
     /**
      * Returns an Action list. (allowable actions that actors can do with the kind of ground)
-     * @param actor the Actor acting
-     * @param location the current Location
+     *
+     * @param actor     the Actor acting
+     * @param location  the current Location
      * @param direction the direction of the Ground from the Actor
      * @return actions to be executed
      */
@@ -90,30 +89,29 @@ public class Bonfire extends Ground implements BonfireInterface {
     public Actions allowableActions(Actor actor, Location location, String direction) {
         Actions actions = new Actions();
 
-        if(!this.hasCapability(Status.LIGHTED)){
+        if (!this.hasCapability(Status.LIGHTED)) {
             actions.add(new ActivateBonfireAction(this));
-        }else{
-            if (actor.hasCapability(Abilities.REST)){
-                actions.add(new RestAction(this.getName()));
-                addTeleportAction(actions);
+        } else {
+            if (actor.hasCapability(Abilities.REST)) {
+                actions.add(new RestAction(this));
             }
+            addTeleportAction(actions);
         }
 
         return actions;
     }
 
     private void addTeleportAction(Actions actions) {
-        for(Bonfire bonfire:BonfiresManager.getInstance().getBonfires()){
-            if (bonfire!=this){
-                actions.add(new TeleportAction(bonfire.getLocation(), bonfire.getName()));
+        for (Bonfire bonfire : BonfiresManager.getInstance().getBonfires()) {
+            if (bonfire != this) {
+                actions.add(new TeleportAction(bonfire,this));
             }
         }
     }
 
 
-
     public String getName() {
-        return name+"'s Bonfire"+id;
+        return name + "'s Bonfire" + id;
     }
 
     public Location getLocation() {

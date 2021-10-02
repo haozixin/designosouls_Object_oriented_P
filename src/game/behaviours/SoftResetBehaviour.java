@@ -1,15 +1,14 @@
-package game.actions;
+package game.behaviours;
 
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import game.ResetManager;
+import game.actions.SoftResetAction;
 import game.interfaces.Behaviour;
 
-public class SoftResetAction extends Action{
+public class SoftResetBehaviour extends Action implements Behaviour {
     @Override
     public String execute(Actor actor, GameMap map) {
-        ResetManager.getInstance().run(map,actor);
         return null;
     }
 
@@ -18,4 +17,8 @@ public class SoftResetAction extends Action{
         return null;
     }
 
+    @Override
+    public Action getAction(Actor actor, GameMap map) {
+        return new SoftResetAction();
+    }
 }
