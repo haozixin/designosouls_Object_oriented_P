@@ -8,7 +8,7 @@ import game.interfaces.Behaviour;
 
 import java.util.ArrayList;
 
-public abstract class Enemy extends Actor {
+public abstract class GeneralEnemy extends Actor {
 
     protected ArrayList<Behaviour> behaviours;
     /**
@@ -18,7 +18,7 @@ public abstract class Enemy extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Enemy(String name, char displayChar, int hitPoints) {
+    public GeneralEnemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         behaviours = new ArrayList<>();
 

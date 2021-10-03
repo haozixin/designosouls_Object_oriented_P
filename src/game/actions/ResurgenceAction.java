@@ -3,7 +3,6 @@ package game.actions;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import game.actors.Enemy;
 import game.actors.Skeleton;
 import game.enums.Abilities;
 import game.interfaces.SkeletonInterface;

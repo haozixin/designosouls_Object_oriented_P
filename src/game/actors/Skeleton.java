@@ -17,7 +17,7 @@ import java.util.Random;
 
 
 
-public class Skeleton extends Enemy implements SkeletonInterface {
+public class Skeleton extends GeneralEnemy implements SkeletonInterface {
 
     /**
      * SOULS - how many souls the skeleton could yield when it's killed / how many souls the player could get

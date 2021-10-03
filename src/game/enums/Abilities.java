@@ -10,6 +10,6 @@ public enum Abilities {
     DEAL, // for vendor and Player
     FOLLOWED, // for player
     RESURRECT, //for skeleton's skill
-    EMBER_FORM //for Lord of Cinder
-
+    EMBER_FORM, //for Lord of Cinder
+    CHANCE_TO_DIE // for undead, it has a 10% chance to die instantly
 }

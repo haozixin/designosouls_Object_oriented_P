@@ -97,7 +97,6 @@ public class Bonfire extends Ground implements BonfireInterface {
             }
             addTeleportAction(actions);
         }
-
         return actions;
     }
 

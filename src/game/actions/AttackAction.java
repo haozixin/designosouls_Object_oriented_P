@@ -8,14 +8,12 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Weapon;
-import game.actors.LordOfCinder;
+import game.actors.YhormTheGiant;
 import game.actors.Player;
 import game.actors.Skeleton;
 import game.actors.Undead;
 import game.enums.Abilities;
-import game.interfaces.Behaviour;
 import game.interfaces.PlayerInterface;
-import game.weapons.Broadsword;
 
 /**
  * Special Action for attacking other Actors.
@@ -120,9 +118,9 @@ public class AttackAction extends Action{
 				}
 			}
 			// what will happen if LordOfCinder is going to die
-			else if (target instanceof LordOfCinder ? true:false){
+			else if (target instanceof YhormTheGiant ? true:false){
 
-				player.addSouls(LordOfCinder.getSOULS());
+				player.addSouls(YhormTheGiant.getSOULS());
 				map.removeActor(target);
 			}
 		}

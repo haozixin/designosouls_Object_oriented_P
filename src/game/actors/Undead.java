@@ -3,23 +3,22 @@ package game.actors;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
-import game.behaviours.FollowBehaviour;
-import game.behaviours.WanderBehaviour;
+import game.behaviours.KillSelfBehaviour;
+import game.enums.Abilities;
 import game.enums.Status;
-import game.interfaces.Behaviour;
 import game.weapons.EnemyIntrinsicWeapon;
-import game.weapons.PlayerIntrinsicWeapon;
 
 
 /**
  * An undead minion.
  */
-public class Undead extends Enemy {
+public class Undead extends GeneralEnemy {
 	/**
 	 * SOULS - how many souls the Undead could yield when it's killed / how many souls the player could get
 	 * from the skeleton after killing it
 	 */
 	public static final int SOULS = 50;
+	public static final int CHANCE_TO_DIE = 10;
 
 
 
@@ -32,6 +31,8 @@ public class Undead extends Enemy {
 	public Undead(String name) {
 		super(name, 'u', 50);
 		this.addCapability(Status.HOSTILE_TO_PLAYER);
+		this.addCapability(Abilities.CHANCE_TO_DIE);
+		behaviours.add(0,new KillSelfBehaviour());
 	}
 
 
@@ -76,6 +77,7 @@ public class Undead extends Enemy {
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new EnemyIntrinsicWeapon(20, "punches","fist");
 	}
+
 
 
 }
