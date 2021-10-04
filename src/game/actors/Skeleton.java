@@ -60,6 +60,7 @@ public class Skeleton extends GeneralEnemy implements SkeletonInterface {
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
         weapon = initializeWeapon();
+        this.addItemToInventory(weapon);
         // add resurgence ability
         this.addCapability(Abilities.RESURRECT);
 

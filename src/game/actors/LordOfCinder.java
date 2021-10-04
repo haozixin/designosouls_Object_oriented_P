@@ -1,6 +1,12 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
+import game.behaviours.AttackBehaviour;
+import game.behaviours.FollowBehaviour;
+import game.behaviours.WanderBehaviour;
+import game.interfaces.Behaviour;
+
+import java.util.ArrayList;
 
 
 /**
@@ -8,11 +14,20 @@ import edu.monash.fit2099.engine.*;
  * it is an abstract class because there are two kinds of LordOfCinder on different map
  */
 public abstract class LordOfCinder extends Actor {
+    protected ArrayList<Behaviour> behaviours;
     /**
      * Constructor.
      */
-    public LordOfCinder(String name, char displayChar, int hitPoints) {
+    public LordOfCinder(String name, char displayChar, int hitPoints,Actor target) {
         super(name, displayChar, hitPoints );
+        behaviours = new ArrayList<>();
+        behaviours.add(new AttackBehaviour(target));
+        behaviours.add(new FollowBehaviour(target));
+        behaviours.add(new WanderBehaviour());
+    }
+
+    public LordOfCinder(String name, char displayChar, int hitPoints) {
+        super(name, displayChar, hitPoints);
     }
 
     /**
@@ -24,7 +39,19 @@ public abstract class LordOfCinder extends Actor {
      */
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        return null;
+        for(Behaviour behaviour : behaviours) {
+            Action action = behaviour.getAction(this, map);
+            if (action != null)
+                return action;
+        }
+
+        return new DoNothingAction();
+    }
+
+    @Override
+    public void hurt(int points) {
+        hitPoints -= points;
+        hitPoints = Math.max(hitPoints, 0);
     }
 
 

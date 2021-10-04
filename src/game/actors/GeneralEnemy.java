@@ -21,8 +21,6 @@ public abstract class GeneralEnemy extends Actor {
     public GeneralEnemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         behaviours = new ArrayList<>();
-
-
         behaviours.add(new FollowBehaviour());
         behaviours.add(new AttackBehaviour());
         behaviours.add(new WanderBehaviour());

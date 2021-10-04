@@ -1,14 +1,40 @@
 package game.actors;
 
-public class AldrichTheDevourer extends LordOfCinder{
+import edu.monash.fit2099.engine.*;
+import game.behaviours.AttackBehaviour;
+import game.behaviours.FollowBehaviour;
+import game.behaviours.WanderBehaviour;
+import game.interfaces.Resettable;
+import game.weapons.DarkmoonLongbow;
+import game.weapons.MeleeWeapon;
+
+public class AldrichTheDevourer extends LordOfCinder implements Resettable {
+
+    public static final int SOULS = 5000;
+    MeleeWeapon initialWeapon;
+
     /**
      * Constructor.
-     *
-     * @param name
-     * @param displayChar
-     * @param hitPoints
      */
-    public AldrichTheDevourer(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints);
+    public AldrichTheDevourer(Actor target) {
+        super("Aldrich the Devourer", 'A', 350,target);
+        initialWeapon = new DarkmoonLongbow();
+        this.addItemToInventory(initialWeapon);
+    }
+
+    @Override
+    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        return super.playTurn(actions, lastAction, map, display);
+    }
+
+
+    @Override
+    public void resetInstance() {
+
+    }
+
+    @Override
+    public boolean isExist() {
+        return false;
     }
 }

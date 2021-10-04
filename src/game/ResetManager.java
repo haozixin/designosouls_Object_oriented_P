@@ -49,13 +49,14 @@ public class ResetManager {
     /**
      * Reset the game by traversing through all the list
      * By doing this way, it will avoid using `instanceof` all over the place.
-     * FIXME: it does nothing, you need to implement it :)
      */
     public void run(GameMap map, Actor actor) {
         //reset all instances that in the resettableList
         for (Resettable instance : resettableList) {
             instance.resetInstance();
         }
+        // if player has do interaction with a bonfire, the last bonfire will be recorded
+        // and the player will spawn at that bonfire
         if (BonfiresManager.getInstance().getLastBonfireToI() != null) {
             map.moveActor(actor, BonfiresManager.getInstance().getLastBonfireToI().getLocation());
         } else {

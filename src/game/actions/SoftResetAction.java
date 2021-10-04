@@ -10,12 +10,12 @@ public class SoftResetAction extends Action{
     @Override
     public String execute(Actor actor, GameMap map) {
         ResetManager.getInstance().run(map,actor);
-        return null;
+        return menuDescription(actor);
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return actor + " has been reset!";
     }
 
 }

@@ -10,8 +10,6 @@ import game.weapons.YhormGreatMachete;
 
 /**
  * The boss of Design o' Souls
- * FIXME: This boss is Boring. It does nothing. You need to implement features here.
- * TODO: Could it be an abstract class? If so, why and how?
  */
 public class YhormTheGiant extends LordOfCinder {
     public static final int SOULS = 5000;
@@ -22,8 +20,8 @@ public class YhormTheGiant extends LordOfCinder {
     /**
      * Constructor.
      */
-    public YhormTheGiant(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints );
+    public YhormTheGiant() {
+        super("Yhorm the Giant", 'Y', 500);
         this.addCapability(Abilities.EMBER_FORM);
         weapon = getWeapon();
         this.addItemToInventory(new CindersOfLord());

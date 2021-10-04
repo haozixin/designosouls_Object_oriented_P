@@ -8,10 +8,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Weapon;
-import game.actors.YhormTheGiant;
-import game.actors.Player;
-import game.actors.Skeleton;
-import game.actors.Undead;
+import game.actors.*;
 import game.enums.Abilities;
 import game.interfaces.PlayerInterface;
 
@@ -96,17 +93,17 @@ public class AttackAction extends Action{
 	private String distinguishTarget(Actor actor, GameMap map, String result) {
 
 		// if the actor who is going to perform the attack is Player
-		if (actor instanceof Player ? true:false){
+		if (actor instanceof Player){
 			PlayerInterface player = (Player) actor;
 
 			// what will happen if Undead is going to die
-			if (target instanceof Undead ? true:false){
+			if (target instanceof Undead){
 
 				player.addSouls(Undead.SOULS);
 				map.removeActor(target);
 			}
 			// what will happen if Skeleton is going to die
-			else if (target instanceof Skeleton ? true:false){
+			else if (target instanceof Skeleton){
 				// skeleton
 				Skeleton skeleton = (Skeleton) target;
 				if (skeleton.hasCapability(Abilities.RESURRECT)){
@@ -118,15 +115,18 @@ public class AttackAction extends Action{
 				}
 			}
 			// what will happen if LordOfCinder is going to die
-			else if (target instanceof YhormTheGiant ? true:false){
+			else if (target instanceof YhormTheGiant){
 
 				player.addSouls(YhormTheGiant.getSOULS());
 				map.removeActor(target);
 			}
+			else if(target instanceof AldrichTheDevourer){
+				//
+			}
 		}
 		// if other enemies kill the player, it will execute soft-rest functionality
 		else{
-			if (target instanceof Player ? true:false){
+			if (target instanceof Player){
 				// soft-reset
 			}
 		}
