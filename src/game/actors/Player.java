@@ -60,12 +60,17 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
-		setHealthPotion(MAX_HEALTH_POTION);
+		soul = 0;
+		healthPotion = MAX_HEALTH_POTION;
 		addCapabilities();
+		registerInstance();
+		initializeWeapon();
+	}
+
+	private void initializeWeapon() {
+		//as required the default initialWeapon is broadsword
 		weapon = new Broadsword();
 		addItemToInventory(weapon);
-		setSoul(0);
-		registerInstance();
 	}
 
 	/**

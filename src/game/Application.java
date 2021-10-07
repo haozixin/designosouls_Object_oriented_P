@@ -96,7 +96,7 @@ public class Application {
 			world.addGameMap(gameMap2);
 
 			Actor player = new Player("Unkindled (Player)", '@', 100);
-			world.addPlayer(player, gameMap.at(38, 12));
+			world.addPlayer(player, gameMap.at(36, 12));
 
 
 

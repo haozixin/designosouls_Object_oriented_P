@@ -2,6 +2,7 @@ package game.interfaces;
 
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Weapon;
+import game.weapons.MeleeWeapon;
 
 /**
  * the interface is used by other classes(actors/actions) which need to interact with Player or get attributes of player.
@@ -71,4 +72,5 @@ public interface PlayerInterface {
     Weapon getWeapon();
 
     void addItemToInventory(Item item);
+
 }

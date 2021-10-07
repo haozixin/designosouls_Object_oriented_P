@@ -56,6 +56,7 @@ public class Skeleton extends GeneralEnemy implements SkeletonInterface {
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
+
         behaviours.add(0, new ResurrectBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
