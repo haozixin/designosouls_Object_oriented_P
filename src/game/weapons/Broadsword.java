@@ -13,7 +13,7 @@ import java.util.Random;
 public class Broadsword extends MeleeWeapon implements Weapon{
     // successRate to get a double damage
     // used for passive skill
-    private int successRate;
+    private int doubleDamageRate;
 
     /**
      * Constructor
@@ -22,7 +22,7 @@ public class Broadsword extends MeleeWeapon implements Weapon{
     public Broadsword() {
         super("Broadsword", 'S', 30, "slash", 80);
         setPrice(500);
-        setSuccessRate(20);
+        setDoubleDamageRate(20);
     }
 
     /**
@@ -30,10 +30,8 @@ public class Broadsword extends MeleeWeapon implements Weapon{
      * it will be used in damage().
      */
     private int passiveSkill() {
-
         Random r = new Random();
-        if ( r.nextInt(100) < successRate) {
-            System.out.println(damage);
+        if ( r.nextInt(100) < doubleDamageRate) {
             return damage*2;
         }else{
             return damage;
@@ -50,24 +48,14 @@ public class Broadsword extends MeleeWeapon implements Weapon{
         return passiveSkill();
     }
 
-    public boolean setSuccessRate(int successRate) {
+    public boolean setDoubleDamageRate(int successRate) {
         boolean isValid = false;
         if (successRate >= 0) {
-            this.successRate = successRate;
+            this.doubleDamageRate = successRate;
             isValid = true;
         }
         return isValid;
     }
-
-    public boolean setDamage(int damage){
-        boolean isValid = false;
-        if (damage >= 0) {
-            this.damage = damage;
-            isValid = true;
-        }
-        return isValid;
-    }
-
 
 
     @Override

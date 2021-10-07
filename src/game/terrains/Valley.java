@@ -47,4 +47,5 @@ public class Valley extends Ground {
 		}
 		return actions;
 	}
+
 }

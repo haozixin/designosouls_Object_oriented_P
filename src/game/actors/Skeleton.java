@@ -1,12 +1,9 @@
 package game.actors;
 
-import edu.monash.fit2099.demo.mars.Breathing;
+
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
-import game.actions.ResurgenceAction;
-import game.behaviours.FollowBehaviour;
 import game.behaviours.ResurrectBehaviour;
-import game.behaviours.WanderBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Behaviour;
@@ -15,13 +12,12 @@ import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import game.weapons.GiantAxe;
 import game.weapons.MeleeWeapon;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 
 
-public class Skeleton extends Enemy implements SkeletonInterface {
+public class Skeleton extends GeneralEnemy implements SkeletonInterface {
 
     /**
      * SOULS - how many souls the skeleton could yield when it's killed / how many souls the player could get
@@ -52,11 +48,11 @@ public class Skeleton extends Enemy implements SkeletonInterface {
      * Constructor. they could have different name
      * @param name        the name of the Actor
      */
-    public Skeleton(String name,int initialX, int initialY, Actor target) {
+    public Skeleton(String name,int initialX, int initialY) {
 
         //@param displayChar the character that will represent the Actor in the display
         //@param hitPoints   the Actor's starting hit points
-        super(name, 's', 100, target);
+        super(name, 's', 100);
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
@@ -64,6 +60,7 @@ public class Skeleton extends Enemy implements SkeletonInterface {
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
         weapon = initializeWeapon();
+        this.addItemToInventory(weapon);
         // add resurgence ability
         this.addCapability(Abilities.RESURRECT);
 
@@ -105,9 +102,6 @@ public class Skeleton extends Enemy implements SkeletonInterface {
         return actions;
     }
 
-
-
-
     public static int getSOULS() {
         return SOULS;
     }
@@ -138,11 +132,12 @@ public class Skeleton extends Enemy implements SkeletonInterface {
     @Override
     public String toString() {
         if (this.hasCapability(Abilities.RESURRECT)){
-            return name+"("+hitPoints+"/"+maxHitPoints+") with (might)2 lives /holding:"+weapon;
+            return name+"("+hitPoints+"/"+maxHitPoints+") with (might)2 lives(holding:"+weapon+")";
         }else{
-            return name+"("+hitPoints+"/"+maxHitPoints+") with 1 life /holding:"+weapon;
+            return name+"("+hitPoints+"/"+maxHitPoints+") with 1 life(holding:"+weapon+")";
         }
     }
+
 
 
     /**
@@ -169,4 +164,6 @@ public class Skeleton extends Enemy implements SkeletonInterface {
     public void removeCapability(Enum<?> capability) {
         super.removeCapability(capability);
     }
+
+
 }

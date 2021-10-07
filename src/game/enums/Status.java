@@ -7,5 +7,7 @@ package game.enums;
 public enum Status {
     HOSTILE_TO_ENEMY, // use this capability to be hostile towards something (e.g., to be attacked by enemy)
 
-    HOSTILE_TO_PLAYER // for player can be attacked by enemies
+    HOSTILE_TO_PLAYER, // for player can be attacked by enemies
+
+    LIGHTED, // for A3 - the new Bonfire
 }

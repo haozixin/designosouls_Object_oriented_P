@@ -1,22 +1,29 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
+import game.ResetManager;
 import game.TokenOfSouls;
 import game.actions.AttackAction;
 import game.actions.HealAction;
+import game.behaviours.SoftResetBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
+import game.interfaces.Behaviour;
 import game.interfaces.PlayerInterface;
+import game.interfaces.Resettable;
 import game.interfaces.Soul;
+import game.utilities.Utility;
 import game.weapons.Broadsword;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
 import game.weapons.MeleeWeapon;
 import game.weapons.PlayerIntrinsicWeapon;
 
+import java.util.ArrayList;
+
 /**
  * Class representing the Player on the gameMap.
  */
-public class Player extends Actor implements Soul, PlayerInterface {
+public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 	/**
 	 * max health potion that belongs to the whole player class
 	 * something like game setting - players could have how many health potion
@@ -42,6 +49,8 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	 */
 	private MeleeWeapon weapon;
 
+
+
 	/**
 	 * Constructor.
 	 *
@@ -55,7 +64,8 @@ public class Player extends Actor implements Soul, PlayerInterface {
 		addCapabilities();
 		weapon = new Broadsword();
 		addItemToInventory(weapon);
-		setSoul(1000);
+		setSoul(0);
+		registerInstance();
 	}
 
 	/**
@@ -79,6 +89,13 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
+
+
+		// if the player is dead(hit points=0), the player will be reset.
+		if(!this.isConscious()){
+			SoftResetBehaviour softResetBehaviour = new SoftResetBehaviour();
+			return softResetBehaviour.getAction(this,map);
+		}
 		// player could chose the option(healAction) on every turn
 		actions.add(getHealAction());
 		//it will show the status of the player at the top of menu on each turn
@@ -103,6 +120,7 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	 */
 	@Override
 	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+
 		Actions actions = new Actions();
 		//enemy can attack the player if the player has the status
 		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
@@ -266,4 +284,23 @@ public class Player extends Actor implements Soul, PlayerInterface {
 	public void addItemToInventory(Item item) {
 		super.addItemToInventory(item);
 	}
+// resettable interface functions
+	/**
+	 * Allows any classes that use this interface to reset abilities, attributes, and items.
+	 *
+	 */
+	@Override
+	public void resetInstance() {
+		Utility.showDeadMessage();
+		this.setHealthPotion(Player.getMaxHealthPotion());
+		this.setHitPoints(this.getMaxHitPoints());
+		setSoul(0);
+	}
+
+	@Override
+	public boolean isExist() {
+		return false;
+	}
+
+
 }

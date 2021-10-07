@@ -1,13 +1,14 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.interfaces.Behaviour;
 
 import java.util.ArrayList;
 
-public abstract class Enemy extends Actor {
+public abstract class GeneralEnemy extends Actor {
 
     protected ArrayList<Behaviour> behaviours;
     /**
@@ -17,10 +18,11 @@ public abstract class Enemy extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Enemy(String name, char displayChar, int hitPoints,Actor target) {
+    public GeneralEnemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         behaviours = new ArrayList<>();
-        behaviours.add(new FollowBehaviour(target));
+        behaviours.add(new FollowBehaviour());
+        behaviours.add(new AttackBehaviour());
         behaviours.add(new WanderBehaviour());
     }
 

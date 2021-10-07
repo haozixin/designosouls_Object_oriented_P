@@ -1,56 +1,33 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
-import game.actions.AttackAction;
-import game.actions.BurnAction;
-import game.enums.Abilities;
-import game.items.CindersOfLord;
-import game.weapons.MeleeWeapon;
-import game.weapons.YhormGreatMachete;
+import game.behaviours.AttackBehaviour;
+import game.behaviours.FollowBehaviour;
+import game.behaviours.WanderBehaviour;
+import game.interfaces.Behaviour;
+
+import java.util.ArrayList;
+
 
 /**
  * The boss of Design o' Souls
- * FIXME: This boss is Boring. It does nothing. You need to implement features here.
- * TODO: Could it be an abstract class? If so, why and how?
+ * it is an abstract class because there are two kinds of LordOfCinder on different map
  */
-public class LordOfCinder extends Actor {
-    public static final int SOULS = 5000;
-    MeleeWeapon weapon;
-    private int threshold = 250;
-    private boolean stunned = false;
-
+public abstract class LordOfCinder extends Actor {
+    protected ArrayList<Behaviour> behaviours;
     /**
      * Constructor.
      */
-    public LordOfCinder(String name, char displayChar, int hitPoints) {
+    public LordOfCinder(String name, char displayChar, int hitPoints,Actor target) {
         super(name, displayChar, hitPoints );
-        this.addCapability(Abilities.EMBER_FORM);
-        weapon = getWeapon();
-        this.addItemToInventory(new CindersOfLord());
+        behaviours = new ArrayList<>();
+        behaviours.add(new AttackBehaviour(target));
+        behaviours.add(new FollowBehaviour(target));
+        behaviours.add(new WanderBehaviour());
     }
 
-    /**
-     * get Lord of Cinder's weapon
-     * @return YhormGreatMachete
-     */
-    public MeleeWeapon getWeapon() {
-        return new YhormGreatMachete();
-    }
-
-    @Override
-    public void hurt(int points) {
-        super.hurt(points);
-        if (hitPoints<=threshold) {
-            ((YhormGreatMachete)weapon).emberForm();
-        }
-    }
-
-    /**
-     *
-     * @return SOULS
-     */
-    public static int getSOULS() {
-        return SOULS;
+    public LordOfCinder(String name, char displayChar, int hitPoints) {
+        super(name, displayChar, hitPoints);
     }
 
     /**
@@ -62,32 +39,20 @@ public class LordOfCinder extends Actor {
      */
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        if(this.stunned) {
-            this.stunned = false;
-            return new DoNothingAction();
+        for(Behaviour behaviour : behaviours) {
+            Action action = behaviour.getAction(this, map);
+            if (action != null)
+                return action;
         }
-        if (this.isConscious() && this.hasCapability(Abilities.EMBER_FORM)) {
 
-        }
         return new DoNothingAction();
     }
 
     @Override
-    public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
-        Actions actions = new Actions();
-        Location otherLoc = map.locationOf(otherActor);
-        Location yhormLoc = map.locationOf(this);
-        if(Math.abs(otherLoc.x()-yhormLoc.x()) < 2 && Math.abs(otherLoc.y()-yhormLoc.y()) < 2) {
-            actions.add(new BurnAction(otherActor));
-        }
-        return actions;
+    public void hurt(int points) {
+        hitPoints -= points;
+        hitPoints = Math.max(hitPoints, 0);
     }
 
-    /**
-     * a boolean method where it tells whether Lord of Cinder is stunned or not
-     * @param stunned
-     */
-    public void setStunned(boolean stunned) {
-        this.stunned = stunned;
-    }
+
 }

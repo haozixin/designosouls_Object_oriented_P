@@ -2,10 +2,10 @@ package game.weapons;
 
 import edu.monash.fit2099.engine.IntrinsicWeapon;
 
-public class PlayerIntrinsicWeapon extends IntrinsicWeapon {
+public class EnemyIntrinsicWeapon extends IntrinsicWeapon {
     private String name;
 
-    public PlayerIntrinsicWeapon(int damage, String verb, String name) {
+    public EnemyIntrinsicWeapon(int damage, String verb, String name) {
         super(damage, verb);
         setName(name);
     }
