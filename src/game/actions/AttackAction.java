@@ -123,6 +123,7 @@ public class AttackAction extends Action{
 				map.removeActor(target);
 			}
 			else if(target instanceof AldrichTheDevourer){
+				player.addSouls(AldrichTheDevourer.getSOULS());
 				map.removeActor(target);
 			}
 		}
