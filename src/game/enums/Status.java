@@ -10,4 +10,8 @@ public enum Status {
     HOSTILE_TO_PLAYER, // for player can be attacked by enemies
 
     LIGHTED, // for A3 - the new Bonfire
+
+    RANGED_WEAPON, // for Darkmoon Longbow weapon's passive skill
+
+    WITHIN_ATTACK_RANGE
 }

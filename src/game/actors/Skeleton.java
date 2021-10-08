@@ -7,7 +7,6 @@ import game.behaviours.ResurrectBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Behaviour;
-import game.interfaces.SkeletonInterface;
 import game.interfaces.Soul;
 import game.weapons.Broadsword;
 import game.weapons.GiantAxe;
@@ -17,7 +16,7 @@ import java.util.Random;
 
 
 
-public class Skeleton extends GeneralEnemy implements SkeletonInterface {
+public class Skeleton extends Enemy {
 
     /**
      * SOULS - how many souls the skeleton could yield when it's killed / how many souls the player could get
@@ -60,8 +59,8 @@ public class Skeleton extends GeneralEnemy implements SkeletonInterface {
         behaviours.add(0, new ResurrectBehaviour());
         this.addCapability(Status.HOSTILE_TO_PLAYER);
         // carry random Weapon
-        weapon = initializeWeapon();
-        this.addItemToInventory(weapon);
+        initializeWeapon();
+
         // add resurgence ability
         this.addCapability(Abilities.RESURRECT);
 
@@ -73,12 +72,12 @@ public class Skeleton extends GeneralEnemy implements SkeletonInterface {
      * For this game, only two weapon has to been considered
      * @return return a Weapon Item
      */
-    public MeleeWeapon initializeWeapon(){
+    private void initializeWeapon(){
         Random r = new Random();
         if(r.nextInt(100)<50){
-            return new Broadsword();
+            weapon = new Broadsword();
         }else{
-            return new GiantAxe();
+            weapon = new GiantAxe();
         }
     }
 
@@ -166,5 +165,8 @@ public class Skeleton extends GeneralEnemy implements SkeletonInterface {
         super.removeCapability(capability);
     }
 
-
+    @Override
+    public Weapon getWeapon() {
+        return weapon;
+    }
 }

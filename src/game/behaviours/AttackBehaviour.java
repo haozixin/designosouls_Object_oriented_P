@@ -2,15 +2,19 @@ package game.behaviours;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
+import game.actors.Enemy;
 import game.actors.Player;
+import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.Behaviour;
-import game.interfaces.PlayerInterface;
 import game.utilities.Utility;
 import game.weapons.DarkmoonLongbow;
 
 import static game.weapons.DarkmoonLongbow.DETECT_RANGE;
 
+/**
+ * The class' main responsibility is to detect when the enemy will attack the player
+ */
 public class AttackBehaviour extends Actions implements Behaviour {
 
 
@@ -36,16 +40,24 @@ public class AttackBehaviour extends Actions implements Behaviour {
         Location there = map.locationOf(target);
 
         // if actor holds the Darkmoon Longbow, the actor could attack as long as the enemy is within the range of 3 squares away
-        //有BUG-可能需要判断在同一地图里
-//        if (actor.getWeapon() instanceof DarkmoonLongbow) {
-//            int distanceInX = Utility.distanceInX(here, there);
-//            int distanceInY = Utility.distanceInY(here, there);
-//            if (distanceInX > DETECT_RANGE || distanceInY > DETECT_RANGE) {
-//            } else {
-//                //get direction
-//                return new AttackAction(target,"that direction");
-//            }
-//        }
+        // and they have to in the same map
+        if (actor.getWeapon() instanceof DarkmoonLongbow && (here.map() == there.map())) {
+            DarkmoonLongbow darkmoonLongbow = (DarkmoonLongbow) actor.getWeapon();
+            int distanceInX = Utility.distanceInX(here, there);
+            int distanceInY = Utility.distanceInY(here, there);
+            if (distanceInX > DETECT_RANGE || distanceInY > DETECT_RANGE) {
+            } else {
+
+                //When the player is within the range of attack
+                if(darkmoonLongbow.detectedWall(actor,map,target)){
+                    darkmoonLongbow.blockedByWall();
+                }
+                else{
+                    darkmoonLongbow.recoverHitRate();
+                }
+                return new AttackAction(target,"that direction");
+            }
+        }
 
         // else do following detection - but the maximum detect distance is one squares away
         for (Exit exit : here.getExits()) {

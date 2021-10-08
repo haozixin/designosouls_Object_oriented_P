@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.DropItemAction;
 import edu.monash.fit2099.engine.Weapon;
 import edu.monash.fit2099.engine.WeaponItem;
 
-public abstract class MeleeWeapon extends WeaponItem {
+public abstract class MeleeWeapon extends WeaponItem{
     protected int price;
 
     /**

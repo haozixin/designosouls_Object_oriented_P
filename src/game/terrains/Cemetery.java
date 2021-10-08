@@ -42,8 +42,9 @@ public class Cemetery extends Ground {
         //Double check the capability (maybe in future the game might have a kind of mechanism to let it loose the ability)
         if (this.hasCapability(Abilities.CREATE_UNDEAD)){
             Random r = new Random();
-            if (r.nextInt(100)<successRate){
-                location.map().at(location.x(), location.y()).addActor(new Undead("Undead"));
+            //if the location has an actor, the cemetery cannot generate an Undead here
+            if (r.nextInt(100)<successRate && !location.containsAnActor()){
+                location.addActor(new Undead("Undead"));
             }
         }else{
         }

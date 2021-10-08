@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Broadsword is a kind of MeleeWeapon
  */
-public class Broadsword extends MeleeWeapon implements Weapon{
+public class Broadsword extends MeleeWeapon{
     // successRate to get a double damage
     // used for passive skill
     private int doubleDamageRate;

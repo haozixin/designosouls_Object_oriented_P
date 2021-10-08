@@ -57,6 +57,7 @@ public class AttackAction extends Action{
 
 		Weapon weapon = actor.getWeapon();
 
+
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}

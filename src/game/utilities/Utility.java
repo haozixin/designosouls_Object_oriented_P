@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Utility {
-    public static int sameLine = 0;
+
 
     public static void showDeadMessage() {
         List<String> message = Arrays.asList(

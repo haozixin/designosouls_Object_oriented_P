@@ -1,7 +1,7 @@
 package game.interfaces;
 
 
-public interface SkeletonInterface {
+public interface EnemyInterface {
     /**
      * Add points to the current Actor's hitpoint total.
      *
@@ -20,5 +20,7 @@ public interface SkeletonInterface {
      * @param capability the Capability to remove
      */
     void removeCapability(Enum<?> capability);
+
+
 
 }

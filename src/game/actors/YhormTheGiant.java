@@ -13,7 +13,6 @@ import game.weapons.YhormGreatMachete;
  */
 public class YhormTheGiant extends LordOfCinder {
     public static final int SOULS = 5000;
-    MeleeWeapon weapon;
     private int threshold = 250;
     private boolean stunned = false;
 
@@ -23,19 +22,17 @@ public class YhormTheGiant extends LordOfCinder {
     public YhormTheGiant() {
         super("Yhorm the Giant", 'Y', 500);
         this.addCapability(Abilities.EMBER_FORM);
-        weapon = getWeapon();
+        bossWeapon = new YhormGreatMachete();
         this.addItemToInventory(new CindersOfLord());
     }
 
-    public MeleeWeapon getWeapon() {
-        return new YhormGreatMachete();
-    }
+
 
     @Override
     public void hurt(int points) {
         super.hurt(points);
         if (hitPoints<=threshold) {
-            ((YhormGreatMachete)weapon).emberForm();
+            ((YhormGreatMachete)bossWeapon).emberForm();
         }
     }
 

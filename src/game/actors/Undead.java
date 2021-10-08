@@ -7,12 +7,13 @@ import game.behaviours.KillSelfBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.weapons.EnemyIntrinsicWeapon;
+import game.weapons.MeleeWeapon;
 
 
 /**
  * An undead minion.
  */
-public class Undead extends GeneralEnemy {
+public class Undead extends Enemy {
 	/**
 	 * SOULS - how many souls the Undead could yield when it's killed / how many souls the player could get
 	 * from the skeleton after killing it
@@ -77,7 +78,6 @@ public class Undead extends GeneralEnemy {
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new EnemyIntrinsicWeapon(20, "punches","fist");
 	}
-
 
 
 }

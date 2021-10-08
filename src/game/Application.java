@@ -98,7 +98,7 @@ public class Application {
 			GameMap gameMap2 = new GameMap(groundFactory2,anorLondo);
 			world.addGameMap(gameMap2);
 
-			Actor player = new Player("Unkindled (Player)", '@', 100);
+			Actor player = new Player("Unkindled (Player)", '@', 900);
 			world.addPlayer(player, gameMap.at(36, 12));
 
 
@@ -129,7 +129,7 @@ public class Application {
 			fogDoorA.addAction(new MoveActorAction(PortalInMap1, "to "+PROFANE_CAPITAL));
 
 			//Place Aldrich the Devourer in the second map
-			gameMap2.at(36, 20).addActor(new AldrichTheDevourer(player));
+			gameMap2.at(35, 20).addActor(new AldrichTheDevourer(player));
 
 
 			world.run();

@@ -25,7 +25,7 @@ public class FollowBehaviour extends Actions implements Behaviour {
 	 * true - has found/detected the target
 	 * false - haven't found/detected the target
 	 */
-	private boolean hasFoundTarget;
+	private boolean hasFoundTarget =false;
 
 
 	/**
@@ -35,36 +35,22 @@ public class FollowBehaviour extends Actions implements Behaviour {
 	 */
 	public FollowBehaviour(Actor subject) {
 		this.target = subject;
-		hasFoundTarget = false;
 	}
 
 	public FollowBehaviour() {
-		this.hasFoundTarget = false;
 	}
 
-	/**
-	 * detect the target
-	 * @param actor
-	 * @param map
-	 * @return
-	 */
-	private boolean hasFoundTarget(Actor actor, GameMap map) {
-		if(actor.getWeapon() instanceof DarkmoonLongbow){
-			return biggerRangeDetect(actor,map);
-		}
-		return detection(actor, map);
-	}
 
 	private boolean biggerRangeDetect(Actor actor, GameMap map){
-		// the boss knows the target(player) but the player haven't been detected yet
-		if(!this.hasFoundTarget && (target!=null) ){
+		// the boss knows its target is the player but the player haven't been detected yet
+		if(!hasFoundTarget){
 			Location here = map.locationOf(actor);
 			Location there = map.locationOf(target);
 			int distanceInX = Utility.distanceInX(here,there);
 			int distanceInY = Utility.distanceInY(here,there);
 			if(distanceInX> DETECT_RANGE || distanceInY>DETECT_RANGE){
 			}else {
-				this.hasFoundTarget =true;
+				hasFoundTarget =true;
 			}
 		}
 		return hasFoundTarget;
@@ -77,13 +63,13 @@ public class FollowBehaviour extends Actions implements Behaviour {
 	 * @return boolean value - true means the enemy found the target, false means the it haven't detected the player
 	 */
 	private boolean detection(Actor actor, GameMap map) {
-		if(!this.hasFoundTarget){
+		if(!hasFoundTarget){
 			Location here = map.locationOf(actor);
 			for (Exit exit : here.getExits()) {
 				Location destination = exit.getDestination();
-				if (destination.getActor() instanceof Player ? true:false) {
+				if (destination.getActor() instanceof Player) {
 					target = destination.getActor();
-					this.hasFoundTarget =true;
+					hasFoundTarget =true;
 				}
 			}
 		}
@@ -93,11 +79,21 @@ public class FollowBehaviour extends Actions implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 
-		if (!hasFoundTarget(actor, map)){
+		// Skeleton and Undead haven't got their target
+		// they have to detect in each turn
+		detection(actor,map);
+
+		// Because boss has got its target by passing parameter(i.e. target!=null)
+		// So, before the boss check locations of the target
+		// it has to check if the target and actor(boss/enemy) are in the same current map
+		if(!map.contains(target) || !map.contains(actor)){
 			return null;
 		}
-		if(!map.contains(target) || !map.contains(actor))
-			return null;
+		if(actor.getWeapon() instanceof DarkmoonLongbow){
+			if (!(biggerRangeDetect(actor,map))){
+				return null;
+			}
+		}
 
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);

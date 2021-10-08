@@ -44,10 +44,7 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 	 */
 	private final Menu menu = new Menu();
 
-	/**
-	 * weapon that the player holds
-	 */
-	private MeleeWeapon weapon;
+
 
 
 
@@ -69,7 +66,7 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 
 	private void initializeWeapon() {
 		//as required the default initialWeapon is broadsword
-		weapon = new Broadsword();
+		MeleeWeapon weapon = new Broadsword();
 		addItemToInventory(weapon);
 	}
 

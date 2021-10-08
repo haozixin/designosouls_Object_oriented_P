@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.Weapon;
 
 import java.util.Random;
 
-public class StormRuler extends MeleeWeapon implements Weapon {
+public class StormRuler extends MeleeWeapon{
     private int price;
     private int successRate;
     private int chargeCounter = 0;

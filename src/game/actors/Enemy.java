@@ -5,10 +5,12 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.interfaces.Behaviour;
+import game.interfaces.EnemyInterface;
+import game.weapons.MeleeWeapon;
 
 import java.util.ArrayList;
 
-public abstract class GeneralEnemy extends Actor {
+public abstract class Enemy extends Actor implements EnemyInterface {
 
     protected ArrayList<Behaviour> behaviours;
     /**
@@ -18,9 +20,10 @@ public abstract class GeneralEnemy extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public GeneralEnemy(String name, char displayChar, int hitPoints) {
+    public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         behaviours = new ArrayList<>();
+
         behaviours.add(new FollowBehaviour());
         behaviours.add(new AttackBehaviour());
         behaviours.add(new WanderBehaviour());
@@ -62,7 +65,5 @@ public abstract class GeneralEnemy extends Actor {
         hitPoints -= points;
         hitPoints = Math.max(hitPoints, 0);
     }
-
-
 
 }

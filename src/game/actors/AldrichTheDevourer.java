@@ -11,20 +11,14 @@ import game.weapons.MeleeWeapon;
 public class AldrichTheDevourer extends LordOfCinder implements Resettable {
 
     public static final int SOULS = 5000;
-    MeleeWeapon initialWeapon;
+
 
     /**
      * Constructor.
      */
     public AldrichTheDevourer(Actor target) {
         super("Aldrich the Devourer", 'A', 350,target);
-        initialWeapon = new DarkmoonLongbow();
-        this.addItemToInventory(initialWeapon);
-    }
-
-    @Override
-    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        return super.playTurn(actions, lastAction, map, display);
+        bossWeapon = new DarkmoonLongbow();
     }
 
 

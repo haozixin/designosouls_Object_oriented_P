@@ -6,12 +6,13 @@ import game.utilities.Utility;
 
 import java.util.Random;
 
-public class DarkmoonLongbow extends MeleeWeapon implements Weapon {
+public class DarkmoonLongbow extends MeleeWeapon {
     /**
      * by holding the weapon, Aldrich the Devourer(or other actors) can get a bigger range to attack and follow the enemy
      */
     public static final int DETECT_RANGE = 3;
     private int doubleDamageRate;
+
 
     /**
      * Constructor.
@@ -50,31 +51,44 @@ public class DarkmoonLongbow extends MeleeWeapon implements Weapon {
 
 
     /**
-     * a passive skill
+     * a passive skill - rangedWeapon
      * As required, the function is responsible when will the attack effect be considered miss
      * <p>
-     * return false when there is wall between the Aldrich the Devourer and player -- means miss
-     * return true when the attack can be blocked (since there is a wall between the Aldrich the Devourer and player)
+     * return true when there is wall between the Aldrich the Devourer and player -- means attack can be blocked
+     * return false when the attack will not be blocked
      *
      * @param actor  actors who holds the weapon (should be Aldrich The Devourer here)
      * @param map    game map
      * @param target Target Actor (player here)
      * @return boolean value
      */
-    private boolean rangedWeapon(Actor actor, GameMap map, Actor target) {
+    public boolean detectedWall(Actor actor, GameMap map, Actor target) {
 
         Location here = map.locationOf(actor);
         Location there = map.locationOf(target);
-        int distanceInX = Utility.distanceInX(here, there);
-        int distanceInY = Utility.distanceInY(here, there);
-        if (distanceInX == Utility.sameLine && distanceInY <= DETECT_RANGE) {
-            //detect any wall there
-        } else if (distanceInX <= DETECT_RANGE && distanceInY == Utility.sameLine) {
+        NumberRange xs, ys;
+        if (here.x() == there.x() || here.y() == there.y()) {
+            xs = new NumberRange(Math.min(here.x(), there.x()), Math.abs(here.x() - there.x()) + 1);
+            ys = new NumberRange(Math.min(here.y(), there.y()), Math.abs(here.y() - there.y()) + 1);
 
+            for (int x : xs) {
+                for (int y : ys) {
+                    if(map.at(x, y).getGround().blocksThrownObjects())
+                        return true;
+                }
+            }
+            return false;
         }
-
-
         return false;
+
+    }
+
+    public void blockedByWall(){
+        hitRate = 0;
+    }
+
+    public void recoverHitRate(){
+        hitRate = 80;
     }
 
 }
