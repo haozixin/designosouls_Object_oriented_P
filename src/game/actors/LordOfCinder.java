@@ -19,9 +19,9 @@ public abstract class LordOfCinder extends Enemy {
     public LordOfCinder(String name, char displayChar, int hitPoints,Actor target) {
         super(name, displayChar, hitPoints );
         behaviours.clear();
-
-        behaviours.add(new FollowBehaviour(target));
         behaviours.add(new AttackBehaviour(target));
+        behaviours.add(new FollowBehaviour(target));
+
 
 
         //behaviours.add(new WanderBehaviour());

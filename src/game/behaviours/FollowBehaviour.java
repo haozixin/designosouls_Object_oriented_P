@@ -3,6 +3,7 @@ package game.behaviours;
 import edu.monash.fit2099.engine.*;
 import game.actors.AldrichTheDevourer;
 import game.actors.Player;
+import game.enums.Abilities;
 import game.interfaces.Behaviour;
 import game.utilities.Utility;
 import game.weapons.DarkmoonLongbow;
@@ -89,9 +90,13 @@ public class FollowBehaviour extends Actions implements Behaviour {
 		if(!map.contains(target) || !map.contains(actor)){
 			return null;
 		}
+
+
 		if(actor.getWeapon() instanceof DarkmoonLongbow){
-			if (!(biggerRangeDetect(actor,map))){
-				return null;
+			if(!(actor.hasCapability(Abilities.FOLLOW_PLAYER))){
+				if (!(biggerRangeDetect(actor,map))){
+					return null;
+				}
 			}
 		}
 

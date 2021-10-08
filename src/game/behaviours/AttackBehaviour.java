@@ -47,7 +47,7 @@ public class AttackBehaviour extends Actions implements Behaviour {
             int distanceInY = Utility.distanceInY(here, there);
             if (distanceInX > DETECT_RANGE || distanceInY > DETECT_RANGE) {
             } else {
-
+                actor.addCapability(Abilities.FOLLOW_PLAYER);
                 //When the player is within the range of attack
                 if(darkmoonLongbow.detectedWall(actor,map,target)){
                     darkmoonLongbow.blockedByWall();

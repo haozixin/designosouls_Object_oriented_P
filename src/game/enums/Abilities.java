@@ -12,6 +12,6 @@ public enum Abilities {
     RESURRECT, //for skeleton's skill
     EMBER_FORM, //for Lord of Cinder
     CHANCE_TO_DIE, // for undead, it has a 10% chance to die instantly
-    BIGGER_DETECT_RANGE //for the Darkmoon Longbow weapon, by holding it, actor can attack enemy that within 3(or other) squares away
-
+    BIGGER_DETECT_RANGE, //for the Darkmoon Longbow weapon, by holding it, actor can attack enemy that within 3(or other) squares away
+    FOLLOW_PLAYER
 }
