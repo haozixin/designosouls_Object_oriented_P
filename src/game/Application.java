@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
+import game.actions.TeleportAction;
 import game.actors.AldrichTheDevourer;
 import game.actors.YhormTheGiant;
+import game.items.FogDoor;
 import game.terrains.*;
 import game.actors.Player;
 import game.actors.Skeleton;
@@ -18,6 +20,7 @@ public class Application {
 
 	public static final String FIRELINK_SHRINE = "Firelink Shrine";
 	public static final String ANOR_LONDO = "Anor Londo";
+	public static final String PROFANE_CAPITAL = "Profane Capital";
 
 	public static void main(String[] args) {
 
@@ -112,8 +115,18 @@ public class Application {
 
 			Location PortalInMap1 = gameMap.at(38,25);
 			Location PortalInMap2 = gameMap2.at(38,0);
-			PortalInMap1.setGround(new FogDoor(PortalInMap2,ANOR_LONDO));
-			PortalInMap2.setGround(new FogDoor(PortalInMap1,FIRELINK_SHRINE));
+
+			// add a fogDoor(is not a portable item) in the first map
+			// and add the allowable action - move actor to the destination
+			FogDoor fogDoorP = new FogDoor(PROFANE_CAPITAL);
+			PortalInMap1.addItem(fogDoorP);
+			fogDoorP.addAction(new MoveActorAction(PortalInMap2, "to "+ANOR_LONDO));
+
+			// add a fogDoor(is not a portable item) in the second map
+			// and add the allowable action - move actor to the destination
+			FogDoor fogDoorA = new FogDoor(ANOR_LONDO);
+			PortalInMap2.addItem(fogDoorA);
+			fogDoorA.addAction(new MoveActorAction(PortalInMap1, "to "+PROFANE_CAPITAL));
 
 			//Place Aldrich the Devourer in the second map
 			gameMap2.at(36, 20).addActor(new AldrichTheDevourer(player));

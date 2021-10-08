@@ -36,15 +36,16 @@ public class AttackBehaviour extends Actions implements Behaviour {
         Location there = map.locationOf(target);
 
         // if actor holds the Darkmoon Longbow, the actor could attack as long as the enemy is within the range of 3 squares away
-        if (actor.getWeapon() instanceof DarkmoonLongbow) {
-            int distanceInX = Utility.distanceInX(here, there);
-            int distanceInY = Utility.distanceInY(here, there);
-            if (distanceInX > DETECT_RANGE || distanceInY > DETECT_RANGE) {
-            } else {
-                //get direction
-                return new AttackAction(target,"that direction");
-            }
-        }
+        //有BUG-可能需要判断在同一地图里
+//        if (actor.getWeapon() instanceof DarkmoonLongbow) {
+//            int distanceInX = Utility.distanceInX(here, there);
+//            int distanceInY = Utility.distanceInY(here, there);
+//            if (distanceInX > DETECT_RANGE || distanceInY > DETECT_RANGE) {
+//            } else {
+//                //get direction
+//                return new AttackAction(target,"that direction");
+//            }
+//        }
 
         // else do following detection - but the maximum detect distance is one squares away
         for (Exit exit : here.getExits()) {
