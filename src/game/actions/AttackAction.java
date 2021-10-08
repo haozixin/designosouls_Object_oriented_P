@@ -74,9 +74,10 @@ public class AttackAction extends Action{
 			for (Action drop : dropActions)
 				drop.execute(target, map);
 
+			// some special cases
+			// deal with corpse and some target need to be reset
 			String result1 = distinguishTarget(actor, map, result);
 			if (result1 != null) return result1;
-
 
 			result += System.lineSeparator() + target + " is killed.";
 		}
@@ -122,7 +123,7 @@ public class AttackAction extends Action{
 				map.removeActor(target);
 			}
 			else if(target instanceof AldrichTheDevourer){
-				//
+				map.removeActor(target);
 			}
 		}
 		// if other enemies kill the player, it will execute soft-rest functionality

@@ -18,7 +18,7 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
      */
     public AldrichTheDevourer(Actor target) {
         super("Aldrich the Devourer", 'A', 350,target);
-        bossWeapon = new DarkmoonLongbow();
+        this.bossWeapon = new DarkmoonLongbow();
     }
 
 
@@ -30,5 +30,14 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
     @Override
     public boolean isExist() {
         return false;
+    }
+
+    /**
+     * override toString to show some basic information for each Undead, such as hitPoints, weapon that the skeleton holds and so on
+     * @return
+     */
+    @Override
+    public String toString() {
+        return name+" ("+hitPoints+"/"+maxHitPoints+")"+" (holding "+bossWeapon+")";
     }
 }

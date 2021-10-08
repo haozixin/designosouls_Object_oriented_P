@@ -12,6 +12,7 @@ public class DarkmoonLongbow extends MeleeWeapon {
      */
     public static final int DETECT_RANGE = 3;
     private int doubleDamageRate;
+    private int lastHitRate;
 
 
     /**
@@ -20,6 +21,7 @@ public class DarkmoonLongbow extends MeleeWeapon {
     public DarkmoonLongbow() {
         super("Darkmoon Longbow", 'D', 70, "shoots", 80);
         setDoubleDamageRate(15);
+        lastHitRate = hitRate;
     }
 
     /**
@@ -73,8 +75,9 @@ public class DarkmoonLongbow extends MeleeWeapon {
 
             for (int x : xs) {
                 for (int y : ys) {
-                    if(map.at(x, y).getGround().blocksThrownObjects())
+                    if(map.at(x, y).getGround().blocksThrownObjects()){
                         return true;
+                    }
                 }
             }
             return false;
@@ -84,11 +87,13 @@ public class DarkmoonLongbow extends MeleeWeapon {
     }
 
     public void blockedByWall(){
+
         hitRate = 0;
+
     }
 
-    public void recoverHitRate(){
-        hitRate = 80;
+    public void originalHitRate(){
+        hitRate = lastHitRate;
     }
 
 }

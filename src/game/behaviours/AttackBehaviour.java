@@ -2,7 +2,6 @@ package game.behaviours;
 
 import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
-import game.actors.Enemy;
 import game.actors.Player;
 import game.enums.Abilities;
 import game.enums.Status;
@@ -43,21 +42,27 @@ public class AttackBehaviour extends Actions implements Behaviour {
         // and they have to in the same map
         if (actor.getWeapon() instanceof DarkmoonLongbow && (here.map() == there.map())) {
             DarkmoonLongbow darkmoonLongbow = (DarkmoonLongbow) actor.getWeapon();
+
             int distanceInX = Utility.distanceInX(here, there);
             int distanceInY = Utility.distanceInY(here, there);
             if (distanceInX > DETECT_RANGE || distanceInY > DETECT_RANGE) {
+
             } else {
+
                 actor.addCapability(Abilities.FOLLOW_PLAYER);
                 //When the player is within the range of attack
+                // detect any wall on the path
                 if(darkmoonLongbow.detectedWall(actor,map,target)){
+
                     darkmoonLongbow.blockedByWall();
                 }
                 else{
-                    darkmoonLongbow.recoverHitRate();
+                    darkmoonLongbow.originalHitRate();
                 }
                 return new AttackAction(target,"that direction");
             }
         }
+
 
         // else do following detection - but the maximum detect distance is one squares away
         for (Exit exit : here.getExits()) {
