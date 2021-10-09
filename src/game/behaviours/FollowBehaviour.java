@@ -92,6 +92,9 @@ public class FollowBehaviour extends Actions implements Behaviour {
 		}
 
 
+		// The FOLLOW_PLAYER will get from attackBehaviour when player steps into the range of attack
+		// It means the enemy has found the player, in the following turns, the enemy will follow the player if it cannot attack(the player escapes out the range of attack)
+		// The FOLLOW_PLAYER will be removed when the game is doing soft-reset
 		if(actor.getWeapon() instanceof DarkmoonLongbow){
 			if(!(actor.hasCapability(Abilities.FOLLOW_PLAYER))){
 				if (!(biggerRangeDetect(actor,map))){

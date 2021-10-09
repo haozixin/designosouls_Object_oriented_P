@@ -4,10 +4,14 @@ import edu.monash.fit2099.engine.*;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.enums.Abilities;
 import game.interfaces.Resettable;
 import game.items.CindersOfLord;
 import game.weapons.DarkmoonLongbow;
 import game.weapons.MeleeWeapon;
+
+import static game.Application.AldrichInitialX;
+import static game.Application.AldrichInitialY;
 
 public class AldrichTheDevourer extends LordOfCinder implements Resettable {
 
@@ -26,13 +30,15 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
         this.bossWeapon = new DarkmoonLongbow();
         cindersOfLord = new CindersOfLord();
         this.addItemToInventory(cindersOfLord);
+        registerInstance();
     }
 
 
     @Override
     public void resetInstance(GameMap map, Actor actor) {
         setHitPoint(getMaxHitPoints());
-
+        map.moveActor(this, map.at(AldrichInitialX, AldrichInitialY));
+        removeCapability(Abilities.FOLLOW_PLAYER);
     }
 
     @Override
