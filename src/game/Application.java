@@ -21,6 +21,15 @@ public class Application {
 	public static final String FIRELINK_SHRINE = "Firelink Shrine";
 	public static final String ANOR_LONDO = "Anor Londo";
 	public static final String PROFANE_CAPITAL = "Profane Capital";
+	/**
+	 * Aldrich's Initial location -X
+	 */
+	public static final int AldrichInitialX = 35;
+
+	/**
+	 * Aldrich's Initial location -Y
+	 */
+	public static final int AldrichInitialY = 20;
 
 	public static void main(String[] args) {
 
@@ -129,7 +138,7 @@ public class Application {
 			fogDoorA.addAction(new MoveActorAction(PortalInMap1, "to "+PROFANE_CAPITAL));
 
 			//Place Aldrich the Devourer in the second map
-			gameMap2.at(35, 20).addActor(new AldrichTheDevourer(player));
+			gameMap2.at(AldrichInitialX, AldrichInitialY).addActor(new AldrichTheDevourer(player));
 
 
 			world.run();

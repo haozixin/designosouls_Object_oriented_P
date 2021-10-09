@@ -66,4 +66,12 @@ public abstract class Enemy extends Actor implements EnemyInterface {
         hitPoints = Math.max(hitPoints, 0);
     }
 
+    protected void setHitPoint(int hitPoint){
+        this.hitPoints = hitPoint;
+    }
+
+    protected int getMaxHitPoints() {
+        return maxHitPoints;
+    }
+
 }

@@ -57,4 +57,6 @@ public abstract class LordOfCinder extends Enemy {
     public Weapon getWeapon() {
         return bossWeapon;
     }
+
+
 }

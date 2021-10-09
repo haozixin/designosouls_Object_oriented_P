@@ -1,13 +1,14 @@
 package game.interfaces;
 
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.GameMap;
 import game.ResetManager;
 
 public interface Resettable {
     /**
      * Allows any classes that use this interface to reset abilities, attributes, and items.
-     * TODO: Use this method in a reset manager to run the soft-reset.
      */
-    void resetInstance();
+    void resetInstance(GameMap map, Actor actor);
 
     /**
      * A useful method to clean up the list of instances in the ResetManager class

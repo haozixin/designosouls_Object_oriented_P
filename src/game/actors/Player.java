@@ -1,6 +1,7 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
+import game.BonfiresManager;
 import game.ResetManager;
 import game.TokenOfSouls;
 import game.actions.AttackAction;
@@ -12,6 +13,7 @@ import game.interfaces.Behaviour;
 import game.interfaces.PlayerInterface;
 import game.interfaces.Resettable;
 import game.interfaces.Soul;
+import game.terrains.Bonfire;
 import game.utilities.Utility;
 import game.weapons.Broadsword;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
@@ -292,16 +294,30 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 	 *
 	 */
 	@Override
-	public void resetInstance() {
+	public void resetInstance(GameMap map, Actor actor) {
 		Utility.showDeadMessage();
 		this.setHealthPotion(Player.getMaxHealthPotion());
 		this.setHitPoints(this.getMaxHitPoints());
 		setSoul(0);
+
+		// move player to the latest bonfire that he interact with
+		// if player has do interaction with a bonfire, the last bonfire will be recorded
+		// and the player will spawn at that bonfire
+		if (BonfiresManager.getInstance().getLastBonfireToI() != null) {
+			map.moveActor(actor, BonfiresManager.getInstance().getLastBonfireToI().getLocation());
+		} else {
+			// if he haven't interacted with any bonfire, go to the first one which is on the same game map
+			for (Bonfire bonfire : BonfiresManager.getInstance().getBonfires()) {
+				if (bonfire.getLocation().map() == map) {
+					map.moveActor(actor, (bonfire.getLocation()));
+				}
+			}
+		}
 	}
 
 	@Override
 	public boolean isExist() {
-		return false;
+		return true;
 	}
 
 

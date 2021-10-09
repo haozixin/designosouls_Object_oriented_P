@@ -53,21 +53,8 @@ public class ResetManager {
     public void run(GameMap map, Actor actor) {
         //reset all instances that in the resettableList
         for (Resettable instance : resettableList) {
-            instance.resetInstance();
+            instance.resetInstance(map,actor);
         }
-        // if player has do interaction with a bonfire, the last bonfire will be recorded
-        // and the player will spawn at that bonfire
-        if (BonfiresManager.getInstance().getLastBonfireToI() != null) {
-            map.moveActor(actor, BonfiresManager.getInstance().getLastBonfireToI().getLocation());
-        } else {
-            for (Bonfire bonfire : BonfiresManager.getInstance().getBonfires()) {
-                if (bonfire.getLocation().map() == map) {
-                    map.moveActor(actor, (bonfire.getLocation()));
-                }
-            }
-        }
-
-
     }
 
     /**

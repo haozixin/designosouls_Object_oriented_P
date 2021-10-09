@@ -30,13 +30,14 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
 
 
     @Override
-    public void resetInstance() {
+    public void resetInstance(GameMap map, Actor actor) {
+        setHitPoint(getMaxHitPoints());
 
     }
 
     @Override
     public boolean isExist() {
-        return false;
+        return true;
     }
 
     /**
