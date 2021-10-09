@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.*;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.enums.Status;
 import game.interfaces.Behaviour;
 import game.interfaces.EnemyInterface;
 import game.weapons.MeleeWeapon;
@@ -24,10 +25,25 @@ public abstract class Enemy extends Actor implements EnemyInterface {
         super(name, displayChar, hitPoints);
         behaviours = new ArrayList<>();
 
-        behaviours.add(new FollowBehaviour());
-        behaviours.add(new AttackBehaviour());
-        behaviours.add(new WanderBehaviour());
     }
+
+    protected void addCapabilities(){};
+
+
+    protected void setBehaviours(){
+        if(!hasCapability(Status.LOCKED)){
+            behaviours.add(new FollowBehaviour());
+            behaviours.add(new AttackBehaviour());
+            behaviours.add(new WanderBehaviour());
+        }
+    }
+    protected void setBossBehaviours(Actor target){}
+
+    protected void lockBehaviours(){
+        addCapability(Status.LOCKED);
+        behaviours.clear();
+    }
+
 
     /**
      * Select and return an action to perform on the current turn.

@@ -26,10 +26,14 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
      * Constructor.
      */
     public AldrichTheDevourer(Actor target) {
-        super("Aldrich the Devourer", 'A', 350,target);
-        this.bossWeapon = new DarkmoonLongbow();
+        super("Aldrich the Devourer", 'A', 350);
+        setBossBehaviours(target);
+
+        bossWeapon = new DarkmoonLongbow();
         cindersOfLord = new CindersOfLord();
-        this.addItemToInventory(cindersOfLord);
+        addItemToInventory(cindersOfLord);
+
+        //register instance for soft reset
         registerInstance();
     }
 
@@ -58,4 +62,6 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
     public static int getSOULS() {
         return SOULS;
     }
+
+
 }

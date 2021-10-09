@@ -7,7 +7,6 @@ import game.behaviours.KillSelfBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
 import game.weapons.EnemyIntrinsicWeapon;
-import game.weapons.MeleeWeapon;
 
 
 /**
@@ -31,12 +30,23 @@ public class Undead extends Enemy {
 	 */
 	public Undead(String name) {
 		super(name, 'u', 50);
-		this.addCapability(Status.HOSTILE_TO_PLAYER);
-		this.addCapability(Abilities.CHANCE_TO_DIE);
-		behaviours.add(0,new KillSelfBehaviour());
+		addCapabilities();
+		setBehaviours();
 	}
 
 
+
+	@Override
+	protected void addCapabilities() {
+		this.addCapability(Abilities.CHANCE_TO_DIE);
+	}
+
+
+	@Override
+	protected void setBehaviours() {
+		super.setBehaviours();
+		behaviours.add(0,new KillSelfBehaviour());
+	}
 
 	/**
 	 * At the moment, we only make it can be attacked by enemy that has HOSTILE capability

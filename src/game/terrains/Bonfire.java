@@ -94,6 +94,7 @@ public class Bonfire extends Ground implements BonfireInterface {
         } else {
             if (actor.hasCapability(Abilities.REST)) {
                 actions.add(new RestAction(this));
+
             }
             addTeleportAction(actions);
         }

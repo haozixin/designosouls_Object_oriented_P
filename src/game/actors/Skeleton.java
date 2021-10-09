@@ -56,16 +56,25 @@ public class Skeleton extends Enemy {
         this.initialX = initialX;
         this.initialY = initialY;
 
-        behaviours.add(0, new ResurrectBehaviour());
-        this.addCapability(Status.HOSTILE_TO_PLAYER);
+        setBehaviours();
+        addCapabilities();
         // carry random Weapon
         initializeWeapon();
 
-        // add resurgence ability
-        this.addCapability(Abilities.RESURRECT);
-
     }
 
+    @Override
+    protected void addCapabilities() {
+        addCapability(Abilities.RESURRECT);
+    }
+
+
+
+    @Override
+    protected void setBehaviours() {
+        super.setBehaviours();
+        behaviours.add(0, new ResurrectBehaviour());
+    }
 
     /**
      * initialize weapon for Skeleton - get a random weapon

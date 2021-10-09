@@ -18,19 +18,16 @@ public abstract class LordOfCinder extends Enemy {
     /**
      * Constructor.
      */
-    public LordOfCinder(String name, char displayChar, int hitPoints,Actor target) {
+    public LordOfCinder(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints );
-        behaviours.clear();
-        behaviours.add(new AttackBehaviour(target));
-        behaviours.add(new FollowBehaviour(target));
 
-
-
-        //behaviours.add(new WanderBehaviour());
     }
 
-    public LordOfCinder(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints);
+
+    @Override
+    protected void setBossBehaviours(Actor target) {
+        behaviours.add(new AttackBehaviour(target));
+        behaviours.add(new FollowBehaviour(target));
     }
 
     /**

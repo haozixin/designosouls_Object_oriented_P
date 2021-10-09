@@ -129,9 +129,6 @@ public class AttackAction extends Action{
 		}
 		// if other enemies kill the player, it will execute soft-rest functionality
 		else{
-			if (target instanceof Player){
-				// soft-reset
-			}
 		}
 		return null;
 	}
