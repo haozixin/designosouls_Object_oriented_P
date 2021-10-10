@@ -114,25 +114,6 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 
 	}
 
-	/**
-	 * Returns a collection of the Actions that the otherActor can do to the current Actor.
-	 *
-	 * @param otherActor the Actor that might be performing attack
-	 * @param direction  String representing the direction of the other Actor
-	 * @param map        current GameMap
-	 * @return A collection of Actions.
-	 */
-	@Override
-	public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
-
-		Actions actions = new Actions();
-		//enemy can attack the player if the player has the status
-		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-			actions.add(new AttackAction(this,direction));
-		}
-
-		return actions;
-	}
 
 	/**
 	 * get healAction if the player still has enough healthPotion(Estus) - i.e. healthPotion > 0

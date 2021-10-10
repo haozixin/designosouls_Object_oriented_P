@@ -4,13 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.monash.fit2099.engine.*;
-import game.actions.TeleportAction;
-import game.actors.AldrichTheDevourer;
-import game.actors.YhormTheGiant;
+import game.actors.*;
 import game.items.FogDoor;
 import game.terrains.*;
-import game.actors.Player;
-import game.actors.Skeleton;
 
 /**
  * The main class for the Jurassic World game.
@@ -122,6 +118,7 @@ public class Application {
 			gameMap.at(0,0).addActor(new Skeleton("Skeleton",0,0));
 			gameMap.at(68,3).addActor(new Skeleton("Skeleton",86,3));
 
+			// FogDoor locations
 			Location PortalInMap1 = gameMap.at(38,25);
 			Location PortalInMap2 = gameMap2.at(38,0);
 
@@ -141,8 +138,9 @@ public class Application {
 			gameMap2.at(AldrichInitialX, AldrichInitialY).addActor(new AldrichTheDevourer(player));
 
 
-
-
+			//Mimic/Chest
+			Location location1 = gameMap.at(36,15);
+			location1.addActor(new MimicOrChest(location1));
 
 			world.run();
 
