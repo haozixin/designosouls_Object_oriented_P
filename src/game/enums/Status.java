@@ -15,5 +15,8 @@ public enum Status {
 
     WITHIN_ATTACK_RANGE,
 
-    LOCKED // for the ambiguous enemy, it will become enemy or token of souls after it is opened
+    LOCKED, // for the ambiguous enemy, it will become enemy or token of souls after it is opened
+
+    FROM_YHORM, // has this tag means the cinders of lord is from Yhorm
+    FROM_ALDRICH // has this tag means the cinders of lord is from Aldrich
 }

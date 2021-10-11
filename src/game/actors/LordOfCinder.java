@@ -20,11 +20,10 @@ public abstract class LordOfCinder extends Enemy {
     /**
      * Constructor.
      */
-    public LordOfCinder(String name, char displayChar, int hitPoints) {
+    public LordOfCinder(String name, char displayChar, int hitPoints,Status host) {
         super(name, displayChar, hitPoints );
-        cindersOfLord = new CindersOfLord();
+        cindersOfLord = new CindersOfLord("Cinders of a Lord(from "+name+")",host);
         addItemToInventory(cindersOfLord);
-
     }
 
 

@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.actions.BurnAction;
 import game.enums.Abilities;
+import game.enums.Status;
 import game.items.CindersOfLord;
 import game.weapons.MeleeWeapon;
 import game.weapons.YhormGreatMachete;
@@ -20,7 +21,7 @@ public class YhormTheGiant extends LordOfCinder {
      * Constructor.
      */
     public YhormTheGiant() {
-        super("Yhorm the Giant", 'Y', 500);
+        super("Yhorm the Giant", 'Y', 500, Status.FROM_YHORM);
         this.addCapability(Abilities.EMBER_FORM);
         bossWeapon = new YhormGreatMachete();
     }

@@ -5,6 +5,7 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.enums.Abilities;
+import game.enums.Status;
 import game.interfaces.Resettable;
 import game.items.CindersOfLord;
 import game.weapons.DarkmoonLongbow;
@@ -26,11 +27,9 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
      * Constructor.
      */
     public AldrichTheDevourer(Actor target) {
-        super("Aldrich the Devourer", 'A', 350);
+        super("Aldrich the Devourer", 'A', 350, Status.FROM_ALDRICH);
         setBossBehaviours(target);
-
         bossWeapon = new DarkmoonLongbow();
-
         //register instance for soft reset
         registerInstance();
     }
