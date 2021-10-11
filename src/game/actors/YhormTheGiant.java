@@ -1,12 +1,7 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
-import game.actions.AttackAction;
-import game.actions.BurnAction;
-import game.enums.Abilities;
 import game.enums.Status;
-import game.items.CindersOfLord;
-import game.weapons.MeleeWeapon;
 import game.weapons.YhormGreatMachete;
 
 /**
@@ -14,27 +9,16 @@ import game.weapons.YhormGreatMachete;
  */
 public class YhormTheGiant extends LordOfCinder {
     public static final int SOULS = 5000;
-    private int threshold = 250;
-    private boolean stunned = false;
 
     /**
      * Constructor.
      */
     public YhormTheGiant() {
         super("Yhorm the Giant", 'Y', 500, Status.FROM_YHORM);
-        this.addCapability(Abilities.EMBER_FORM);
         bossWeapon = new YhormGreatMachete();
     }
 
 
-
-    @Override
-    public void hurt(int points) {
-        super.hurt(points);
-        if (hitPoints<=threshold) {
-            ((YhormGreatMachete)bossWeapon).emberForm();
-        }
-    }
 
     /**
      *
@@ -44,27 +28,17 @@ public class YhormTheGiant extends LordOfCinder {
         return SOULS;
     }
 
-    /**
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return DoNothingAction
-     */
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        if(this.stunned) {
-            this.stunned = false;
-            return new DoNothingAction();
+        if(getHitPoint()<(getMaxHitPoints()/2) && !hasCapability(Status.SECOND_PHASE)){
+            //the boss health reaches below half of its maximum hit points
+            //it will enrages and its weapon becomes much more effective
+            System.out.println(this+" is entering Second Phase(Ember Form)!");
+            this.addCapability(Status.SECOND_PHASE);
+            bossWeapon.addCapability(Status.RAGE_MODE);
+            return bossWeapon.getActiveSkill(this,"all around");
         }
-        if (this.isConscious() && this.hasCapability(Abilities.EMBER_FORM)) {
 
-        }
-        return new DoNothingAction();
-    }
-
-
-    public void setStunned(boolean stunned) {
-        this.stunned = stunned;
+        return super.playTurn(actions, lastAction, map, display);
     }
 }

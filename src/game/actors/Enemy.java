@@ -90,6 +90,6 @@ public abstract class Enemy extends Actor implements EnemyInterface {
         return maxHitPoints;
     }
 
-
+    protected int getHitPoint(){return hitPoints;}
 
 }

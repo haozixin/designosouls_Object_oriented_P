@@ -18,5 +18,8 @@ public enum Status {
     LOCKED, // for the ambiguous enemy, it will become enemy or token of souls after it is opened
 
     FROM_YHORM, // has this tag means the cinders of lord is from Yhorm
-    FROM_ALDRICH // has this tag means the cinders of lord is from Aldrich
+    FROM_ALDRICH, // has this tag means the cinders of lord is from Aldrich
+    ONLY_FOR_YHORM, // has this tag means the weapon can only used by Yhorm
+    RAGE_MODE,
+    SECOND_PHASE
 }
