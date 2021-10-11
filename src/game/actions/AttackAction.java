@@ -2,14 +2,10 @@ package game.actions;
 
 import java.util.Random;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actions;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
-import edu.monash.fit2099.engine.Weapon;
+import edu.monash.fit2099.engine.*;
 import game.actors.*;
 import game.enums.Abilities;
+import game.interfaces.MimicOrChestInterface;
 import game.interfaces.PlayerInterface;
 
 /**
@@ -125,6 +121,11 @@ public class AttackAction extends Action{
 			else if(target instanceof AldrichTheDevourer){
 				player.addSouls(AldrichTheDevourer.getSOULS());
 				map.removeActor(target);
+			}
+			else if(target instanceof MimicOrChest){
+				player.addSouls(MimicOrChest.getSOULS());
+				map.removeActor(target);
+
 			}
 		}
 		// if other enemies kill the player, it will execute soft-rest functionality

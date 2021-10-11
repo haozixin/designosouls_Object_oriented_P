@@ -1,8 +1,7 @@
 package game.actions;
 
-import edu.monash.fit2099.engine.Action;
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.*;
+import game.actors.MimicOrChest;
 import game.enums.Status;
 import game.interfaces.MimicOrChestInterface;
 
@@ -31,27 +30,35 @@ public class OpenChestAction extends Action {
 
         Random r = new Random();
         // first case:
-        if(r.nextBoolean()){
+        if (r.nextBoolean()) {
+
             //replace its display character from "?" to be "M" and its name
             target.setDisplayChar('M');
             target.setName("Mimic");
             //give it back all normal behaviours
             target.setBehaviours();
-
-            return CASE_1;
-        }else {
-
-            // the second case:
-
-            return CASE_2;
+            return CASE_1+"(with "+(target.getInventory().size())+" tokens)";
+        } else {
+            target.setHitPoints(0);
+            int tokenNumber = target.getInventory().size();
+            if (!target.isConscious()) {
+                Actions dropActions = new Actions();
+                // drop all items
+                for (Item item : target.getInventory())
+                    dropActions.add(item.getDropAction(actor));
+                for (Action drop : dropActions)
+                    drop.execute((MimicOrChest)target, map);
+                map.removeActor((MimicOrChest)target);
+            }
+            return CASE_2+"(number of token: "+tokenNumber+" )";
         }
     }
-
 
     @Override
     public String menuDescription(Actor actor) {
         return actor + " opens the Chest";
     }
+
 
 
 }

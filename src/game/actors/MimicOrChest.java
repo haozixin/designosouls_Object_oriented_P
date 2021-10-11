@@ -1,15 +1,21 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.*;
+import game.actions.AttackAction;
 import game.actions.OpenChestAction;
-import game.enums.Abilities;
 import game.enums.Status;
 import game.interfaces.MimicOrChestInterface;
+import game.interfaces.Soul;
+import game.items.TokenOfSouls;
 import game.weapons.EnemyIntrinsicWeapon;
 
-public class MimicOrChest extends Enemy implements MimicOrChestInterface {
+import java.util.Random;
+
+public class MimicOrChest extends Enemy implements MimicOrChestInterface,Soul {
+    public static final int MaximumTokenNumbers = 3;
     Location location;
     public static final int SOULS = 200;
+
 
     /**
      * Constructor.
@@ -18,6 +24,23 @@ public class MimicOrChest extends Enemy implements MimicOrChestInterface {
         super("Chest", '?', 100);
         lockBehaviours();
         this.location = location;
+        initializeToken();
+    }
+
+    private void initializeToken(){
+        // get a random number from1-3
+        Random r = new Random();
+        int randomNumber = (r.nextInt(MaximumTokenNumbers)+1);
+        for(int i = 0; i<randomNumber;i++){
+            TokenOfSouls tokenOfSouls = new TokenOfSouls();
+            transferSouls(tokenOfSouls);
+            addItemToInventory(tokenOfSouls);
+        }
+
+    }
+
+    public void setHitPoints(int hitPoints){
+        this.hitPoints = hitPoints;
     }
 
     @Override
@@ -27,10 +50,13 @@ public class MimicOrChest extends Enemy implements MimicOrChestInterface {
         if (otherActor instanceof Player && hasCapability(Status.LOCKED)) {
             actions.add(new OpenChestAction(this));
         }
+        if(!hasCapability(Status.LOCKED)){
+            actions.add(new AttackAction(this,direction));
+        }
         return actions;
     }
 
-    private Location getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -46,6 +72,9 @@ public class MimicOrChest extends Enemy implements MimicOrChestInterface {
         super.setBehaviours();
     }
 
+    public static int getSOULS() {
+        return SOULS;
+    }
 
     /**
      * override toString to show some basic information for each skeleton, such as hitPoints, weapon that the skeleton holds and so on
@@ -64,8 +93,14 @@ public class MimicOrChest extends Enemy implements MimicOrChestInterface {
         return new EnemyIntrinsicWeapon(55,"kicks","leg");
     }
 
-    public void dropTokens(){
-
+    /**
+     * Transfer current instance's souls to another Soul instance.
+     *
+     * @param soulObject a target souls.
+     */
+    @Override
+    public void transferSouls(Soul soulObject) {
+        soulObject.addSouls(SOULS);
     }
 
 }

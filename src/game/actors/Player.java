@@ -2,14 +2,11 @@ package game.actors;
 
 import edu.monash.fit2099.engine.*;
 import game.BonfiresManager;
-import game.ResetManager;
-import game.TokenOfSouls;
-import game.actions.AttackAction;
+import game.items.TokenOfSouls;
 import game.actions.HealAction;
 import game.behaviours.SoftResetBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
-import game.interfaces.Behaviour;
 import game.interfaces.PlayerInterface;
 import game.interfaces.Resettable;
 import game.interfaces.Soul;
@@ -19,8 +16,6 @@ import game.weapons.Broadsword;
 import edu.monash.fit2099.engine.IntrinsicWeapon;
 import game.weapons.MeleeWeapon;
 import game.weapons.PlayerIntrinsicWeapon;
-
-import java.util.ArrayList;
 
 /**
  * Class representing the Player on the gameMap.

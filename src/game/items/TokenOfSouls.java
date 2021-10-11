@@ -1,7 +1,5 @@
-package game;
+package game.items;
 
-import edu.monash.fit2099.engine.Item;
-import game.actors.Player;
 import game.interfaces.Soul;
 
 /**
@@ -20,8 +18,14 @@ public class TokenOfSouls extends PortableItem implements Soul {
         this.souls = souls;
     }
 
+    public TokenOfSouls() {
+        super("SoulsToken", '$');
+        this.souls = 0;
+    }
+
     /**
      * setter - set the number of souls
+     *
      * @param souls souls number
      */
     public void setSouls(int souls) {
@@ -49,8 +53,12 @@ public class TokenOfSouls extends PortableItem implements Soul {
      */
     @Override
     public boolean addSouls(int souls) {
-
-        return false;
+        boolean isValid = false;
+        if (souls > 0) {
+            this.souls += souls;
+            isValid = true;
+        }
+        return isValid;
     }
 
     /**
@@ -61,7 +69,12 @@ public class TokenOfSouls extends PortableItem implements Soul {
      */
     @Override
     public boolean subtractSouls(int souls) {
-
-        return false;
+        boolean isValid = false;
+        if (souls > 0) {
+            this.souls -= souls;
+            isValid = true;
+        }
+        return isValid;
     }
 }
+
