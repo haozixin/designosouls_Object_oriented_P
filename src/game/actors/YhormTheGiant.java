@@ -23,7 +23,6 @@ public class YhormTheGiant extends LordOfCinder {
         super("Yhorm the Giant", 'Y', 500);
         this.addCapability(Abilities.EMBER_FORM);
         bossWeapon = new YhormGreatMachete();
-        this.addItemToInventory(new CindersOfLord());
     }
 
 
@@ -63,16 +62,6 @@ public class YhormTheGiant extends LordOfCinder {
         return new DoNothingAction();
     }
 
-    @Override
-    public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
-        Actions actions = new Actions();
-        Location otherLoc = map.locationOf(otherActor);
-        Location yhormLoc = map.locationOf(this);
-        if(Math.abs(otherLoc.x()-yhormLoc.x()) < 2 && Math.abs(otherLoc.y()-yhormLoc.y()) < 2) {
-            actions.add(new BurnAction(otherActor));
-        }
-        return actions;
-    }
 
     public void setStunned(boolean stunned) {
         this.stunned = stunned;

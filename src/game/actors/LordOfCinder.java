@@ -6,6 +6,7 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.enums.Status;
+import game.items.CindersOfLord;
 import game.weapons.MeleeWeapon;
 
 
@@ -15,11 +16,14 @@ import game.weapons.MeleeWeapon;
  */
 public abstract class LordOfCinder extends Enemy {
     protected MeleeWeapon bossWeapon;
+    protected CindersOfLord cindersOfLord;
     /**
      * Constructor.
      */
     public LordOfCinder(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints );
+        cindersOfLord = new CindersOfLord();
+        addItemToInventory(cindersOfLord);
 
     }
 
@@ -53,6 +57,15 @@ public abstract class LordOfCinder extends Enemy {
     @Override
     public Weapon getWeapon() {
         return bossWeapon;
+    }
+
+    /**
+     * override toString to show some basic information for each Undead, such as hitPoints, weapon that the skeleton holds and so on
+     * @return
+     */
+    @Override
+    public String toString() {
+        return name+" ("+hitPoints+"/"+maxHitPoints+")"+" (holding "+bossWeapon+")";
     }
 
 

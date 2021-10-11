@@ -20,7 +20,7 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
      * from the skeleton after killing it
      */
     public static final int SOULS = 5000;
-    private CindersOfLord cindersOfLord;
+
 
     /**
      * Constructor.
@@ -30,8 +30,6 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
         setBossBehaviours(target);
 
         bossWeapon = new DarkmoonLongbow();
-        cindersOfLord = new CindersOfLord();
-        addItemToInventory(cindersOfLord);
 
         //register instance for soft reset
         registerInstance();
@@ -50,14 +48,7 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
         return true;
     }
 
-    /**
-     * override toString to show some basic information for each Undead, such as hitPoints, weapon that the skeleton holds and so on
-     * @return
-     */
-    @Override
-    public String toString() {
-        return name+" ("+hitPoints+"/"+maxHitPoints+")"+" (holding "+bossWeapon+")";
-    }
+
 
     public static int getSOULS() {
         return SOULS;
