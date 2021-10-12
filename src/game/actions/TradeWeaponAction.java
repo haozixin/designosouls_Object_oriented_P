@@ -28,6 +28,8 @@ public class TradeWeaponAction extends Action {
         this.weapon = weapon;
     }
 
+
+
     /**
      * Execute the Action.
      * It will subtract Player's souls and replace player's weapon on inventory with the newest one
@@ -53,6 +55,7 @@ public class TradeWeaponAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
+
         return actor+" buys " + weapon +"("+weapon.getPrice() + " Souls)";
     }
 

@@ -1,11 +1,13 @@
 package game.terrains;
 
 import edu.monash.fit2099.engine.*;
+import game.actions.TradeCinderAction;
 import game.actions.TradeWeaponAction;
 import game.actors.Player;
 import game.enums.Abilities;
-import game.weapons.Broadsword;
-import game.weapons.GiantAxe;
+import game.enums.Status;
+import game.items.CindersOfLord;
+import game.weapons.*;
 
 public class Vendor extends Ground {
 
@@ -46,6 +48,17 @@ public class Vendor extends Ground {
             }
         }
 
+        // for requirement5, check if there is any Cinder of lord in the inventory
+        for (Item item : actor.getInventory()) {
+
+            if (item instanceof CindersOfLord && item.hasCapability(Status.FROM_YHORM)){
+
+                actions.add(new TradeCinderAction(new YhormGreatMachete(),(CindersOfLord) item));
+            }
+            else if(item instanceof CindersOfLord && item.hasCapability(Status.FROM_ALDRICH)){
+                actions.add(new TradeCinderAction(new DarkmoonLongbow(),(CindersOfLord) item));
+            }
+        }
 
         return actions;
 
