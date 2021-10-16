@@ -6,12 +6,13 @@ import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.enums.Status;
 import game.interfaces.Behaviour;
-import game.interfaces.EnemyInterface;
-import game.weapons.MeleeWeapon;
 
 import java.util.ArrayList;
 
-public abstract class Enemy extends Actor implements EnemyInterface {
+/**
+ * An abstract class represents all Enemy
+ */
+public abstract class Enemy extends Actor implements game.interfaces.Enemy {
 
     protected ArrayList<Behaviour> behaviours;
     /**
@@ -29,7 +30,10 @@ public abstract class Enemy extends Actor implements EnemyInterface {
 
     protected void addCapabilities(){};
 
-
+    /**
+     * set enemies behaviours
+     * if the enemy is not locked, it will have these default behaviours in the specific sequence.
+     */
     protected void setBehaviours(){
         if(!hasCapability(Status.LOCKED)){
             behaviours.add(new FollowBehaviour());
@@ -37,8 +41,14 @@ public abstract class Enemy extends Actor implements EnemyInterface {
             behaviours.add(new WanderBehaviour());
         }
     }
+
+
     protected void setBossBehaviours(Actor target){}
 
+    /**
+     * some enemies could use this method to get LOCKED status,
+     * that enemy will lose all behaviours until it is unlocked(opened)
+     */
     protected void lockBehaviours(){
         addCapability(Status.LOCKED);
         behaviours.clear();

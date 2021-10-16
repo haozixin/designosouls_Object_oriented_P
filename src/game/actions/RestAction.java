@@ -5,20 +5,20 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import game.BonfiresManager;
 import game.actors.Player;
-import game.interfaces.BonfireInterface;
-import game.interfaces.PlayerInterface;
+import game.interfaces.BonfireTerrain;
+import game.interfaces.PlayerInter;
 import game.terrains.Bonfire;
 
 /**
  * RestAction - player take the action to reset health/hit points and refill Estus Flask to maximum charges
  */
 public class RestAction extends Action {
-    /**
-     *target of the RestAction -- player
-     */
-    PlayerInterface target;
+//    /**
+//     *target of the RestAction -- player
+//     */
+//    PlayerInter target;
     //BonfireInterface bonfire;
-    BonfireInterface bonfire;
+    BonfireTerrain bonfire;
 
 
     public RestAction(Bonfire bonfire) {
@@ -38,12 +38,8 @@ public class RestAction extends Action {
         // record the last bonfire that the player to interact with
         BonfiresManager.getInstance().setLastBonfireToI(bonfire);
 
-        if (actor instanceof Player ? true:false){
-            //Refill Player's health/hit points to the maximum
-            //Refill Estus Flask to maximum charges
-            target = (Player) actor;
-            target.setHealthPotion(Player.getMaxHealthPotion());
-            target.setHitPoints(target.getMaxHitPoints());
+        if (actor instanceof Player){
+            ((PlayerInter)actor).refill();
             return menuDescription(actor);
         }else{
             // other actors will not trigger the action
@@ -58,7 +54,7 @@ public class RestAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor+"Rest at "+ bonfire.getName();
+        return actor+"Rest at "+ bonfire;
     }
 
     @Override

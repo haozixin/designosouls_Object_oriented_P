@@ -5,20 +5,19 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 import game.BonfiresManager;
-import game.interfaces.BonfireInterface;
-import game.terrains.Bonfire;
+import game.interfaces.BonfireTerrain;
 
 public class TeleportAction extends Action {
 
-    BonfireInterface bonfire;
+    BonfireTerrain bonfire;
     Location targetLocation;
     String targetLocationName;
 
 
-    public TeleportAction(BonfireInterface targetBonfire, BonfireInterface bonfire) {
+    public TeleportAction(BonfireTerrain targetBonfire, BonfireTerrain bonfire) {
         this.bonfire = bonfire;
         this.targetLocation = targetBonfire.getLocation();
-        this.targetLocationName = targetBonfire.getName();
+        this.targetLocationName = targetBonfire.toString();
     }
 
     public TeleportAction(Location targetLocation, String targetLocationName) {

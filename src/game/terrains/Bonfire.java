@@ -10,14 +10,14 @@ import game.actions.RestAction;
 import game.actions.TeleportAction;
 import game.enums.Abilities;
 import game.enums.Status;
-import game.interfaces.BonfireInterface;
+import game.interfaces.BonfireTerrain;
 
 import static game.Application.FIRELINK_SHRINE;
 
 /**
  * A class that represents Bonfire.
  */
-public class Bonfire extends Ground implements BonfireInterface {
+public class Bonfire extends Ground implements BonfireTerrain {
     private static int tempNumber = 0;
     private int id;
 
@@ -109,10 +109,15 @@ public class Bonfire extends Ground implements BonfireInterface {
         }
     }
 
+    public void lightTheBonfire(){
+        this.addCapability(Status.LIGHTED);
+    }
 
-    public String getName() {
+    @Override
+    public String toString() {
         return name + "'s Bonfire" + id;
     }
+
 
     public Location getLocation() {
         return location;

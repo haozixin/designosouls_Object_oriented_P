@@ -1,7 +1,7 @@
 package game.interfaces;
 
 
-public interface EnemyInterface {
+public interface Enemy {
     /**
      * Add points to the current Actor's hitpoint total.
      *

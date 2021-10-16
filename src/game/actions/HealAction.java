@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import game.actors.Player;
-import game.interfaces.PlayerInterface;
+import game.interfaces.PlayerInter;
 
 /**
  * The class is for requirement1 - The player drinks Estus to heal himself
@@ -14,7 +14,7 @@ public class HealAction extends Action {
     /**
      *target of heal action -- player
      */
-    private PlayerInterface target;
+    private PlayerInter target;
 
     /**
      * how much (in percentage) it would heal the target
@@ -41,7 +41,7 @@ public class HealAction extends Action {
      */
     public boolean setTarget(Player target) {
         boolean isPlayer = false;
-        if (target instanceof Player ? true:false){
+        if (target != null){
             this.target = target;
             isPlayer = true;
             return isPlayer;
@@ -59,10 +59,7 @@ public class HealAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         // Restores hitPoints and reduces the number of Estus
-
-        int heal_points = (int) (target.getMaxHitPoints()*PERCENTAGE*0.01);
-        actor.heal(heal_points);
-        target.subtractHPotion();
+        target.drinkFlask(PERCENTAGE);
         return menuDescription(actor);
     }
 
@@ -74,7 +71,7 @@ public class HealAction extends Action {
      */
     @Override
     public String menuDescription(Actor player) {
-        return player + "drinks an Estus Flask("+target.getHealthPotion()+"/"+Player.getMaxHealthPotion()+")";
+        return player + "drinks an Estus Flask"+target.HealthPotionStatus();
     }
 
     @Override

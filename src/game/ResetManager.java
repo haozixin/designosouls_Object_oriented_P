@@ -2,9 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import game.interfaces.BonfireInterface;
 import game.interfaces.Resettable;
-import game.terrains.Bonfire;
 
 import java.util.ArrayList;
 import java.util.List;

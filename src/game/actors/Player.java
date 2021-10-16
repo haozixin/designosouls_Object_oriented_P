@@ -2,12 +2,13 @@ package game.actors;
 
 import edu.monash.fit2099.engine.*;
 import game.BonfiresManager;
+import game.items.CindersOfLord;
 import game.items.TokenOfSouls;
 import game.actions.HealAction;
 import game.behaviours.SoftResetBehaviour;
 import game.enums.Abilities;
 import game.enums.Status;
-import game.interfaces.PlayerInterface;
+import game.interfaces.PlayerInter;
 import game.interfaces.Resettable;
 import game.interfaces.Soul;
 import game.terrains.Bonfire;
@@ -20,7 +21,7 @@ import game.weapons.PlayerIntrinsicWeapon;
 /**
  * Class representing the Player on the gameMap.
  */
-public class Player extends Actor implements Soul, PlayerInterface, Resettable {
+public class Player extends Actor implements Soul, PlayerInter, Resettable {
 	/**
 	 * max health potion that belongs to the whole player class
 	 * something like game setting - players could have how many health potion
@@ -160,6 +161,32 @@ public class Player extends Actor implements Soul, PlayerInterface, Resettable {
 		return soul;
 	}
 
+	public String HealthPotionStatus(){
+		return "("+this.getHealthPotion()+"/"+Player.getMaxHealthPotion()+")";
+	}
+
+	public void drinkFlask(int healPercentage){
+		int heal_points = (int) (this.getMaxHitPoints()*healPercentage*0.01);
+		this.heal(heal_points);
+		this.subtractHPotion();
+	}
+
+	public void refill(){
+		//Refill Player's health/hit points to the maximum
+		//Refill Estus Flask to maximum charges
+		this.setHealthPotion(Player.getMaxHealthPotion());
+		this.setHitPoints(this.getMaxHitPoints());
+	}
+
+	public void replaceWeaponByC(MeleeWeapon weapon, CindersOfLord cindersOfLord){
+		this.removeItemFromInventory(cindersOfLord);
+		replaceWeapon(weapon);
+	}
+
+	public void replaceWeapon(MeleeWeapon weapon){
+		this.removeItemFromInventory((Item) (this.getWeapon()));
+		this.addItemToInventory(weapon);
+	}
 
 	/**
 	 * Display the player's status

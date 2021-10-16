@@ -1,12 +1,9 @@
 package game;
 
-import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Location;
-import game.interfaces.BonfireInterface;
+import game.interfaces.BonfireTerrain;
 import game.terrains.Bonfire;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * A class that contains a Collection for all Bonfires and manage them
@@ -17,7 +14,7 @@ public class BonfiresManager {
     /**
      * The last bonfire to interact with
      */
-    private BonfireInterface lastBonfireToI;
+    private BonfireTerrain lastBonfireToI;
 
     //private HashMap<Bonfire,Location> bonfires = new HashMap<>();
     private ArrayList<Bonfire> bonfires = new ArrayList<>();
@@ -37,11 +34,11 @@ public class BonfiresManager {
         return bonfires;
     }
 
-    public BonfireInterface getLastBonfireToI() {
+    public BonfireTerrain getLastBonfireToI() {
         return lastBonfireToI;
     }
 
-    public void setLastBonfireToI(BonfireInterface lastBonfire) {
+    public void setLastBonfireToI(BonfireTerrain lastBonfire) {
         this.lastBonfireToI = lastBonfire;
     }
 }

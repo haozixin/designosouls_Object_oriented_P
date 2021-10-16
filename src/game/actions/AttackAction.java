@@ -5,8 +5,7 @@ import java.util.Random;
 import edu.monash.fit2099.engine.*;
 import game.actors.*;
 import game.enums.Abilities;
-import game.interfaces.MimicOrChestInterface;
-import game.interfaces.PlayerInterface;
+import game.interfaces.PlayerInter;
 
 /**
  * Special Action for attacking other Actors.
@@ -92,7 +91,7 @@ public class AttackAction extends Action{
 
 		// if the actor who is going to perform the attack is Player
 		if (actor instanceof Player){
-			PlayerInterface player = (Player) actor;
+			PlayerInter player = (Player) actor;
 
 			// what will happen if Undead is going to die
 			if (target instanceof Undead){

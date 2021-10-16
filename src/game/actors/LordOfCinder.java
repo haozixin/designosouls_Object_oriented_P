@@ -15,10 +15,17 @@ import game.weapons.MeleeWeapon;
  * it is an abstract class because there are two kinds of LordOfCinder on different map
  */
 public abstract class LordOfCinder extends Enemy {
-    //it will not drop weapon when it is beat. So, it should have a weapon instance attribute
-    //instead of put one to inventory
+    /**
+     * it will not drop weapon when it is beat. So, it should have a weapon instance attribute
+     * instead of put one to inventory
+     */
     protected MeleeWeapon bossWeapon;
+
+    /**
+     * an Instance of CindersOfLord （corpse）
+     */
     protected CindersOfLord cindersOfLord;
+
     /**
      * Constructor.
      */

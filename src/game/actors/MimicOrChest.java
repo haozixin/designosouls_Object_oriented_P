@@ -4,14 +4,14 @@ import edu.monash.fit2099.engine.*;
 import game.actions.AttackAction;
 import game.actions.OpenChestAction;
 import game.enums.Status;
-import game.interfaces.MimicOrChestInterface;
+import game.interfaces.ambiguousEnemy;
 import game.interfaces.Soul;
 import game.items.TokenOfSouls;
 import game.weapons.EnemyIntrinsicWeapon;
 
 import java.util.Random;
 
-public class MimicOrChest extends Enemy implements MimicOrChestInterface,Soul {
+public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
     public static final int MaximumTokenNumbers = 3;
     Location location;
     public static final int SOULS = 200;
@@ -43,6 +43,8 @@ public class MimicOrChest extends Enemy implements MimicOrChestInterface,Soul {
         this.hitPoints = hitPoints;
     }
 
+
+
     @Override
     public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
         Actions actions = new Actions();
@@ -65,6 +67,44 @@ public class MimicOrChest extends Enemy implements MimicOrChestInterface,Soul {
     }
     public void setName(String newName){
         this.name = newName;
+    }
+
+
+    public void beOpened(){
+        this.removeCapability(Status.LOCKED);
+    }
+
+    public int countToken(){
+        return this.getInventory().size();
+    }
+
+    /**
+     * first case when player open the "chest"
+     */
+    public void becomeMimic(){
+        //replace its display character from "?" to be "M" and its name
+        this.setDisplayChar('M');
+        this.setName("Mimic");
+        //give it back all normal behaviours
+        this.setBehaviours();
+    }
+
+    /**
+     *
+     * @param actor The actor performing the action, the player
+     * @param map The map the actor is on.
+     */
+    public void dropTokens(Actor actor,GameMap map){
+        this.setHitPoints(0);
+        if (!this.isConscious()) {
+            Actions dropActions = new Actions();
+            // drop all items
+            for (Item item : this.getInventory())
+                dropActions.add(item.getDropAction(actor));
+            for (Action drop : dropActions)
+                drop.execute(this, map);
+            map.removeActor(this);
+        }
     }
 
     @Override

@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import game.actors.Skeleton;
 import game.enums.Abilities;
-import game.interfaces.EnemyInterface;
+import game.interfaces.Enemy;
 
 import java.util.Random;
 
@@ -19,9 +19,9 @@ public class ResurgenceAction extends Action {
     /**
      *target of the action -- enemies(only Skeleton for now)
      */
-    EnemyInterface target;
+    Enemy target;
 
-    public ResurgenceAction(EnemyInterface target) {
+    public ResurgenceAction(Enemy target) {
         if (setTarget(target)){
         }
         else{
@@ -34,7 +34,7 @@ public class ResurgenceAction extends Action {
      * @param target target of the action
      * @return boolean value - judge if the parameter is valid
      */
-    public boolean setTarget(EnemyInterface target) {
+    public boolean setTarget(Enemy target) {
         boolean isValid = false;
         if(target instanceof Skeleton ? true:false){
             this.target = target;
