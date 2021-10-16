@@ -14,7 +14,7 @@ import java.util.Random;
 public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
     public static final int MaximumTokenNumbers = 3;
     Location location;
-    public static final int SOULS = 200;
+
 
 
     /**
@@ -22,6 +22,7 @@ public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
      */
     public MimicOrChest(Location location) {
         super("Chest", '?', 100);
+        souls =200;
         lockBehaviours();
         this.location = location;
         initializeToken();
@@ -112,10 +113,6 @@ public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
         super.setBehaviours();
     }
 
-    public static int getSOULS() {
-        return SOULS;
-    }
-
     /**
      * override toString to show some basic information for each skeleton, such as hitPoints, weapon that the skeleton holds and so on
      * @return
@@ -140,7 +137,7 @@ public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
      */
     @Override
     public void transferSouls(Soul soulObject) {
-        soulObject.addSouls(SOULS);
+        soulObject.addSouls(souls);
     }
 
 }

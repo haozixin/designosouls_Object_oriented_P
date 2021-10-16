@@ -138,9 +138,15 @@ public class Application {
 			gameMap2.at(AldrichInitialX, AldrichInitialY).addActor(new AldrichTheDevourer(player));
 
 
-			//Mimic/Chest
-			Location location1 = gameMap.at(36,15);
-			location1.addActor(new MimicOrChest(location1));
+			//randomly place Mimic/Chest
+			Location location = gameMap.at(36,15);
+			location.addActor(new MimicOrChest(location));
+			location = gameMap.at(37,16);
+			location.addActor(new MimicOrChest(location));
+			location = gameMap.at(37,17);
+			location.addActor(new MimicOrChest(location));
+			location = gameMap.at(35,17);
+			location.addActor(new MimicOrChest(location));
 
 			world.run();
 

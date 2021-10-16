@@ -17,7 +17,7 @@ public class Undead extends Enemy {
 	 * SOULS - how many souls the Undead could yield when it's killed / how many souls the player could get
 	 * from the skeleton after killing it
 	 */
-	public static final int SOULS = 50;
+
 	public static final int CHANCE_TO_DIE = 10;
 
 
@@ -32,6 +32,7 @@ public class Undead extends Enemy {
 		super(name, 'u', 50);
 		addCapabilities();
 		setBehaviours();
+		souls = 50;
 	}
 
 
@@ -67,12 +68,6 @@ public class Undead extends Enemy {
 		}
 		return actions;
 	}
-
-
-	public static int getSOULS() {
-		return SOULS;
-	}
-
 
 
 	/**

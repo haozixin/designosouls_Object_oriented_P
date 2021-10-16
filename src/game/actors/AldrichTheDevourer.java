@@ -16,11 +16,7 @@ import static game.Application.AldrichInitialY;
 
 public class AldrichTheDevourer extends LordOfCinder implements Resettable {
 
-    /**
-     * SOULS - how many souls the skeleton could yield when it's killed / how many souls the player could get
-     * from the skeleton after killing it
-     */
-    public static final int SOULS = 5000;
+
 
 
     /**
@@ -30,6 +26,7 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
         super("Aldrich the Devourer", 'A', 350, Status.FROM_ALDRICH);
         setBossBehaviours(target);
         bossWeapon = new DarkmoonLongbow();
+        souls = 5000;
         //register instance for soft reset
         registerInstance();
     }
@@ -45,12 +42,6 @@ public class AldrichTheDevourer extends LordOfCinder implements Resettable {
     @Override
     public boolean isExist() {
         return true;
-    }
-
-
-
-    public static int getSOULS() {
-        return SOULS;
     }
 
 

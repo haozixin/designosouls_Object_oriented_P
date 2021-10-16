@@ -13,6 +13,11 @@ import java.util.ArrayList;
  * An abstract class represents all Enemy
  */
 public abstract class Enemy extends Actor implements game.interfaces.Enemy {
+    /**
+     * SOULS - how many souls the Undead could yield when it's killed / how many souls the player could get
+     * from the skeleton after killing it
+     */
+    protected int souls;
 
     protected ArrayList<Behaviour> behaviours;
     /**
@@ -101,5 +106,7 @@ public abstract class Enemy extends Actor implements game.interfaces.Enemy {
     }
 
     protected int getHitPoint(){return hitPoints;}
+
+    public int getSouls(){return souls;}
 
 }

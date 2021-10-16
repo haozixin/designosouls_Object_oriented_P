@@ -18,11 +18,7 @@ import java.util.Random;
 
 public class Skeleton extends Enemy {
 
-    /**
-     * SOULS - how many souls the skeleton could yield when it's killed / how many souls the player could get
-     * from the skeleton after killing it
-     */
-    public static final int SOULS = 250;
+
 
     /**
      * The success rate of this ability(RESURRECT itself)
@@ -55,6 +51,7 @@ public class Skeleton extends Enemy {
         //get initial location
         this.initialX = initialX;
         this.initialY = initialY;
+        souls = 200;
 
         setBehaviours();
         addCapabilities();
@@ -69,7 +66,9 @@ public class Skeleton extends Enemy {
     }
 
 
-
+    /**
+     * the function makes sure the skeleton can have a change to resurrect
+     */
     @Override
     protected void setBehaviours() {
         super.setBehaviours();
@@ -110,12 +109,6 @@ public class Skeleton extends Enemy {
         }
         return actions;
     }
-
-    public static int getSOULS() {
-        return SOULS;
-    }
-
-
 
     @Override
     public Soul asSoul() {

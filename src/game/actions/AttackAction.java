@@ -93,38 +93,21 @@ public class AttackAction extends Action{
 		if (actor instanceof Player){
 			PlayerInter player = (Player) actor;
 
-			// what will happen if Undead is going to die
-			if (target instanceof Undead){
-
-				player.addSouls(Undead.SOULS);
-				map.removeActor(target);
-			}
-			// what will happen if Skeleton is going to die
-			else if (target instanceof Skeleton){
-				// skeleton
-				Skeleton skeleton = (Skeleton) target;
-				if (skeleton.hasCapability(Abilities.RESURRECT)){
-
+			if (target instanceof Enemy){
+				// what will happen if Skeleton(or any other enemy who has the ability) is going to die
+				if (target.hasCapability(Abilities.RESURRECT)){
 					//on the ResurrectAction, it will show resurrect massage and remove skeleton's this ability
 					return result;
 				}else{
+					// what will happen if Undead is going to die
+					// what will happen if LordOfCinder is going to die
+					// what will happen if AldrichTheDevourer is going to die
+					// what will happen if MimicOrChest is going to die
+					Enemy enemy = (Enemy) target;
+					player.addSouls(enemy.getSouls());
 					map.removeActor(target);
+					return result;
 				}
-			}
-			// what will happen if LordOfCinder is going to die
-			else if (target instanceof YhormTheGiant){
-
-				player.addSouls(YhormTheGiant.getSOULS());
-				map.removeActor(target);
-			}
-			else if(target instanceof AldrichTheDevourer){
-				player.addSouls(AldrichTheDevourer.getSOULS());
-				map.removeActor(target);
-			}
-			else if(target instanceof MimicOrChest){
-				player.addSouls(MimicOrChest.getSOULS());
-				map.removeActor(target);
-
 			}
 		}
 		// if other enemies kill the player, it will execute soft-rest functionality

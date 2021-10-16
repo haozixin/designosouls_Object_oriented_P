@@ -33,11 +33,11 @@ public class ResurrectBehaviour extends Action implements Behaviour {
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        if (actor instanceof Skeleton ? true:false){
-            if (!actor.isConscious() && actor.hasCapability(Abilities.RESURRECT)){
-                return new ResurgenceAction((Skeleton)actor);
-            }
+
+        if (!actor.isConscious() && actor.hasCapability(Abilities.RESURRECT)){
+            return new ResurgenceAction((Skeleton)actor);
         }
+
         return null;
     }
 }

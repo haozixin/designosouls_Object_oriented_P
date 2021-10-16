@@ -8,7 +8,7 @@ import game.weapons.YhormGreatMachete;
  * The boss of Design o' Souls
  */
 public class YhormTheGiant extends LordOfCinder {
-    public static final int SOULS = 5000;
+
 
     /**
      * Constructor.
@@ -16,17 +16,11 @@ public class YhormTheGiant extends LordOfCinder {
     public YhormTheGiant() {
         super("Yhorm the Giant", 'Y', 500, Status.FROM_YHORM);
         bossWeapon = new YhormGreatMachete();
+        souls = 5000;
     }
 
 
 
-    /**
-     *
-     * @return SOULS
-     */
-    public static int getSOULS() {
-        return SOULS;
-    }
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
