@@ -18,6 +18,9 @@ import static game.Application.FIRELINK_SHRINE;
  * A class that represents Bonfire.
  */
 public class Bonfire extends Ground implements BonfireTerrain {
+    /**
+     *
+     */
     private static int tempNumber = 0;
     private int id;
 
@@ -42,6 +45,7 @@ public class Bonfire extends Ground implements BonfireTerrain {
         initializeStatus();
         BonfiresManager.getInstance().collectLocation(this);
     }
+
 
     private void setId() {
         tempNumber += 1;
@@ -68,6 +72,7 @@ public class Bonfire extends Ground implements BonfireTerrain {
         }
     }
 
+
     @Override
     public void tick(Location location) {
         super.tick(location);
@@ -89,18 +94,23 @@ public class Bonfire extends Ground implements BonfireTerrain {
     public Actions allowableActions(Actor actor, Location location, String direction) {
         Actions actions = new Actions();
 
+        // if the bonfire hasn't lighted
         if (!this.hasCapability(Status.LIGHTED)) {
             actions.add(new ActivateBonfireAction(this));
         } else {
+            // if the bonfire has been lighted and the actor can do rest action
             if (actor.hasCapability(Abilities.REST)) {
                 actions.add(new RestAction(this));
-
             }
             addTeleportAction(actions);
         }
         return actions;
     }
 
+    /**
+     * Go through all bonfires, only add a teleportAction for other bonfires - i.e. this bonfire can teleport player to other bonfires
+     * @param actions allowable actions
+     */
     private void addTeleportAction(Actions actions) {
         for (Bonfire bonfire : BonfiresManager.getInstance().getBonfires()) {
             if (bonfire != this) {
@@ -109,6 +119,9 @@ public class Bonfire extends Ground implements BonfireTerrain {
         }
     }
 
+    /**
+     * light the bonfire - give it a ability of "LIGHTED"
+     */
     public void lightTheBonfire(){
         this.addCapability(Status.LIGHTED);
     }

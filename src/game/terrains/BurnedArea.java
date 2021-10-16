@@ -8,6 +8,9 @@ import game.actors.Player;
 import game.weapons.YhormGreatMachete;
 
 public class BurnedArea extends Ground {
+    /**
+     * The duration of the flame
+     */
     private int burningTime;
 
     /**
@@ -28,10 +31,12 @@ public class BurnedArea extends Ground {
     public void tick(Location location) {
         --burningTime;
         if(burningTime<0){
+            // ground become back to dirt if the burning time is out
             location.setGround(new Dirt());
         }
         super.tick(location);
         // actor is on the burned area but without holding that weapon
+        // because the actor who is holding the weapon will not get the damage from the passive skill
         if (location.containsAnActor() && !(location.getActor().getWeapon() instanceof YhormGreatMachete)) {
             int hurtPoint = 25;
             location.getActor().hurt(hurtPoint);

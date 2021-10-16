@@ -14,11 +14,10 @@ import game.weapons.MeleeWeapon;
 import static game.Application.AldrichInitialX;
 import static game.Application.AldrichInitialY;
 
+/**
+ *  Aldrich The Devourer -- a kind of enemy (boss)
+ */
 public class AldrichTheDevourer extends LordOfCinder implements Resettable {
-
-
-
-
     /**
      * Constructor.
      */

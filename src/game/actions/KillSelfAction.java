@@ -6,6 +6,9 @@ import edu.monash.fit2099.engine.GameMap;
 
 import java.util.Random;
 
+/**
+ * Undead will Kill itself when it invokes the action
+ */
 public class KillSelfAction extends Action {
 
 

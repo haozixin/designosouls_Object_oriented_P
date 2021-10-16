@@ -7,6 +7,10 @@ import game.interfaces.ambiguousEnemy;
 
 import java.util.Random;
 
+/**
+ * action - to open Chest
+ * two cases here
+ */
 public class OpenChestAction extends Action {
     public static final String CASE_1 = "The Chest monster become an enemy!";
     public static final String CASE_2 = "The Chest monster drops some token of souls!";

@@ -39,6 +39,7 @@ public class RestAction extends Action {
         BonfiresManager.getInstance().setLastBonfireToI(bonfire);
 
         if (actor instanceof Player){
+            // only player could rest, refill these things - flasks and HitPoint
             ((PlayerInter)actor).refill();
             return menuDescription(actor);
         }else{

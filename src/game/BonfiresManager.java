@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 /**
  * A class that contains a Collection for all Bonfires and manage them
+ *
  */
 public class BonfiresManager {
     private static BonfiresManager instance;

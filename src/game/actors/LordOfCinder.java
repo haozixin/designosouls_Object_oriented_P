@@ -22,7 +22,7 @@ public abstract class LordOfCinder extends Enemy {
     protected MeleeWeapon bossWeapon;
 
     /**
-     * an Instance of CindersOfLord （corpse）
+     * an Instance of CindersOfLord (corpse)
      */
     protected CindersOfLord cindersOfLord;
 

@@ -11,6 +11,10 @@ import game.weapons.EnemyIntrinsicWeapon;
 
 import java.util.Random;
 
+
+/**
+ * The ambiguous enemy
+ */
 public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
     public static final int MaximumTokenNumbers = 3;
     Location location;
@@ -28,6 +32,10 @@ public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
         initializeToken();
     }
 
+    /**
+     * initialize the Token of souls
+     * generate 1,2 or 3 tokens randomly
+     */
     private void initializeToken(){
         // get a random number from1-3
         Random r = new Random();
@@ -53,6 +61,7 @@ public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
         if (otherActor instanceof Player && hasCapability(Status.LOCKED)) {
             actions.add(new OpenChestAction(this,direction));
         }
+        // when it becomes Mimic, it will be attacked by player
         if(!hasCapability(Status.LOCKED)){
             actions.add(new AttackAction(this,direction));
         }

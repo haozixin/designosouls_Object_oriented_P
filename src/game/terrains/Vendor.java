@@ -9,13 +9,17 @@ import game.enums.Status;
 import game.items.CindersOfLord;
 import game.weapons.*;
 
+/**
+ * Vendor
+ */
 public class Vendor extends Ground {
 
 
-
+    /**
+     * Constructor
+     */
     public Vendor() {
         super('F');
-
     }
 
 
@@ -49,19 +53,16 @@ public class Vendor extends Ground {
         }
 
         // for requirement5, check if there is any Cinder of lord in the inventory
+        // trade with vendor using different kinds of CindersOfLord
         for (Item item : actor.getInventory()) {
-
             if (item instanceof CindersOfLord && item.hasCapability(Status.FROM_YHORM)){
-
                 actions.add(new TradeCinderAction(new YhormGreatMachete(),(CindersOfLord) item));
             }
             else if(item instanceof CindersOfLord && item.hasCapability(Status.FROM_ALDRICH)){
                 actions.add(new TradeCinderAction(new DarkmoonLongbow(),(CindersOfLord) item));
             }
         }
-
         return actions;
-
     }
 
 

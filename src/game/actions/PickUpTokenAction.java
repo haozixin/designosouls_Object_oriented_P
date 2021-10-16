@@ -11,6 +11,10 @@ import game.items.TokenOfSouls;
 public class PickUpTokenAction extends PickUpItemAction {
 
 
+    /**
+     * Constructor
+     * @param soulsToken Token of souls that will be picked up
+     */
     public PickUpTokenAction(TokenOfSouls soulsToken) {
         super(soulsToken);
 
@@ -18,7 +22,9 @@ public class PickUpTokenAction extends PickUpItemAction {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        //remove the item from map
         map.locationOf(actor).removeItem(item);
+        // Transfer current instance's souls to another Soul instance.
         ((TokenOfSouls)item).transferSouls((Soul)actor);
         return menuDescription(actor);
     }

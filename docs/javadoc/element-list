@@ -8,6 +8,8 @@ game.actors
 game.behaviours
 game.enums
 game.interfaces
+game.items
 game.terrains
 game.utilities
+game.weaponActions
 game.weapons

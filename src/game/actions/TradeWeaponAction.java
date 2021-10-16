@@ -20,7 +20,7 @@ public class TradeWeaponAction extends Action {
 
     /**
      * Constructor
-     * @param weapon
+     * @param weapon MeleeWeapon
      */
     public TradeWeaponAction(MeleeWeapon weapon) {
         this.weapon = weapon;
@@ -38,7 +38,9 @@ public class TradeWeaponAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         PlayerInter player = (PlayerInter) actor;
+        // subtract souls(money) base on the weapon price
         player.subtractSouls(weapon.getPrice());
+        // replace the current weapon with the new one
         player.replaceWeapon(weapon);
         System.out.println("We(Vendor) have update your inventory successfully");
         return menuDescription(actor);

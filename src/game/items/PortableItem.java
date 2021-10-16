@@ -7,6 +7,11 @@ import edu.monash.fit2099.engine.Item;
  */
 public class PortableItem extends Item {
 
+	/**
+	 * Constructor
+	 * @param name Item name
+	 * @param displayChar displayChar
+	 */
 	public PortableItem(String name, char displayChar) {
 		super(name, displayChar, true);
 	}

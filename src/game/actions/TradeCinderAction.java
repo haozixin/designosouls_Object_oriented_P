@@ -7,6 +7,10 @@ import game.interfaces.PlayerInter;
 import game.items.CindersOfLord;
 import game.weapons.MeleeWeapon;
 
+/**
+ * Trade action - trade weapons with Vendor using cindersOfLord
+ *
+ */
 public class TradeCinderAction extends Action {
     CindersOfLord cindersOfLord;
 
@@ -22,7 +26,7 @@ public class TradeCinderAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        //trade logic
+        //trade logic - replace weapon with cindersOfLord
         PlayerInter player = (PlayerInter) actor;
         player.replaceWeaponByC(weapon,cindersOfLord);
         System.out.println("We(Vendor) have update your inventory successfully");

@@ -18,6 +18,6 @@ public class Floor extends Ground {
  	 */
 	@Override
 	public boolean canActorEnter(Actor actor) {
-		return actor instanceof Player ? true : false;
+		return actor instanceof Player;
 	}
 }
