@@ -1,5 +1,8 @@
 package game.items;
 
+import edu.monash.fit2099.engine.Actor;
+import edu.monash.fit2099.engine.PickUpItemAction;
+import game.actions.PickUpTokenAction;
 import game.interfaces.Soul;
 
 /**
@@ -39,10 +42,23 @@ public class TokenOfSouls extends PortableItem implements Soul {
      */
     @Override
     public void transferSouls(Soul soulObject) {
-        //the soulObject should be Play type object, then it will go to addSouls() that is implemented in Player class,
-        // otherwise the function will return false
-        //when player pick up the item(souls), it should transfer Souls instance to player's souls(attribute)
         soulObject.addSouls(souls);
+    }
+
+    /**
+     * Create and return an action to pick this Item up.
+     * If this Item is not portable, returns null.
+     * Override - getPickUpAction for the TokenOfSouls class will return PickUpTokenAction, actor will get souls from the item and will
+     * not store it to his/her inventory.
+     *
+     * @param actor an actor that will interact with this item
+     * @return a new PickUpItemAction if this Item is portable, null otherwise.
+     */
+    @Override
+    public PickUpItemAction getPickUpAction(Actor actor) {
+        if(portable)
+            return new PickUpTokenAction(this);
+        return null;
     }
 
     /**
@@ -75,6 +91,11 @@ public class TokenOfSouls extends PortableItem implements Soul {
             isValid = true;
         }
         return isValid;
+    }
+
+    @Override
+    public String toString() {
+        return souls+" souls";
     }
 }
 

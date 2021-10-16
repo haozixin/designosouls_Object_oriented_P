@@ -51,7 +51,7 @@ public class MimicOrChest extends Enemy implements ambiguousEnemy,Soul {
         Actions actions = new Actions();
         //  allow the open chest action only when the monster hasn't been opened
         if (otherActor instanceof Player && hasCapability(Status.LOCKED)) {
-            actions.add(new OpenChestAction(this));
+            actions.add(new OpenChestAction(this,direction));
         }
         if(!hasCapability(Status.LOCKED)){
             actions.add(new AttackAction(this,direction));

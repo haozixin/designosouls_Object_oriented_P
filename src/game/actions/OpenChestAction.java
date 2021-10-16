@@ -11,9 +11,11 @@ public class OpenChestAction extends Action {
     public static final String CASE_1 = "The Chest monster become an enemy!";
     public static final String CASE_2 = "The Chest monster drops some token of souls!";
     ambiguousEnemy target;
+    private String direction;
 
-    public OpenChestAction(ambiguousEnemy target) {
+    public OpenChestAction(ambiguousEnemy target,String direction) {
         this.target = target;
+        this.direction = direction;
     }
 
     /**
@@ -44,7 +46,7 @@ public class OpenChestAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " opens the Chest";
+        return actor + " opens the Chest at " + direction;
     }
 
 
