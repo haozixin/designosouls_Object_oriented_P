@@ -6,6 +6,9 @@ import game.utilities.Utility;
 
 import java.util.Random;
 
+/**
+ * Boss weapon
+ */
 public class DarkmoonLongbow extends MeleeWeapon {
     /**
      * by holding the weapon, Aldrich the Devourer(or other actors) can get a bigger range to attack and follow the enemy
