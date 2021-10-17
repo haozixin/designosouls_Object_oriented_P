@@ -35,6 +35,10 @@ public class BonfiresManager {
         return bonfires;
     }
 
+    /**
+     * get the last bonfire the player interact with
+     * @return last bonfire instance
+     */
     public BonfireTerrain getLastBonfireToI() {
         return lastBonfireToI;
     }

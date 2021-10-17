@@ -13,7 +13,8 @@ import game.interfaces.BonfireTerrain;
  */
 public class TeleportAction extends Action {
     /**
-     * The bonfire that can teleport player to another bonfire
+     * The bonfire that can teleports player to another bonfire
+     * Last bonfire the actor interact with
      */
     BonfireTerrain bonfire;
 
