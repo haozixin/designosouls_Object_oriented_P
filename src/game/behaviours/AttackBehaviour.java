@@ -43,24 +43,12 @@ public class AttackBehaviour extends Actions implements Behaviour {
         if (actor.getWeapon() instanceof DarkmoonLongbow && (here.map() == there.map())) {
             DarkmoonLongbow darkmoonLongbow = (DarkmoonLongbow) actor.getWeapon();
 
-            int distanceInX = Utility.distanceInX(here, there);
-            int distanceInY = Utility.distanceInY(here, there);
-            if (distanceInX > DETECT_RANGE || distanceInY > DETECT_RANGE) {
-
-            } else {
-
-                actor.addCapability(Abilities.FOLLOW_PLAYER);
-                //When the player is within the range of attack
-                // detect any wall on the path
-                if(darkmoonLongbow.detectedWall(actor,map,target)){
-
-                    darkmoonLongbow.blockedByWall();
-                }
-                else{
-                    darkmoonLongbow.originalHitRate();
-                }
-                return new AttackAction(target,"that direction");
-            }
+            //activate the passive skill of the weapon of darkmoonLongbow first
+            Action action = darkmoonLongbow.attackDetect(actor,map,target);
+            // if the player is not detected return null
+            // otherwise return attack action and start attacking
+            if (action == null){}
+            else{return action;}
         }
 
 

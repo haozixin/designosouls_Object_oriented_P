@@ -1,13 +1,11 @@
 package game.behaviours;
 
 import edu.monash.fit2099.engine.*;
-import game.actors.AldrichTheDevourer;
 import game.actors.Player;
 import game.enums.Abilities;
 import game.interfaces.Behaviour;
 import game.utilities.Utility;
 import game.weapons.DarkmoonLongbow;
-import static game.weapons.DarkmoonLongbow.DETECT_RANGE;
 
 /**
  * A class that figures out a MoveAction that will move the actor one step 
@@ -44,15 +42,9 @@ public class FollowBehaviour extends Actions implements Behaviour {
 
 	private boolean biggerRangeDetect(Actor actor, GameMap map){
 		// the boss knows its target is the player but the player haven't been detected yet
+		//once detected the "hasFoundTarget" will be true,which has a effect in next  getAction function.
 		if(!hasFoundTarget){
-			Location here = map.locationOf(actor);
-			Location there = map.locationOf(target);
-			int distanceInX = Utility.distanceInX(here,there);
-			int distanceInY = Utility.distanceInY(here,there);
-			if(distanceInX> DETECT_RANGE || distanceInY>DETECT_RANGE){
-			}else {
-				hasFoundTarget =true;
-			}
+			hasFoundTarget = ((DarkmoonLongbow)actor.getWeapon()).largerRangeDetect(actor,map,target);
 		}
 		return hasFoundTarget;
 	}
@@ -97,12 +89,15 @@ public class FollowBehaviour extends Actions implements Behaviour {
 		// The FOLLOW_PLAYER will be removed when the game is doing soft-reset
 		if(actor.getWeapon() instanceof DarkmoonLongbow){
 			if(!(actor.hasCapability(Abilities.FOLLOW_PLAYER))){
+				// if not detected by the function of biggerRangeDetect
+				//return null
 				if (!(biggerRangeDetect(actor,map))){
 					return null;
 				}
 			}
 		}
 
+		// the following code can make enemy follow player no matter how far.
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
 
