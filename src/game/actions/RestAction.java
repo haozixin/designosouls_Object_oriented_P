@@ -13,10 +13,7 @@ import game.terrains.Bonfire;
  * RestAction - player take the action to reset health/hit points and refill Estus Flask to maximum charges
  */
 public class RestAction extends Action {
-//    /**
-//     *target of the RestAction -- player
-//     */
-//    PlayerInter target;
+
     //BonfireInterface bonfire;
     BonfireTerrain bonfire;
 
